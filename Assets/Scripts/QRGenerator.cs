@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
+using QR.Scriptables;
 using UnityEngine;
-using QR.Encoder;
 using Random = UnityEngine.Random;
 
 namespace QR
@@ -12,14 +12,21 @@ namespace QR
         [SerializeField] private int height;
         [SerializeField] private string data;
 
-        private byte charSize;
+        private byte _charSize;
+        private DataConversion _versionOne;
+
+        private void Awake()
+        {
+            _versionOne = Resources.Load<DataConversion>("Data/Version1");
+        }
+
         private void Start()
         {
             GameObject QR = new GameObject();
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
             rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
-            // Generation();
+            QR.name = "QR";
 
             Camera.main.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
         }
@@ -40,7 +47,7 @@ namespace QR
                 }
             }
 
-            this.charSize = (byte)data.Length;
+            _charSize = (byte)data.Length;
 
             SetOrientationShapes(ref texture, 0, 0);
             SetOrientationShapes(ref texture, 0, 13);
@@ -48,17 +55,16 @@ namespace QR
             SetTimingStrips(ref texture);
             SetWeirdPixelBlack(ref texture);
             SetEncodingType(ref texture);
-            SetLength(ref texture);
+            SetLength(ref texture, 1);
             texture.Apply();
 
             return texture;
         }
 
-        private void SetLength(ref Texture2D texture)
+        private void SetLength(ref Texture2D texture, byte dataOrder)
         {
-            string binaryVersionLength = Convert.ToString(charSize, 2).PadLeft(8, '0');
-
-            Debug.Log(binaryVersionLength);
+            Length lengthModule = new Length(ref texture, _versionOne, dataOrder, _charSize);
+            lengthModule.SetLength();
         }
 
         private void SetOrientationShapes(ref Texture2D texture, int x, int y)
@@ -103,8 +109,23 @@ namespace QR
         private void SetEncodingType(ref Texture2D texture)
         {
             //TODO: make it viable for every versions of QR
-            QREncoder encoder = new QREncoder(ref texture, data, charSize);
+            Encoder encoder = new Encoder(ref texture, data, _charSize);
             encoder.SetEncoding();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            for (int i = -30; i < 30; i++)
+            {
+                Gizmos.DrawLine(new Vector3(-1, 0.005f + i * (0.01f), 0) , Vector3.right * width + new Vector3(0f,0.005f + i * (0.01f),0));
+            }
+            
+            for (int i = -30; i < 30; i++)
+            {
+                Gizmos.DrawLine(new Vector3(0.005f + i * (0.01f),-1 , 0) , Vector3.up * height + new Vector3(0.005f + i * (0.01f),0f,0));
+            }
+            
         }
     }
 }
