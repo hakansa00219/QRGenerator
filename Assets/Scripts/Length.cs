@@ -2,14 +2,14 @@
 using System.Linq;
 using QR.Converters;
 using QR.Enums;
-using QR.Scriptables;
+using QR.Scriptable;
 using UnityEngine;
 
 namespace QR
 {
     public class Length
     {
-        private Texture2D _texture;
+        private readonly Texture2D _texture;
         private readonly DataConversion _versionConversion;
         private readonly byte _dataOrder;
         private readonly byte _dataSize;

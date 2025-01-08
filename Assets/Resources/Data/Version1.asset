@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: VersionOnePatterns
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.ValueTuple`2[[QR.Enums.BytePattern,
-        Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp]],
+        Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp]],
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
@@ -44,14 +44,14 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 4
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 19
@@ -75,14 +75,14 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 19
@@ -106,14 +106,14 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 19
@@ -137,14 +137,14 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 3
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 17
@@ -168,14 +168,14 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 17
@@ -199,14 +199,14 @@ MonoBehaviour:
       Data: 5
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 17
@@ -230,14 +230,14 @@ MonoBehaviour:
       Data: 6
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 2
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 15
@@ -261,14 +261,14 @@ MonoBehaviour:
       Data: 7
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 15
@@ -292,14 +292,14 @@ MonoBehaviour:
       Data: 8
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 15
@@ -323,14 +323,14 @@ MonoBehaviour:
       Data: 9
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 3
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 13
@@ -354,14 +354,14 @@ MonoBehaviour:
       Data: 10
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 13
@@ -385,14 +385,14 @@ MonoBehaviour:
       Data: 11
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 13
@@ -416,14 +416,14 @@ MonoBehaviour:
       Data: 12
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 2
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 11
@@ -447,14 +447,14 @@ MonoBehaviour:
       Data: 13
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 11
@@ -478,14 +478,14 @@ MonoBehaviour:
       Data: 14
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 11
@@ -509,14 +509,14 @@ MonoBehaviour:
       Data: 15
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 11
@@ -540,14 +540,14 @@ MonoBehaviour:
       Data: 16
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 11
@@ -571,14 +571,14 @@ MonoBehaviour:
       Data: 17
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 3
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -602,14 +602,14 @@ MonoBehaviour:
       Data: 18
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -633,14 +633,14 @@ MonoBehaviour:
       Data: 19
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 5
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -664,14 +664,14 @@ MonoBehaviour:
       Data: 20
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -695,14 +695,14 @@ MonoBehaviour:
       Data: 21
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -726,14 +726,14 @@ MonoBehaviour:
       Data: 22
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 9
@@ -757,14 +757,14 @@ MonoBehaviour:
       Data: 23
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 7
@@ -788,14 +788,14 @@ MonoBehaviour:
       Data: 24
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 4
@@ -819,14 +819,14 @@ MonoBehaviour:
       Data: 25
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 0
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 2
@@ -850,14 +850,14 @@ MonoBehaviour:
       Data: 26
     - Name: $v
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptables.DataConversion+InitPosition,
+      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition,
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
       Data: 1
     - Name: Item2
       Entry: 7
-      Data: QR.Scriptables.DataConversion+InitPosition, Assembly-CSharp
+      Data: QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp
     - Name: X
       Entry: 3
       Data: 0

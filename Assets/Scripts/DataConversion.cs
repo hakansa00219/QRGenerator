@@ -3,9 +3,8 @@ using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 using QR.Enums;
-using Unity.Mathematics;
 
-namespace QR.Scriptables
+namespace QR.Scriptable
 {
     [CreateAssetMenu(fileName = "QRDataConversion", menuName = "Scriptable Objects/QRDataConversion")]
     public class DataConversion : SerializedScriptableObject
@@ -20,8 +19,14 @@ namespace QR.Scriptables
 
         public struct InitPosition
         {
-            public int X;
-            public int Y;
+            public readonly int X;
+            public readonly int Y;
+
+            public InitPosition(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
         }
     }
 

@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 using QR.Enums;
-using QR.Scriptables;
+using QR.Scriptable;
 using System.Linq;
 
 namespace QR.Converters
 {
     public static class ByteDataConverter
     {
-        public static DataConversion versionOne;
+        private static DataConversion _versionOne;
 
         public static bool[,] Convert(byte qrVersion, Encoder.EncodingType encodingType, byte dataOrder, char character = ' ') 
         {
@@ -16,7 +16,7 @@ namespace QR.Converters
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
-            var patternBitOrder = versionOne.GetBitDetails(pattern);
+            var patternBitOrder = _versionOne.GetBitDetails(pattern);
             return GetBitTable(character, patternBitOrder.bitSize, patternBitOrder.bitOrder);        
         }
 
@@ -41,7 +41,7 @@ namespace QR.Converters
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
-            var patternBitOrder = versionOne.GetBitDetails(pattern);
+            var patternBitOrder = _versionOne.GetBitDetails(pattern);
             return GetBitTable(data, patternBitOrder.bitSize, patternBitOrder.bitOrder);        
         }
 
@@ -64,9 +64,9 @@ namespace QR.Converters
         {
             if (qrVersion != 1) throw new NotImplementedException();
             if (encodingType != Encoder.EncodingType.Byte) throw new NotImplementedException();
-            if (versionOne == null) versionOne = Resources.Load<DataConversion>("Data/Version1");
+            if (_versionOne == null) _versionOne = Resources.Load<DataConversion>("Data/Version1");
 
-            return versionOne.VersionOnePatterns[dataOrder].Item1;
+            return _versionOne.VersionOnePatterns[dataOrder].Item1;
         }
 
 

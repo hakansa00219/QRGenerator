@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using QR.Scriptables;
+using QR.Scriptable;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,23 +27,28 @@ namespace QR
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
             rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
             QR.name = "QR";
+            
+            Camera mainCamera = Camera.main;
 
-            Camera.main.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
+            if (mainCamera != null) mainCamera.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
         }
 
         private Texture2D Generation()
         {
-            Texture2D texture = new Texture2D(width, height, TextureFormat.RGB565, false);
-            texture.filterMode = FilterMode.Point;
-            texture.anisoLevel = 0;
+            Texture2D texture = new Texture2D(width, height, TextureFormat.RGB565, false)
+            {
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
+            
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
-
-                    texture.SetPixel(i, j, randomColor);
+                    // Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
+            
+                    texture.SetPixel(i, j, Color.white);
                 }
             }
 
