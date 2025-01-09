@@ -66,7 +66,7 @@ namespace QR.Converters
             if (encodingType != EncodingType.Byte) throw new NotImplementedException();
             if (_versionOne == null) _versionOne = Resources.Load<DataConversion>("Data/Version1");
 
-            return _versionOne.VersionOnePatterns[dataOrder].Item1;
+            return _versionOne.Patterns[dataOrder].Item1;
         }
 
 

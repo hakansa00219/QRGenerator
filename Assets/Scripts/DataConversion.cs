@@ -10,7 +10,7 @@ namespace QR.Scriptable
     public class DataConversion : SerializedScriptableObject
     {
         [OdinSerialize]
-        public Dictionary<int, (BytePattern pattern, InitPosition initPosition)> VersionOnePatterns = new Dictionary<int, (BytePattern pattern, InitPosition initPosition)>();
+        public Dictionary<int, (BytePattern pattern, InitPosition initPosition)> Patterns = new Dictionary<int, (BytePattern pattern, InitPosition initPosition)>();
 
         [OdinSerialize]
         public Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)> PatternBitOrder = new Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)>();

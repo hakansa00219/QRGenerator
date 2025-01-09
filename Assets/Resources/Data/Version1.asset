@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: VersionOnePatterns
+    - Name: Patterns
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.ValueTuple`2[[QR.Enums.BytePattern,
         Assembly-CSharp],[QR.Scriptable.DataConversion+InitPosition, Assembly-CSharp]],

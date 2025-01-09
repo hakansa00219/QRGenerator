@@ -371,7 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 21
   height: 21
-  data: 123wwwww
+  errorCorrectionLevel: 3
+  data: 00219
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0
