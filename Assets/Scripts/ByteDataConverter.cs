@@ -8,7 +8,7 @@ namespace QR.Converters
 {
     public static class ByteDataConverter
     {
-        private static DataConversion _versionOne;
+        private static VersionData _versionOne;
 
         public static bool[,] Convert(byte qrVersion, EncodingType encodingType, byte dataOrder, char character = ' ') 
         {
@@ -64,7 +64,7 @@ namespace QR.Converters
         {
             if (qrVersion != 1) throw new NotImplementedException();
             if (encodingType != EncodingType.Byte) throw new NotImplementedException();
-            if (_versionOne == null) _versionOne = Resources.Load<DataConversion>("Data/Version1");
+            if (_versionOne == null) _versionOne = Resources.Load<VersionData>("Data/Version1");
 
             return _versionOne.Patterns[dataOrder].Item1;
         }

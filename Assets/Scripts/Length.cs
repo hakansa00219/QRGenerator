@@ -10,13 +10,13 @@ namespace QR
     public class Length
     {
         private readonly Texture2D _texture;
-        private readonly DataConversion _versionConversion;
+        private readonly VersionData _versionData;
         private readonly byte _dataOrder;
         private readonly byte _dataSize;
         
-        public Length(ref Texture2D texture, DataConversion versionConversion, byte dataOrder, byte dataSize)
+        public Length(ref Texture2D texture, VersionData versionData, byte dataOrder, byte dataSize)
         {
-            _versionConversion = versionConversion;
+            _versionData = versionData;
             _texture = texture;
             _dataOrder = dataOrder;
             _dataSize = dataSize;
@@ -25,7 +25,7 @@ namespace QR
         public void SetLength()
         {
             bool[,] bitDataTable = ByteDataConverter.Convert(1, EncodingType.Byte, _dataOrder, _dataSize);
-            DataConversion.InitPosition initPosition = _versionConversion.Patterns[_dataOrder].initPosition;
+            VersionData.InitPosition initPosition = _versionData.Patterns[_dataOrder].initPosition;
 
             for (int y = 0; y < bitDataTable.GetLength(1); y++)
             {

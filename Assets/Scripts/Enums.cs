@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace QR.Enums
 {
     public enum BytePattern : byte
@@ -15,7 +13,7 @@ namespace QR.Enums
     public enum ErrorCorrectionLevel : byte
     {
         High = 0,
-        Quality = 1,
+        Quartile = 1,
         Medium = 2,
         Low = 3
     }
@@ -26,5 +24,20 @@ namespace QR.Enums
         Alphanumeric = 2,
         Byte = 3,
         Kanji = 4,
+    }
+
+    public enum Version : byte
+    {
+        Auto = 0,
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
+        Five = 5,
+        Six = 6,
+        Seven = 7,
+        Eight = 8,
+        Nine = 9,
+        Ten = 10,
     }
 }

@@ -7,7 +7,7 @@ using QR.Enums;
 namespace QR.Scriptable
 {
     [CreateAssetMenu(fileName = "QRDataConversion", menuName = "Scriptable Objects/QRDataConversion")]
-    public class DataConversion : SerializedScriptableObject
+    public class VersionData : SerializedScriptableObject
     {
         [OdinSerialize]
         public Dictionary<int, (BytePattern pattern, InitPosition initPosition)> Patterns = new Dictionary<int, (BytePattern pattern, InitPosition initPosition)>();

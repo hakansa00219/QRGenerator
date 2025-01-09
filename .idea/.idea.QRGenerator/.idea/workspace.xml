@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="16d832e8-5f00-4d67-b35a-a8696bf87e00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/QRGenerator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QRGenerator.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ByteDataConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ByteDataConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataConversion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataConversion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataConversion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VersionData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataConversion.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VersionData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Length.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Length.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +26,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/321eb2db7c6d43ea8fc39b54eaca345246ae00/29/e4468011/Dictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/378523c1e6ba4db992c5a1e98a5541ae10fc00/c1/b219c7f1/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -71,10 +77,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18800">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="18800" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -91,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1736362252698</updated>
       <workItem from="1736362255329" duration="7209000" />
-      <workItem from="1736431474373" duration="6843000" />
+      <workItem from="1736431474373" duration="14580000" />
     </task>
     <servers />
   </component>
@@ -116,13 +122,26 @@
           <line>26</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\Length.cs" containingFunctionPresentation="Method 'SetLength'">
             <startOffsets>
-              <option value="700" />
+              <option value="670" />
             </startOffsets>
             <endOffsets>
-              <option value="794" />
+              <option value="764" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs</url>
+          <line>147</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QRGenerator.cs" containingFunctionPresentation="Method 'SetEncodingType'">
+            <startOffsets>
+              <option value="4954" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5016" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
