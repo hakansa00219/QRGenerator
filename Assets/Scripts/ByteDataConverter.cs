@@ -1,22 +1,22 @@
 using System;
 using UnityEngine;
 using QR.Enums;
-using QR.Scriptables;
+using QR.Scriptable;
 using System.Linq;
 
 namespace QR.Converters
 {
     public static class ByteDataConverter
     {
-        public static DataConversion versionOne;
+        private static VersionData _versionOne;
 
-        public static bool[,] Convert(byte qrVersion, Encoder.EncodingType encodingType, byte dataOrder, char character = ' ') 
+        public static bool[,] Convert(byte qrVersion, EncodingType encodingType, byte dataOrder, char character = ' ') 
         {
-            if (encodingType != Encoder.EncodingType.Byte) throw new NotImplementedException();
+            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
-            var patternBitOrder = versionOne.GetBitDetails(pattern);
+            var patternBitOrder = _versionOne.GetBitDetails(pattern);
             return GetBitTable(character, patternBitOrder.bitSize, patternBitOrder.bitOrder);        
         }
 
@@ -35,13 +35,13 @@ namespace QR.Converters
             return byteData;
         }
         
-        public static bool[,] Convert(byte qrVersion, Encoder.EncodingType encodingType, byte dataOrder, byte data) 
+        public static bool[,] Convert(byte qrVersion, EncodingType encodingType, byte dataOrder, byte data) 
         {
-            if (encodingType != Encoder.EncodingType.Byte) throw new NotImplementedException();
+            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
-            var patternBitOrder = versionOne.GetBitDetails(pattern);
+            var patternBitOrder = _versionOne.GetBitDetails(pattern);
             return GetBitTable(data, patternBitOrder.bitSize, patternBitOrder.bitOrder);        
         }
 
@@ -60,13 +60,13 @@ namespace QR.Converters
             return byteData;
         }
 
-        private static BytePattern CheckPattern(byte qrVersion, Encoder.EncodingType encodingType, byte dataOrder)
+        private static BytePattern CheckPattern(byte qrVersion, EncodingType encodingType, byte dataOrder)
         {
             if (qrVersion != 1) throw new NotImplementedException();
-            if (encodingType != Encoder.EncodingType.Byte) throw new NotImplementedException();
-            if (versionOne == null) versionOne = Resources.Load<DataConversion>("Data/Version1");
+            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
+            if (_versionOne == null) _versionOne = Resources.Load<VersionData>("Data/Version1");
 
-            return versionOne.VersionOnePatterns[dataOrder].Item1;
+            return _versionOne.Patterns[dataOrder].Item1;
         }
 
 

@@ -1,53 +1,69 @@
 using System;
 using System.Linq;
-using QR.Scriptables;
+using QR.Enums;
+using QR.Scriptable;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Version = QR.Enums.Version;
 
 namespace QR
 {
     public class QRGenerator : MonoBehaviour
     {
-        [SerializeField] private int width;
-        [SerializeField] private int height;
+        [SerializeField] private Version version;
+        [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
 
-        private byte _charSize;
-        private DataConversion _versionOne;
+        private EncodingType _encodingType;
+        private int _size;
+        private byte _dataSize;
+        private byte _capacity;
+        private VersionData _versionOne;
+        private QRResolution _qrResolution;
+        
+        // !! White = 0 Black = 1
 
         private void Awake()
         {
-            _versionOne = Resources.Load<DataConversion>("Data/Version1");
+            _versionOne = Resources.Load<VersionData>("Data/Version1");
+            _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
         }
 
         private void Start()
         {
+            CheckVersionResolution();
+            
             GameObject QR = new GameObject();
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
-            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
+            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _size, _size), new Vector2(0.5f, 0.5f));
             QR.name = "QR";
+            
+            Camera mainCamera = Camera.main;
 
-            Camera.main.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
+            if (mainCamera != null) mainCamera.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
         }
 
         private Texture2D Generation()
         {
-            Texture2D texture = new Texture2D(width, height, TextureFormat.RGB565, false);
-            texture.filterMode = FilterMode.Point;
-            texture.anisoLevel = 0;
-
-            for (int i = 0; i < width; i++)
+            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
             {
-                for (int j = 0; j < height; j++)
-                {
-                    Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
+            
 
-                    texture.SetPixel(i, j, randomColor);
+            for (int i = 0; i < _size; i++)
+            {
+                for (int j = 0; j < _size; j++)
+                {
+                    // Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
+            
+                    texture.SetPixel(i, j, Color.white);
                 }
             }
 
-            _charSize = (byte)data.Length;
+            _dataSize = (byte)data.Length;
 
             SetOrientationShapes(ref texture, 0, 0);
             SetOrientationShapes(ref texture, 0, 13);
@@ -56,14 +72,33 @@ namespace QR
             SetWeirdPixelBlack(ref texture);
             SetEncodingType(ref texture);
             SetLength(ref texture, 1);
+            SetFormatInfo(ref texture, out MaskPattern maskPattern);
+            SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
         }
 
+        private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
+        {
+            SetErrorCorrection(ref texture);
+            maskPattern = default;
+        }
+
+        private void SetMask(ref Texture2D texture, MaskPattern maskPattern)
+        {
+            // throw new NotImplementedException();
+        }
+
+        private void SetErrorCorrection(ref Texture2D texture)
+        {
+            ErrorCorrection errorCorrectionModule = new ErrorCorrection(ref texture, errorCorrectionLevel);
+            errorCorrectionModule.SetErrorCorrection();
+        }
+
         private void SetLength(ref Texture2D texture, byte dataOrder)
         {
-            Length lengthModule = new Length(ref texture, _versionOne, dataOrder, _charSize);
+            Length lengthModule = new Length(ref texture, _versionOne, dataOrder, _dataSize);
             lengthModule.SetLength();
         }
 
@@ -109,8 +144,17 @@ namespace QR
         private void SetEncodingType(ref Texture2D texture)
         {
             //TODO: make it viable for every versions of QR
-            Encoder encoder = new Encoder(ref texture, data, _charSize);
-            encoder.SetEncoding();
+            Encoder encoder = new Encoder(ref texture, _versionOne, errorCorrectionLevel, data, _dataSize);
+            _encodingType = encoder.SetEncoding(out errorCorrectionLevel);
+            _capacity = _versionOne.CharacterSizeTable[(_encodingType, errorCorrectionLevel)];
+        }
+
+        private void CheckVersionResolution()
+        {
+            if (version != Version.Auto)
+                _size = _qrResolution.VersionResolutions[Version.One];
+            else //Start with one then check compatibility. If it can be done with Version One return that if not continue with higher ones.
+                throw new NotImplementedException();
         }
 
         private void OnDrawGizmos()
@@ -118,12 +162,12 @@ namespace QR
             Gizmos.color = Color.red;
             for (int i = -30; i < 30; i++)
             {
-                Gizmos.DrawLine(new Vector3(-1, 0.005f + i * (0.01f), 0) , Vector3.right * width + new Vector3(0f,0.005f + i * (0.01f),0));
+                Gizmos.DrawLine(new Vector3(-1, 0.005f + i * (0.01f), 0) , Vector3.right * _size + new Vector3(0f,0.005f + i * (0.01f),0));
             }
             
             for (int i = -30; i < 30; i++)
             {
-                Gizmos.DrawLine(new Vector3(0.005f + i * (0.01f),-1 , 0) , Vector3.up * height + new Vector3(0.005f + i * (0.01f),0f,0));
+                Gizmos.DrawLine(new Vector3(0.005f + i * (0.01f),-1 , 0) , Vector3.up * _size + new Vector3(0.005f + i * (0.01f),0f,0));
             }
             
         }
