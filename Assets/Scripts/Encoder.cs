@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using QR.Enums;
 using UnityEngine;
 
 namespace QR
@@ -85,12 +86,6 @@ namespace QR
             return _charSize <= _characterSizeTable[EncodingType.Byte];
         }
 
-        public enum EncodingType : byte
-        {
-            Numeric = 1,
-            Alphanumeric = 2,
-            Byte = 3,
-            Kanji = 4,
-        }
+        
     }
 }

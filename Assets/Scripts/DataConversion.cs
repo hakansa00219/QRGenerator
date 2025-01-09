@@ -15,6 +15,8 @@ namespace QR.Scriptable
         [OdinSerialize]
         public Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)> PatternBitOrder = new Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)>();
 
+        [OdinSerialize] 
+        public Dictionary<(EncodingType, ErrorCorrectionLevel), byte> CharacterSizeTable = new();
         public ((int x, int y) bitSize, int[] bitOrder) GetBitDetails(BytePattern pattern) => PatternBitOrder[pattern];
 
         public struct InitPosition

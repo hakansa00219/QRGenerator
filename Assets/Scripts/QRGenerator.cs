@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using QR.Enums;
 using QR.Scriptable;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,10 +11,13 @@ namespace QR
     {
         [SerializeField] private int width;
         [SerializeField] private int height;
+        [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
 
         private byte _charSize;
         private DataConversion _versionOne;
+        
+        // !! White = 0 Black = 1
 
         private void Awake()
         {
@@ -61,9 +65,28 @@ namespace QR
             SetWeirdPixelBlack(ref texture);
             SetEncodingType(ref texture);
             SetLength(ref texture, 1);
+            SetFormatInfo(ref texture, out MaskPattern maskPattern);
+            SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
+        }
+
+        private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
+        {
+            SetErrorCorrection(ref texture);
+            maskPattern = default;
+        }
+
+        private void SetMask(ref Texture2D texture, MaskPattern maskPattern)
+        {
+            // throw new NotImplementedException();
+        }
+
+        private void SetErrorCorrection(ref Texture2D texture)
+        {
+            ErrorCorrection errorCorrectionModule = new ErrorCorrection(ref texture, errorCorrectionLevel);
+            errorCorrectionModule.SetErrorCorrection();
         }
 
         private void SetLength(ref Texture2D texture, byte dataOrder)
