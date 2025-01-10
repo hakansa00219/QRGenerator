@@ -11,15 +11,17 @@ namespace QR
     public class QRGenerator : MonoBehaviour
     {
         [SerializeField] private Version version;
+        [SerializeField, Range(0,7)] private int mask;
         [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
-
+        
+        private VersionData _versionOne;
+        private QRResolution _qrResolution;
+        
         private EncodingType _encodingType;
         private int _size;
         private byte _dataSize;
         private byte _capacity;
-        private VersionData _versionOne;
-        private QRResolution _qrResolution;
         
         // !! White = 0 Black = 1
 
@@ -73,7 +75,7 @@ namespace QR
             SetEncodingType(ref texture);
             SetLength(ref texture, 1);
             SetFormatInfo(ref texture, out MaskPattern maskPattern);
-            SetMask(ref texture, maskPattern);
+            SetMask(ref texture, mask);
             texture.Apply();
 
             return texture;
@@ -82,10 +84,19 @@ namespace QR
         private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
         {
             SetErrorCorrection(ref texture);
-            maskPattern = default;
+
+            maskPattern = new MaskPattern(ref texture, (byte)mask);
+            maskPattern.SetMaskPattern(out byte pattern);
+
+            BCH bch = new BCH(pattern, (byte)errorCorrectionLevel);
+            
+            int maskedFilterBits = bch.Calculation();
+            //TODO: masked filter bits going to be set to texture
+            Debug.Log(maskedFilterBits);
+            //001001110111110
         }
 
-        private void SetMask(ref Texture2D texture, MaskPattern maskPattern)
+        private void SetMask(ref Texture2D texture, int maskPattern)
         {
             // throw new NotImplementedException();
         }
