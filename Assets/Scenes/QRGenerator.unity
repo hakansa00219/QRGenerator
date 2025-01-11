@@ -370,8 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  errorCorrectionLevel: 0
-  data: 00219002190021900219002190021900219
+  mask: 1
+  errorCorrectionLevel: 2
+  data: Ver1
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0

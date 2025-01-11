@@ -29,6 +29,7 @@ namespace QR
             if (!CheckCompatibility(errorCorrectionLevel, data, out _encodingType))
             {
                 Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
+                //TODO: Automatically select higher level version if selected Auto to version
             }
         }
         public EncodingType SetEncoding(out ErrorCorrectionLevel errorCorrectionLevel)
@@ -94,7 +95,6 @@ namespace QR
             return false;
         }
         
-        // TODO: QR version will be dynamically changed depending to character size. Need to update this later.
         private bool IsNumericCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
             return data.All(char.IsDigit) && _charSize <= _versionData.CharacterSizeTable[(EncodingType.Numeric, errorCorrectionLevel)];

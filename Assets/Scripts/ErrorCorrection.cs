@@ -18,7 +18,7 @@ namespace QR
         public void SetErrorCorrection()
         {
             string binaryVersion = Convert.ToString((byte)_level, 2).PadLeft(2, '0');
-            Debug.Log(binaryVersion);
+            // Debug.Log(binaryVersion);
             
             for (var i = 0; i < binaryVersion.Length; i++)
             {
