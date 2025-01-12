@@ -12,7 +12,7 @@ namespace QR.Converters
 
         public static bool[,] Convert(byte qrVersion, EncodingType encodingType, byte dataOrder, char character = ' ') 
         {
-            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
+            // if (encodingType != EncodingType.Byte) throw new NotImplementedException();
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
@@ -37,7 +37,7 @@ namespace QR.Converters
         
         public static bool[,] Convert(byte qrVersion, EncodingType encodingType, byte dataOrder, byte data) 
         {
-            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
+            // if (encodingType != EncodingType.Byte) throw new NotImplementedException();
 
             BytePattern pattern = CheckPattern(qrVersion, encodingType, dataOrder);
 
@@ -63,7 +63,7 @@ namespace QR.Converters
         private static BytePattern CheckPattern(byte qrVersion, EncodingType encodingType, byte dataOrder)
         {
             if (qrVersion != 1) throw new NotImplementedException();
-            if (encodingType != EncodingType.Byte) throw new NotImplementedException();
+            // if (encodingType != EncodingType.Byte) throw new NotImplementedException();
             if (_versionOne == null) _versionOne = Resources.Load<VersionData>("Data/Version1");
 
             return _versionOne.Patterns[dataOrder].Item1;

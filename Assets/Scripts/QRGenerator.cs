@@ -3,7 +3,6 @@ using System.Linq;
 using QR.Enums;
 using QR.Scriptable;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using Version = QR.Enums.Version;
 
 namespace QR
@@ -75,10 +74,17 @@ namespace QR
             SetEncodingType(ref texture);
             SetLength(ref texture, 1);
             SetFormatInfo(ref texture, out MaskPattern maskPattern);
+            SetData(ref texture, data);
             SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
+        }
+
+        private void SetData(ref Texture2D texture, string sData)
+        {
+            QRData qrData = new QRData(ref texture, _versionOne, _encodingType, errorCorrectionLevel, sData);
+            qrData.SetData();
         }
 
         private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)

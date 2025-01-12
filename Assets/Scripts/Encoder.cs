@@ -25,11 +25,12 @@ namespace QR
             _versionData = versionData;
             _errorCorrectionLevel = errorCorrectionLevel;
 
-            // Check the compatibility of data to find the encoding type.
+            // Check the compatibility of data to find the encoding type. TODO: later fix this rn only byte exist
+            //
             if (!CheckCompatibility(errorCorrectionLevel, data, out _encodingType))
             {
-                Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
-                //TODO: Automatically select higher level version if selected Auto to version
+            Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
+            //TODO: Automatically select higher level version if selected Auto to version
             }
         }
         public EncodingType SetEncoding(out ErrorCorrectionLevel errorCorrectionLevel)
@@ -91,7 +92,7 @@ namespace QR
                 return CheckCompatibility(errorCorrectionLevel + 1, data, out encodingType);
             }
 
-            encodingType = EncodingType.Numeric;
+            encodingType = EncodingType.Byte;
             return false;
         }
         

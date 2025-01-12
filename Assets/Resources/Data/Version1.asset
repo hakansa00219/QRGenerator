@@ -1300,35 +1300,13 @@ MonoBehaviour:
       Data: 1
     - Name: Item2
       Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 41
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 3
       Data: 2
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
       Entry: 3
-      Data: 34
+      Data: 17
     - Name: 
       Entry: 8
       Data: 
@@ -1344,7 +1322,7 @@ MonoBehaviour:
       Data: 1
     - Name: Item2
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -1372,7 +1350,51 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 17
+      Data: 34
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
+        Assembly-CSharp]], mscorlib
+    - Name: Item1
+      Entry: 3
+      Data: 1
+    - Name: Item2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 41
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
+        Assembly-CSharp]], mscorlib
+    - Name: Item1
+      Entry: 3
+      Data: 2
+    - Name: Item2
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -1389,50 +1411,6 @@ MonoBehaviour:
     - Name: Item2
       Entry: 3
       Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 25
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 20
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1460,7 +1438,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 10
+      Data: 20
     - Name: 
       Entry: 8
       Data: 
@@ -1473,16 +1451,16 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: Item2
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
       Entry: 3
-      Data: 17
+      Data: 25
     - Name: 
       Entry: 8
       Data: 
@@ -1504,7 +1482,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 14
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -1520,7 +1498,7 @@ MonoBehaviour:
       Data: 3
     - Name: Item2
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -1548,7 +1526,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 7
+      Data: 14
     - Name: 
       Entry: 8
       Data: 
@@ -1561,16 +1539,16 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: Item1
       Entry: 3
-      Data: 4
+      Data: 3
     - Name: Item2
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
       Entry: 3
-      Data: 10
+      Data: 17
     - Name: 
       Entry: 8
       Data: 
@@ -1592,7 +1570,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 8
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -1608,7 +1586,7 @@ MonoBehaviour:
       Data: 4
     - Name: Item2
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -1636,7 +1614,29 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
+        Assembly-CSharp]], mscorlib
+    - Name: Item1
+      Entry: 3
       Data: 4
+    - Name: Item2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
