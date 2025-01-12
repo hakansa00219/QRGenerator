@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16d832e8-5f00-4d67-b35a-a8696bf87e00" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FilterInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FilterInfo.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ErrorCorrection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ErrorCorrection.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaskPattern.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaskPattern.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaskPatternData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaskPatternData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,13 +78,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3160">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3160" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -110,6 +108,7 @@
       <workItem from="1736511149000" duration="2858000" />
       <workItem from="1736531677009" duration="12837000" />
       <workItem from="1736624933100" duration="5977000" />
+      <workItem from="1736700384961" duration="1335000" />
     </task>
     <servers />
   </component>
@@ -125,5 +124,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Length.cs</url>
+          <line>29</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\Length.cs" containingFunctionPresentation="Method 'SetLength'">
+            <startOffsets>
+              <option value="878" />
+            </startOffsets>
+            <endOffsets>
+              <option value="929" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

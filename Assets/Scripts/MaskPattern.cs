@@ -43,7 +43,8 @@ namespace QR
                 for (int x = 0; x < bitSize.x; x++)
                 for (int y = 0; y < bitSize.y; y++)
                 {
-                    var xPos = (byte)(initPosition.X + x);
+                    //(19,0) (19,1) 
+                    var xPos = (byte)(initPosition.X + x); 
                     var yPos = (byte)(initPosition.Y - y);
                     var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](xPos, yPos);
                     var texturePixelValue = texture.GetPixel(xPos, yPos);
