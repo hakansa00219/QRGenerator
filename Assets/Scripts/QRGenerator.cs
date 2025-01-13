@@ -20,7 +20,7 @@ namespace QR
         private EncodingType _encodingType;
         private int _size;
         private byte _dataSize;
-        private byte _capacity;
+        private int _capacity;
         
         // !! White = 0 Black = 1
 
@@ -155,7 +155,7 @@ namespace QR
             //TODO: make it viable for every versions of QR
             Encoder encoder = new Encoder(ref texture, _versionOne, errorCorrectionLevel, data, _dataSize);
             _encodingType = encoder.SetEncoding(out errorCorrectionLevel);
-            _capacity = _versionOne.CharacterSizeTable[(_encodingType, errorCorrectionLevel)];
+            _capacity = _versionOne.CharacterSizeTable[(_encodingType, errorCorrectionLevel)].MaxMainData;
         }
 
         private void CheckVersionResolution()

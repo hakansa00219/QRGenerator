@@ -29,7 +29,7 @@ namespace QR
         public void SetData()
         {
             int startByteIndex = 2;
-            int endByteIndex = startByteIndex + _versionData.CharacterSizeTable[(_encodingType, _errorCorrectionLevel)];
+            int endByteIndex = startByteIndex + _versionData.CharacterSizeTable[(_encodingType, _errorCorrectionLevel)].MaxMainData;
             for (int i = startByteIndex; i < endByteIndex; i++)
             {
                 Debug.Log(i - 2 < _data.Length

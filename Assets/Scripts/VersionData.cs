@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace QR.Scriptable
         public Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)> PatternBitOrder = new Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)>();
 
         [OdinSerialize] 
-        public Dictionary<(EncodingType, ErrorCorrectionLevel), byte> CharacterSizeTable = new();
+        public Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize> CharacterSizeTable = new Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize>();
+        
         public ((int x, int y) bitSize, int[] bitOrder) GetBitDetails(BytePattern pattern) => PatternBitOrder[pattern];
 
         public struct InitPosition
@@ -30,7 +32,12 @@ namespace QR.Scriptable
                 Y = y;
             }
         }
-    }
 
+        public readonly struct CharacterSize
+        {
+            public readonly int MaxMainData;
+            public readonly int ErrorCorrectionData;
+        }
+    }
 }
 
