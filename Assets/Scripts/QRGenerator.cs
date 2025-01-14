@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using QR.Enums;
 using QR.Scriptable;
 using UnityEngine;
@@ -16,11 +18,21 @@ namespace QR
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
+
+        private readonly SortedSet<DataTypes> _sortedDataTypes = new SortedSet<DataTypes>()
+        {
+            DataTypes.EncodingMode,
+            DataTypes.DataLength,
+            DataTypes.Data,
+            DataTypes.EndOfData,
+            DataTypes.ErrorCorrectionData
+        };
         
         private EncodingType _encodingType;
         private int _size;
         private byte _dataSize;
         private int _capacity;
+        private int _totalDataBitSize;
         
         // !! White = 0 Black = 1
 
@@ -28,11 +40,15 @@ namespace QR
         {
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
+            
+            _totalDataBitSize = VersionUtility.GetBitCount(version);
+                
+            CheckVersionResolution();
         }
 
         private void Start()
         {
-            CheckVersionResolution();
+            
             
             GameObject QR = new GameObject();
 
@@ -65,20 +81,30 @@ namespace QR
             }
 
             _dataSize = (byte)data.Length;
-
+            
+            // Essential Shapes
             SetOrientationShapes(ref texture, 0, 0);
             SetOrientationShapes(ref texture, 0, 13);
             SetOrientationShapes(ref texture, 13, 13);
             SetTimingStrips(ref texture);
-            SetWeirdPixelBlack(ref texture);
-            SetEncodingType(ref texture);
-            SetLength(ref texture, 1);
+            SetDarkModule(ref texture);
+            // Format Info
             SetFormatInfo(ref texture, out MaskPattern maskPattern);
-            SetData(ref texture, data);
+            // Data
+            int dataBitSize = _totalDataBitSize; //208
+            SetEncodingMode(ref texture, out dataBitSize); //204
+            SetDataLength(ref texture, 1, out dataBitSize);//196
+            SetData(ref texture, data, out dataBitSize); //196 - (EC * 8) - Data - Padding = 0          
+            SetErrorCorrectionData(ref texture, out dataBitSize); // EC * 8
             SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
+        }
+
+        private void SetErrorCorrectionData(ref Texture2D texture)
+        {
+            
         }
 
         private void SetData(ref Texture2D texture, string sData)
@@ -105,7 +131,7 @@ namespace QR
             maskPattern.SetMask(ref texture);
         }
 
-        private void SetLength(ref Texture2D texture, byte dataOrder)
+        private void SetDataLength(ref Texture2D texture, byte dataOrder)
         {
             Length lengthModule = new Length(ref texture, _versionOne, dataOrder, _dataSize);
             lengthModule.SetLength();
@@ -145,12 +171,12 @@ namespace QR
                 Enumerable.Range(0, 5).Select(i => (i % 2 == 0) ? Color.black : Color.white).ToArray());
         }
 
-        private void SetWeirdPixelBlack(ref Texture2D texture)
+        private void SetDarkModule(ref Texture2D texture)
         {
-            texture.SetPixel(8, 7, Color.black);
+            texture.SetPixel(8, (int)version * 4 + 3, Color.black);
         }
 
-        private void SetEncodingType(ref Texture2D texture)
+        private void SetEncodingMode(ref Texture2D texture)
         {
             //TODO: make it viable for every versions of QR
             Encoder encoder = new Encoder(ref texture, _versionOne, errorCorrectionLevel, data, _dataSize);

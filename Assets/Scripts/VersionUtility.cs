@@ -44,5 +44,15 @@ namespace DefaultNamespace
             }
             return length;
         }
+
+
+        public static int GetBitCount(Version version)
+        {
+            return version switch
+            {
+                Version.One => 208,
+                _ => throw new ArgumentOutOfRangeException(nameof(version), version, null)
+            };
+        }
     }
 }

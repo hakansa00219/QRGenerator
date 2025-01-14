@@ -40,4 +40,13 @@ namespace QR.Enums
         Nine = 9,
         Ten = 10,
     }
+
+    public enum DataTypes : byte
+    {
+        EncodingMode = 0,
+        DataLength = 1,
+        Data = 2,
+        EndOfData = 3,
+        ErrorCorrectionData = 4,
+    }
 }

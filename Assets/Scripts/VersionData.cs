@@ -11,9 +11,6 @@ namespace QR.Scriptable
     public class VersionData : SerializedScriptableObject
     {
         [OdinSerialize]
-        public Dictionary<int, (BytePattern pattern, InitPosition initPosition)> Patterns = new Dictionary<int, (BytePattern pattern, InitPosition initPosition)>();
-
-        [OdinSerialize]
         public Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)> PatternBitOrder = new Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)>();
 
         [OdinSerialize] 
