@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Utilities;
 using UnityEngine;
 using Version = QR.Enums.Version;
 
@@ -41,7 +41,7 @@ namespace QR
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
             
-            _totalDataBitSize = VersionUtility.GetBitCount(version);
+            _totalDataBitSize = VersionUtility.GetTotalBitCount(version);
                 
             CheckVersionResolution();
         }
@@ -91,11 +91,11 @@ namespace QR
             // Format Info
             SetFormatInfo(ref texture, out MaskPattern maskPattern);
             // Data
-            int dataBitSize = _totalDataBitSize; //208
-            SetEncodingMode(ref texture, out dataBitSize); //204
-            SetDataLength(ref texture, 1, out dataBitSize);//196
-            SetData(ref texture, data, out dataBitSize); //196 - (EC * 8) - Data - Padding = 0          
-            SetErrorCorrectionData(ref texture, out dataBitSize); // EC * 8
+            // int dataBitSize = _totalDataBitSize; //208
+            SetEncodingMode(ref texture); //204
+            // SetDataLength(ref texture, 1, out dataBitSize);//196
+            // SetData(ref texture, data, out dataBitSize); //196 - (EC * 8) - Data - Padding = 0          
+            // SetErrorCorrectionData(ref texture, out dataBitSize); // EC * 8
             SetMask(ref texture, maskPattern);
             texture.Apply();
 

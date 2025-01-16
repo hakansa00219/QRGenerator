@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using QR.Utilities;
 using QR.Enums;
 using QR.Scriptable;
 using UnityEngine;
@@ -29,14 +30,15 @@ namespace QR
             //
             if (!CheckCompatibility(errorCorrectionLevel, data, out _encodingType))
             {
-            Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
-            //TODO: Automatically select higher level version if selected Auto to version
+                Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
+                //TODO: Automatically select higher level version if selected Auto to version
             }
         }
         public EncodingType SetEncoding(out ErrorCorrectionLevel errorCorrectionLevel)
         {
             // Write data to QR code depending on encoding type.
-            Color[] whiteArray = new Color[4];
+            int dataSize = VersionUtility.GetEncodingModeBitCount();
+            Color[] whiteArray = new Color[dataSize];
             Array.Fill(whiteArray, Color.white);
             
             // Byte encoding 0100

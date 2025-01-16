@@ -24,14 +24,14 @@ namespace QR
         
         public void SetLength()
         {
-            bool[,] bitDataTable = ByteDataConverter.Convert(1, EncodingType.Byte, _dataOrder, _dataSize);
-            VersionData.InitPosition initPosition = _versionData.Patterns[_dataOrder].initPosition;
+            bool[,] bitDataTable = ByteDataConverter.Convert(1, EncodingType.Byte, BytePattern.Up, _dataSize);
+            // VersionData.InitPosition initPosition = _versionData.Patterns[_dataOrder].initPosition;
 
             for (int y = 0; y < bitDataTable.GetLength(1); y++)
             {
                 for (int x = 0; x < bitDataTable.GetLength(0); x++)
                 {
-                    _texture.SetPixel(initPosition.X + x, initPosition.Y - y, bitDataTable[x,y] ? Color.black : Color.white);
+                    // _texture.SetPixel(initPosition.X + x, initPosition.Y - y, bitDataTable[x,y] ? Color.black : Color.white);
                 }
             }
         }

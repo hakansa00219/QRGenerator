@@ -35,23 +35,23 @@ namespace QR
 
         public void SetMask(ref Texture2D texture)
         {
-            foreach (var versionDataPattern in _versionData.Patterns)
-            {
-                var bitSize = _versionData.PatternBitOrder[versionDataPattern.Value.pattern].bitSize;
-                var initPosition = versionDataPattern.Value.initPosition;
-                
-                for (int x = 0; x < bitSize.x; x++)
-                for (int y = 0; y < bitSize.y; y++)
-                {
-                    //(19,0) (19,1) 
-                    var xPos = (byte)(initPosition.X + x); 
-                    var yPos = (byte)(initPosition.Y - y);
-                    var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](xPos, yPos);
-                    var texturePixelValue = texture.GetPixel(xPos, yPos);
-                    var maskedValue = maskFuncValue ? texturePixelValue : (texturePixelValue == Color.white ? Color.black : Color.white);  
-                    texture.SetPixel(xPos, yPos, maskedValue);
-                }
-            }
+            // foreach (var versionDataPattern in _versionData.Patterns)
+            // {
+            //     var bitSize = _versionData.PatternBitOrder[versionDataPattern.Value.pattern].bitSize;
+            //     var initPosition = versionDataPattern.Value.initPosition;
+            //     
+            //     for (int x = 0; x < bitSize.x; x++)
+            //     for (int y = 0; y < bitSize.y; y++)
+            //     {
+            //         //(19,0) (19,1) 
+            //         var xPos = (byte)(initPosition.X + x); 
+            //         var yPos = (byte)(initPosition.Y - y);
+            //         var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](xPos, yPos);
+            //         var texturePixelValue = texture.GetPixel(xPos, yPos);
+            //         var maskedValue = maskFuncValue ? texturePixelValue : (texturePixelValue == Color.white ? Color.black : Color.white);  
+            //         texture.SetPixel(xPos, yPos, maskedValue);
+            //     }
+            // }
         }
     }
 }

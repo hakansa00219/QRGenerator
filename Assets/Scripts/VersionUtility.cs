@@ -2,7 +2,7 @@ using System;
 using QR.Enums;
 using Version = QR.Enums.Version;
 
-namespace DefaultNamespace
+namespace QR.Utilities
 {
     public class VersionUtility
     {
@@ -45,8 +45,12 @@ namespace DefaultNamespace
             return length;
         }
 
+        public static int GetEncodingModeBitCount()
+        {
+            return 4;
+        }
 
-        public static int GetBitCount(Version version)
+        public static int GetTotalBitCount(Version version)
         {
             return version switch
             {
