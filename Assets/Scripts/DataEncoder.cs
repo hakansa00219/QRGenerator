@@ -1,89 +1,109 @@
-using System;
 using System.Collections.Generic;
-using QR.Enums;
 using QR.Scriptable;
+using UnityEngine;
 
 namespace QR
 {
     public class DataEncoder
     {
         private readonly VersionData _versionData;
-        private LastMove _lastMove = LastMove.None;
-        public Queue<BitNode> bitQueue = new Queue<BitNode>();
+        private readonly Queue<BitNode> _bitQueue = new Queue<BitNode>();
+        private readonly int _resolution;
         
-        public DataEncoder(VersionData versionData, int resolution, int bitSize)
+        public Queue<BitNode> BitQueue => _bitQueue;
+        
+        public DataEncoder(VersionData versionData, int resolution)
         {
             _versionData = versionData;
+            _resolution = resolution;
 
-            BitNode lastNode = null;
-            while (bitSize > 0)
-            {
-                if (FindNextValidBit(resolution - 1, 0, _lastMove, lastNode))
-                {
-                    bitSize--;
-                };
-                lastNode = 
-            }
+            Move startMove = Move.Start;
+            _bitQueue.Enqueue(new BitNode(resolution - 1, resolution - 1));
+            
+            FindNextValidBit(resolution - 1, resolution - 1, startMove);
         }
 
-        public bool FindNextValidBit(int x, int y, LastMove lastMove, BitNode lastNode)
+        private void FindNextValidBit(int x, int y, Move lastMove)
         {
+            if (x < 0 && y < 0) return;
+            Debug.Log($"({x},{y})");
             switch (lastMove)
             {
-                case LastMove.None:
-                    if (_versionData.BitMatrix[x - 1, y])
-                    {
-                        bitQueue.Enqueue(new BitNode(x - 1, y));
-                    }
+                case Move.Start:
+                case Move.TopRight:
+                    if (x - 1 < 0) return;
                     
-                    break;
-                case LastMove.TopRight:
                     if (_versionData.BitMatrix[x - 1, y])
                     {
-                        bitQueue.Enqueue(new BitNode(x - 1, y, lastNode));
+                        _bitQueue.Enqueue(new BitNode(x - 1, y));
                     }
+                    lastMove = Move.LeftUp;
+                    FindNextValidBit(x - 1, y, lastMove);
                     break;
-                case LastMove.Left:
-                    if (_versionData.BitMatrix[x + 1, y - 1])
+                case Move.BottomRight:
+                    if (x - 1 < 0) return;
+                    if (_versionData.BitMatrix[x - 1, y])
                     {
-                        bitQueue.Enqueue(new BitNode(x + 1, y - 1, lastNode));
+                        _bitQueue.Enqueue(new BitNode(x - 1, y));
+                    }
+                    lastMove = Move.LeftDown;
+                    FindNextValidBit(x - 1, y, lastMove);
+                    break;
+                case Move.LeftUp:
+                    if (y - 1 < 0)
+                    {
+                        lastMove = Move.BottomRight;
+                        FindNextValidBit(x - 1, y, lastMove);
                     }
                     else
                     {
-                        bitQueue.Enqueue(new BitNode(x, y - 1, lastNode));
-                        bitQueue.Enqueue(new BitNode(x - 1, y - 1, lastNode));
+                        if (_versionData.BitMatrix[x + 1, y - 1])
+                        {
+                            _bitQueue.Enqueue(new BitNode(x + 1, y - 1));
+                        }
+                        lastMove = Move.TopRight;
+                        FindNextValidBit(x + 1, y - 1, lastMove);
                     }
                     break;
-                case LastMove.BottomRight:
-                    if (_versionData.BitMatrix[x - 1, y])
+                case Move.LeftDown:
+                    if (y + 1 > _resolution - 1)
                     {
-                        bitQueue.Enqueue(new BitNode(x - 1, y, lastNode));
+                        lastMove = Move.TopRight;
+                        FindNextValidBit(x - 1, y, lastMove);
+                    }
+                    else
+                    {
+                        if (_versionData.BitMatrix[x + 1, y + 1])
+                        {
+                            _bitQueue.Enqueue(new BitNode(x + 1, y + 1));
+                        }
+                        lastMove = Move.BottomRight;
+                        FindNextValidBit(x + 1, y + 1, lastMove);
                     }
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(lastMove), lastMove, null);
             }
         }
+       
 
         public class BitNode
         {
             public int X;
             public int Y;
-            public BitNode PreviousNode;
 
-            public BitNode(int x, int y, BitNode previousNode = null)
+            public BitNode(int x, int y)
             {
                 X = x;
                 Y = y;
             }
         }
 
-        public enum LastMove : byte
+        private enum Move : byte
         {
-            None = 0,
-            Left = 1,
-            TopRight = 2,
-            BottomRight = 3,
+            Start = 0,
+            LeftDown = 1,
+            LeftUp = 2,
+            TopRight = 3,
+            BottomRight = 4,
         }
     }
 }

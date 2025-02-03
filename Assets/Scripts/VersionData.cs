@@ -2,10 +2,12 @@ using System;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using QR.Enums;
 using Sirenix.Utilities;
 using UnityEditor;
+using UnityEngine.Serialization;
 using Version = QR.Enums.Version;
 
 namespace QR.Scriptable
@@ -21,10 +23,16 @@ namespace QR.Scriptable
         [OdinSerialize] 
         public Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize> CharacterSizeTable = new Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize>();
 
-        [TableMatrix(DrawElementMethod = "DrawBits")]
+        [TableMatrix(DrawElementMethod = "DrawBits", HorizontalTitle = "X", VerticalTitle = "Y")]
         public bool[,] BitMatrix;
-        
+
+        [ReadOnly] public int dataSize;
         public ((int x, int y) bitSize, int[] bitOrder) GetBitDetails(BytePattern pattern) => PatternBitOrder[pattern];
+
+        private void OnValidate()
+        {
+            dataSize = BitMatrix.Cast<bool>().Count(b => b);
+        }
 
         private void CreateBitMatrix()
         {
