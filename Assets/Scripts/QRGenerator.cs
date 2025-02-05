@@ -18,6 +18,7 @@ namespace QR
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
+        private DataAnalyzer _analyzer;
 
         private readonly SortedSet<DataTypes> _sortedDataTypes = new SortedSet<DataTypes>()
         {
@@ -91,8 +92,8 @@ namespace QR
             // Data
             AnalyzeData();
             // int dataBitSize = _totalDataBitSize; //208
-            // SetEncodingMode(ref texture); //204
-            // SetDataLength(ref texture, 1, out dataBitSize);//196
+            SetEncodingMode(ref texture); //204
+            SetDataLength(ref texture);//196
             // SetData(ref texture, data, out dataBitSize); //196 - (EC * 8) - Data - Padding = 0          
             // SetErrorCorrectionData(ref texture, out dataBitSize); // EC * 8
             // SetMask(ref texture, maskPattern);
@@ -103,8 +104,8 @@ namespace QR
 
         private void AnalyzeData()
         {
-            DataEncoder encoder = new DataEncoder(_versionOne, _qrResolution.VersionResolutions[version]);
-            Debug.Log("Data Size: " + encoder.BitQueue.Count);
+            _analyzer = new DataAnalyzer(_versionOne, _qrResolution.VersionResolutions[version]);
+            Debug.Log("Data Size: " + _analyzer.BitQueue.Count);
         }
 
         private void SetErrorCorrectionData(ref Texture2D texture)
@@ -136,9 +137,9 @@ namespace QR
             maskPattern.SetMask(ref texture);
         }
 
-        private void SetDataLength(ref Texture2D texture, byte dataOrder)
+        private void SetDataLength(ref Texture2D texture)
         {
-            Length lengthModule = new Length(ref texture, _versionOne, dataOrder, _dataSize);
+            Length lengthModule = new Length(ref texture, ref _analyzer, _encodingType, _versionOne, _dataSize);
             lengthModule.SetLength();
         }
 
@@ -184,7 +185,7 @@ namespace QR
         private void SetEncodingMode(ref Texture2D texture)
         {
             //TODO: make it viable for every versions of QR
-            Encoder encoder = new Encoder(ref texture, _versionOne, errorCorrectionLevel, data, _dataSize);
+            Encoder encoder = new Encoder(ref texture, ref _analyzer,  _versionOne, errorCorrectionLevel, data, _dataSize);
             _encodingType = encoder.SetEncoding(out errorCorrectionLevel);
             _capacity = _versionOne.CharacterSizeTable[(_encodingType, errorCorrectionLevel)].MaxMainData;
         }

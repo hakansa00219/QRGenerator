@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16d832e8-5f00-4d67-b35a-a8696bf87e00" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TextureUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TextureUtils.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Length.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Length.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,10 +85,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14804">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17868">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14804" />
+      <option name="pid" value="17868" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -115,7 +121,8 @@
       <workItem from="1736967541367" duration="5503000" />
       <workItem from="1737034288625" duration="20315000" />
       <workItem from="1738609542301" duration="8101000" />
-      <workItem from="1738677081549" duration="6846000" />
+      <workItem from="1738677081549" duration="10963000" />
+      <workItem from="1738782595047" duration="3577000" />
     </task>
     <servers />
   </component>
@@ -136,56 +143,69 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs</url>
           <line>71</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="2714" />
+              <option value="2716" />
             </startOffsets>
             <endOffsets>
-              <option value="2742" />
+              <option value="2744" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs</url>
           <line>94</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="3726" />
+              <option value="3728" />
             </startOffsets>
             <endOffsets>
-              <option value="3768" />
+              <option value="3770" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs</url>
           <line>53</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="1974" />
+              <option value="1976" />
             </startOffsets>
             <endOffsets>
-              <option value="1975" />
+              <option value="1977" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs</url>
           <line>35</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="1161" />
+              <option value="1163" />
             </startOffsets>
             <endOffsets>
-              <option value="1162" />
+              <option value="1164" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Length.cs</url>
+          <line>34</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\Length.cs" containingFunctionPresentation="Method 'SetLength'">
+            <startOffsets>
+              <option value="1153" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1248" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

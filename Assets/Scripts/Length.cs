@@ -3,6 +3,7 @@ using System.Linq;
 using QR.Converters;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Utilities;
 using UnityEngine;
 
 namespace QR
@@ -11,28 +12,26 @@ namespace QR
     {
         private readonly Texture2D _texture;
         private readonly VersionData _versionData;
-        private readonly byte _dataOrder;
-        private readonly byte _dataSize;
+        private readonly DataAnalyzer _analyzer;
+        private readonly byte _data;
+        private readonly EncodingType _encodingType;
         
-        public Length(ref Texture2D texture, VersionData versionData, byte dataOrder, byte dataSize)
+        public Length(ref Texture2D texture, ref DataAnalyzer analyzer, EncodingType encodingType, VersionData versionData, byte data)
         {
             _versionData = versionData;
+            _encodingType = encodingType;
+            _analyzer = analyzer;
             _texture = texture;
-            _dataOrder = dataOrder;
-            _dataSize = dataSize;
+            _data = data;
         }
         
         public void SetLength()
         {
-            bool[,] bitDataTable = ByteDataConverter.Convert(1, EncodingType.Byte, BytePattern.Up, _dataSize);
-            // VersionData.InitPosition initPosition = _versionData.Patterns[_dataOrder].initPosition;
-
-            for (int y = 0; y < bitDataTable.GetLength(1); y++)
+            int dataSize = VersionUtility.GetCharacterBitLength(_versionData.dataVersion, _encodingType);
+            for (int i = 0; i < dataSize; i++)
             {
-                for (int x = 0; x < bitDataTable.GetLength(0); x++)
-                {
-                    // _texture.SetPixel(initPosition.X + x, initPosition.Y - y, bitDataTable[x,y] ? Color.black : Color.white);
-                }
+                var bitNode = _analyzer.BitQueue.Dequeue();
+                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((_data >> i) & 1) == 1 ? Color.black : Color.white);
             }
         }
     }

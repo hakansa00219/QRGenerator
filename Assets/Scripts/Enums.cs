@@ -1,3 +1,5 @@
+using System;
+
 namespace QR.Enums
 {
     public enum BytePattern : byte
@@ -20,10 +22,10 @@ namespace QR.Enums
 
     public enum EncodingType : byte
     {
-        Numeric = 1,
-        Alphanumeric = 2,
-        Byte = 3,
-        Kanji = 4,
+        Numeric = 0b0001,
+        Alphanumeric = 0b0010,
+        Byte = 0b0100,
+        Kanji = 0b1000,
     }
 
     public enum Version : byte

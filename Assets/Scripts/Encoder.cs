@@ -18,9 +18,11 @@ namespace QR
         private ErrorCorrectionLevel _errorCorrectionLevel;
         private readonly Texture2D _texture;
         private readonly VersionData _versionData;
+        private readonly DataAnalyzer _analyzer;
         
-        public Encoder(ref Texture2D qrTexture, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
+        public Encoder(ref Texture2D qrTexture, ref DataAnalyzer analyzer, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
         {
+            _analyzer = analyzer;
             _charSize = charSize;
             _texture = qrTexture;
             _versionData = versionData;
@@ -38,30 +40,12 @@ namespace QR
         {
             // Write data to QR code depending on encoding type.
             int dataSize = VersionUtility.GetEncodingModeBitCount();
-            Color[] whiteArray = new Color[dataSize];
-            Array.Fill(whiteArray, Color.white);
-            
-            // Byte encoding 0100
-            _texture.SetPixels(19, 0, 2, 2, whiteArray);
-            
-            switch (_encodingType)
+            byte encodingType = (byte)_encodingType;
+            for (var i = 0; i < dataSize; i++)
             {
-                case EncodingType.Numeric:
-                    _texture.SetPixel(20, 0, Color.black);
-                    break;
-                case EncodingType.Alphanumeric:
-                    _texture.SetPixel(19, 0 , Color.black);
-                    break;
-                case EncodingType.Byte:
-                    _texture.SetPixel(20, 1, Color.black);
-                    break;
-                case EncodingType.Kanji:
-                    _texture.SetPixel(19, 1, Color.black);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                var bitNode = _analyzer.BitQueue.Dequeue();
+                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((encodingType >> i) & 1) == 1 ? Color.black : Color.white);
             }
-
             errorCorrectionLevel = _errorCorrectionLevel;
             return _encodingType;
         }

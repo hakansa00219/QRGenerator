@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QR
 {
-    public class DataEncoder
+    public class DataAnalyzer
     {
         private readonly VersionData _versionData;
         private readonly Queue<BitNode> _bitQueue = new Queue<BitNode>();
@@ -13,7 +13,7 @@ namespace QR
         
         public Queue<BitNode> BitQueue => _bitQueue;
         
-        public DataEncoder(VersionData versionData, int resolution)
+        public DataAnalyzer(VersionData versionData, int resolution)
         {
             _versionData = versionData;
             _resolution = resolution;
