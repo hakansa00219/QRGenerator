@@ -43,7 +43,7 @@ namespace QR
                     if (_versionData.BitMatrix[x - 1, y])
                     {
                         _bitQueue.Enqueue(new BitNode(x - 1, y));
-                        Debug.Log($"({x - 1},{y})");
+                        // Debug.Log($"({x - 1},{y})");
                     }
                     lastMove = Move.LeftUp;
                     FindNextValidBit(x - 1, y, lastMove);
@@ -61,7 +61,7 @@ namespace QR
                     if (_versionData.BitMatrix[x - 1, y])
                     {
                         _bitQueue.Enqueue(new BitNode(x - 1, y));
-                        Debug.Log($"({x - 1},{y})");
+                        // Debug.Log($"({x - 1},{y})");
                     }
                     lastMove = Move.LeftDown;
                     FindNextValidBit(x - 1, y, lastMove);
@@ -74,7 +74,7 @@ namespace QR
                         if (x > 0 && _versionData.BitMatrix[x - 1, y])
                         {
                             _bitQueue.Enqueue(new BitNode(x - 1, y));
-                            Debug.Log($"({x - 1},{y})");
+                            // Debug.Log($"({x - 1},{y})");
                         }
                         FindNextValidBit(x - 1, y, lastMove);
                     }
@@ -83,7 +83,7 @@ namespace QR
                         if (_versionData.BitMatrix[x + 1, y - 1])
                         {
                             _bitQueue.Enqueue(new BitNode(x + 1, y - 1));
-                            Debug.Log($"({x + 1},{y - 1})");
+                            // Debug.Log($"({x + 1},{y - 1})");
                         }
                         lastMove = Move.TopRight;
                         FindNextValidBit(x + 1, y - 1, lastMove);
@@ -97,7 +97,7 @@ namespace QR
                         if (x > 0 && _versionData.BitMatrix[x - 1, y])
                         {
                             _bitQueue.Enqueue(new BitNode(x - 1, y));
-                            Debug.Log($"({x - 1},{y})");
+                            // Debug.Log($"({x - 1},{y})");
                         }
                         FindNextValidBit(x - 1, y, lastMove);
                     }
@@ -106,7 +106,7 @@ namespace QR
                         if (_versionData.BitMatrix[x + 1, y + 1])
                         {
                             _bitQueue.Enqueue(new BitNode(x + 1, y + 1));
-                            Debug.Log($"({x + 1},{y + 1})");
+                            // Debug.Log($"({x + 1},{y + 1})");
                         }
                         lastMove = Move.BottomRight;
                         FindNextValidBit(x + 1, y + 1, lastMove);

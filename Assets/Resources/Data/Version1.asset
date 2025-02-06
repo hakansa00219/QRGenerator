@@ -416,14 +416,12 @@ MonoBehaviour:
       Data: 
     - Name: CharacterSizeTable
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[System.ValueTuple`2[[QR.Enums.EncodingType,
-        Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel, Assembly-CSharp]], mscorlib],[QR.Scriptable.VersionData+CharacterSize,
+      Data: 8|System.Collections.Generic.Dictionary`2[[QR.Scriptable.QRType, Assembly-CSharp],[QR.Scriptable.VersionData+CharacterSize,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 9|System.Collections.Generic.GenericEqualityComparer`1[[System.ValueTuple`2[[QR.Enums.EncodingType,
-        Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel, Assembly-CSharp]], mscorlib]],
-        mscorlib
+      Data: 9|System.Collections.Generic.ObjectEqualityComparer`1[[QR.Scriptable.QRType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
       Data: 
@@ -435,105 +433,11 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
       Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 17
-    - Name: ErrorCorrectionData
-      Entry: 3
-      Data: 17
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 27
-    - Name: ErrorCorrectionData
-      Entry: 3
-      Data: 13
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 34
-    - Name: ErrorCorrectionData
-      Entry: 3
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 1
     - Name: 
@@ -559,74 +463,11 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 10
-    - Name: ErrorCorrectionData
-      Entry: 3
-      Data: 17
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 16
-    - Name: ErrorCorrectionData
-      Entry: 3
-      Data: 13
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
+      Data: 1
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 0
     - Name: 
@@ -637,7 +478,7 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 20
+      Data: 34
     - Name: ErrorCorrectionData
       Entry: 3
       Data: 10
@@ -652,12 +493,71 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 1
+    - Name: ErrorCorrectionLevel
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 27
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 1
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 2
-    - Name: Item2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 17
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 2
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 1
     - Name: 
@@ -671,7 +571,7 @@ MonoBehaviour:
       Data: 25
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 7
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -683,12 +583,71 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 2
+    - Name: ErrorCorrectionLevel
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 20
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 2
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 3
-    - Name: Item2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 16
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 2
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 2
     - Name: 
@@ -699,10 +658,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 7
+      Data: 10
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 17
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -714,14 +673,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 3
-    - Name: Item2
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -730,10 +688,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 11
+      Data: 17
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 13
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -745,12 +703,11 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 3
-    - Name: Item2
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 0
     - Name: 
@@ -764,7 +721,7 @@ MonoBehaviour:
       Data: 14
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 10
+      Data: 14
     - Name: 
       Entry: 8
       Data: 
@@ -776,14 +733,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 3
-    - Name: Item2
-      Entry: 3
-      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -792,10 +748,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 17
+      Data: 11
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 7
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -807,12 +763,11 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
       Data: 4
-    - Name: Item2
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 2
     - Name: 
@@ -823,7 +778,7 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 4
+      Data: 7
     - Name: ErrorCorrectionData
       Entry: 3
       Data: 17
@@ -838,14 +793,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 4
-    - Name: Item2
+      Data: 8
+    - Name: ErrorCorrectionLevel
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -854,10 +808,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 7
+      Data: 10
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 13
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -869,12 +823,11 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 4
-    - Name: Item2
+      Data: 8
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 0
     - Name: 
@@ -888,6 +841,36 @@ MonoBehaviour:
       Data: 8
     - Name: ErrorCorrectionData
       Entry: 3
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 8
+    - Name: ErrorCorrectionLevel
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 6
+    - Name: ErrorCorrectionData
+      Entry: 3
       Data: 10
     - Name: 
       Entry: 8
@@ -900,14 +883,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 4
-    - Name: Item2
+      Data: 8
+    - Name: ErrorCorrectionLevel
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -916,10 +898,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 10
+      Data: 4
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 7
+      Data: 12
     - Name: 
       Entry: 8
       Data: 

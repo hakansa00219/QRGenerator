@@ -28,7 +28,7 @@ namespace QR
         public void SetLength()
         {
             int dataSize = VersionUtility.GetCharacterBitLength(_versionData.dataVersion, _encodingType);
-            for (int i = 0; i < dataSize; i++)
+            for (int i = dataSize - 1; i >= 0; i--)
             {
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((_data >> i) & 1) == 1 ? Color.black : Color.white);

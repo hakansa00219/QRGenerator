@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16d832e8-5f00-4d67-b35a-a8696bf87e00" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TextureUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TextureUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/QRUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/QRUtility.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataEncoder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/Version1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataAnalyzer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Encoder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Length.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Length.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QRData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QRData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QRGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VersionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VersionData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +86,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17868">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6240">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17868" />
+      <option name="pid" value="6240" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -122,7 +123,8 @@
       <workItem from="1737034288625" duration="20315000" />
       <workItem from="1738609542301" duration="8101000" />
       <workItem from="1738677081549" duration="10963000" />
-      <workItem from="1738782595047" duration="3577000" />
+      <workItem from="1738782595047" duration="3889000" />
+      <workItem from="1738864150307" duration="8460000" />
     </task>
     <servers />
   </component>
@@ -147,10 +149,10 @@
           <line>71</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="2716" />
+              <option value="2722" />
             </startOffsets>
             <endOffsets>
-              <option value="2744" />
+              <option value="2750" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -160,10 +162,10 @@
           <line>94</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="3728" />
+              <option value="3740" />
             </startOffsets>
             <endOffsets>
-              <option value="3770" />
+              <option value="3782" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
@@ -173,10 +175,10 @@
           <line>53</line>
           <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\DataEncoder.cs" containingFunctionPresentation="Method 'FindNextValidBit'">
             <startOffsets>
-              <option value="1976" />
+              <option value="1979" />
             </startOffsets>
             <endOffsets>
-              <option value="1977" />
+              <option value="1980" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
@@ -193,19 +195,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Length.cs</url>
-          <line>34</line>
-          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\Length.cs" containingFunctionPresentation="Method 'SetLength'">
-            <startOffsets>
-              <option value="1153" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1248" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

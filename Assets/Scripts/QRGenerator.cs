@@ -94,8 +94,8 @@ namespace QR
             // int dataBitSize = _totalDataBitSize; //208
             SetEncodingMode(ref texture); //204
             SetDataLength(ref texture);//196
-            // SetData(ref texture, data, out dataBitSize); //196 - (EC * 8) - Data - Padding = 0          
-            // SetErrorCorrectionData(ref texture, out dataBitSize); // EC * 8
+            SetData(ref texture, data); //196 - (EC * 8) - Data - Padding = 0          
+            SetErrorCorrectionData(ref texture); // EC * 8
             // SetMask(ref texture, maskPattern);
             texture.Apply();
 
@@ -113,9 +113,9 @@ namespace QR
             
         }
 
-        private void SetData(ref Texture2D texture, string sData)
+        private void SetData(ref Texture2D texture, string actualData)
         {
-            QRData qrData = new QRData(ref texture, _versionOne, _encodingType, errorCorrectionLevel, sData);
+            QRData qrData = new QRData(ref texture, ref _analyzer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
             qrData.SetData();
         }
 
@@ -187,7 +187,7 @@ namespace QR
             //TODO: make it viable for every versions of QR
             Encoder encoder = new Encoder(ref texture, ref _analyzer,  _versionOne, errorCorrectionLevel, data, _dataSize);
             _encodingType = encoder.SetEncoding(out errorCorrectionLevel);
-            _capacity = _versionOne.CharacterSizeTable[(_encodingType, errorCorrectionLevel)].MaxMainData;
+            _capacity = _versionOne.CharacterSizeTable[new QRType(_encodingType, errorCorrectionLevel)].MaxMainData;
         }
 
         private void CheckVersionResolution()

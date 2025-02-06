@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using QR.Converters;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Utilities;
 using UnityEngine;
 
 namespace QR
@@ -10,14 +12,16 @@ namespace QR
     {
         private readonly Texture2D _texture;
         private readonly string _data;
+        private readonly DataAnalyzer _analyzer;
         private readonly VersionData _versionData;
         private readonly EncodingType _encodingType;
         private readonly ErrorCorrectionLevel _errorCorrectionLevel;
         private const byte firstPadding = 0xEC;
         private const byte secondPadding = 0x11;
-        public QRData(ref Texture2D texture, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
+        public QRData(ref Texture2D texture, ref DataAnalyzer analyzer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
         {
             _texture = texture;
+            _analyzer = analyzer;
             _data = data;
             _versionData = versionData;
             _encodingType = encodingType;
@@ -28,28 +32,51 @@ namespace QR
         // Rest is error correction.
         public void SetData()
         {
-            int startByteIndex = 2;
-            int endByteIndex = startByteIndex + _versionData.CharacterSizeTable[(_encodingType, _errorCorrectionLevel)].MaxMainData;
-            for (int i = startByteIndex; i < endByteIndex; i++)
+            // THE DATA
+            int charSize = _data.Length;
+            int dataSize = QRUtility.GetCharacterBitSize(_encodingType);
+
+            byte[] convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
+
+            for (int i = 0; i < charSize; i++) //4 characters
+            for (int j = dataSize - 1; j >= 0; j--) //8 bits for each character
+            {   
+                var bitNode = _analyzer.BitQueue.Dequeue();
+                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((convertedData[i] >> j) & 1) == 1 ? Color.black : Color.white);
+            }
+            // DATA END
+            byte endData = 0b0000;
+            int endDataSize = 4;
+
+            for (int i = endDataSize - 1; i >= 0; i--)
             {
-                Debug.Log(i - 2 < _data.Length
-                    ? (byte)_data[i - 2]
-                    : ((i - 2 - _data.Length) % 2 == 0 ? firstPadding : secondPadding));
-                // var bitDataTable = ByteDataConverter.Convert(1, _encodingType, (byte)i,
-                //     i - 2 < _data.Length
-                //         ? (byte)_data[i - 2]
-                //         : ((i - 2 - _data.Length) % 2 == 0 ? firstPadding : secondPadding));
-                // var initX = _versionData.Patterns[i].initPosition.X;
-                // var initY = _versionData.Patterns[i].initPosition.Y;
-                //
-                // for (int y = 0; y < bitDataTable.GetLength(1); y++)
-                // {
-                //     for (int x = 0; x < bitDataTable.GetLength(0); x++)
-                //     {
-                //         Debug.Log($"({initX + x}, {initY + y}) - {(bitDataTable[x,y] ? Color.black : Color.white)}");
-                //         _texture.SetPixel(initX + x, initY - y, bitDataTable[x,y] ? Color.black : Color.white);
-                //     }
-                // }
+                var bitNode = _analyzer.BitQueue.Dequeue();
+                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((endData >> i) & 1) == 1 ? Color.black : Color.white);
+            }
+            
+            //PADDING IF NEED
+            int mainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
+                .MaxMainData;
+            int leftOverDataSize = mainDataSize - charSize;
+
+            switch (leftOverDataSize)
+            {
+                case 0:
+                    return;
+                case < 0:
+                    Debug.LogError("Miss calculation");
+                    return;
+            }
+
+            int paddingDataSize = 8;
+            for (int i = 0; i < leftOverDataSize; i++)
+            {
+                for (int j = paddingDataSize - 1; j >= 0; j--)
+                {
+                    var bitNode = _analyzer.BitQueue.Dequeue();
+                    _texture.SetPixel2D(bitNode.X, bitNode.Y,
+                        (((i % 2 == 0 ? firstPadding : secondPadding) >> j) & 1) == 1 ? Color.black : Color.white);
+                }
             }
         }
     }

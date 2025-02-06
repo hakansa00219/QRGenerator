@@ -11,7 +11,7 @@ namespace QR
 {
     public class Encoder
     {
-        private const string AlphaNumericPattern = @"^[0-9A-Za-z $%*+-./]+$";
+        private const string AlphaNumericPattern = @"^[0-9A-Z $%*+-./:]+$";
 
         private readonly byte _charSize = 0;
         private readonly EncodingType _encodingType;
@@ -41,7 +41,7 @@ namespace QR
             // Write data to QR code depending on encoding type.
             int dataSize = VersionUtility.GetEncodingModeBitCount();
             byte encodingType = (byte)_encodingType;
-            for (var i = 0; i < dataSize; i++)
+            for (var i = dataSize - 1; i >= 0; i--)
             {
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((encodingType >> i) & 1) == 1 ? Color.black : Color.white);
@@ -53,11 +53,6 @@ namespace QR
         private bool CheckCompatibility(ErrorCorrectionLevel errorCorrectionLevel, string data, out EncodingType encodingType)
         {
             _errorCorrectionLevel = errorCorrectionLevel;
-            if (IsKanjiCompatible(data, errorCorrectionLevel))
-            {
-                encodingType = EncodingType.Kanji;
-                return true;
-            }
             if (IsNumericCompatible(data, errorCorrectionLevel))
             {
                 encodingType = EncodingType.Numeric;
@@ -68,9 +63,14 @@ namespace QR
                 encodingType = EncodingType.Alphanumeric;
                 return true;
             }
-            if (IsByteCompatible(errorCorrectionLevel))
+            if (IsByteCompatible(data, errorCorrectionLevel))
             {
                 encodingType = EncodingType.Byte;
+                return true;
+            }
+            if (IsKanjiCompatible(data, errorCorrectionLevel))
+            {
+                encodingType = EncodingType.Kanji;
                 return true;
             }
             if (errorCorrectionLevel != ErrorCorrectionLevel.Low)
@@ -84,19 +84,20 @@ namespace QR
         
         private bool IsNumericCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return data.All(char.IsDigit) && _charSize <= _versionData.CharacterSizeTable[(EncodingType.Numeric, errorCorrectionLevel)].MaxMainData;
+            return data.All(char.IsDigit) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Numeric, errorCorrectionLevel)].MaxMainData;
         }
         private bool IsAlphanumericCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return Regex.IsMatch(data, AlphaNumericPattern) && _charSize <= _versionData.CharacterSizeTable[(EncodingType.Alphanumeric, errorCorrectionLevel)].MaxMainData;
+            var match = Regex.IsMatch(data, AlphaNumericPattern);
+            return match && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Alphanumeric, errorCorrectionLevel)].MaxMainData;
         }
         private bool IsKanjiCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.CharacterSizeTable[(EncodingType.Kanji, errorCorrectionLevel)].MaxMainData;
+            return data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Kanji, errorCorrectionLevel)].MaxMainData;
         }
-        private bool IsByteCompatible(ErrorCorrectionLevel errorCorrectionLevel)
+        private bool IsByteCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return _charSize <= _versionData.CharacterSizeTable[(EncodingType.Byte, errorCorrectionLevel)].MaxMainData;
+            return !data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Byte, errorCorrectionLevel)].MaxMainData;
         }
 
         

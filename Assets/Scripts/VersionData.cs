@@ -21,7 +21,7 @@ namespace QR.Scriptable
         public Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)> PatternBitOrder = new Dictionary<BytePattern, ((int x,int y) bitSize, int[] bitOrder)>();
 
         [OdinSerialize] 
-        public Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize> CharacterSizeTable = new Dictionary<(EncodingType, ErrorCorrectionLevel), CharacterSize>();
+        public Dictionary<QRType, CharacterSize> CharacterSizeTable = new Dictionary<QRType, CharacterSize>();
 
         [TableMatrix(DrawElementMethod = "DrawBits", HorizontalTitle = "X", VerticalTitle = "Y")]
         public bool[,] BitMatrix;
@@ -60,6 +60,20 @@ namespace QR.Scriptable
         {
             public readonly int MaxMainData;
             public readonly int ErrorCorrectionData;
+        }
+
+        
+    }
+    
+    public struct QRType
+    {
+        public EncodingType EncodingType;
+        public ErrorCorrectionLevel ErrorCorrectionLevel;
+
+        public QRType(EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel)
+        {
+            EncodingType = encodingType;
+            ErrorCorrectionLevel = errorCorrectionLevel;
         }
     }
 }
