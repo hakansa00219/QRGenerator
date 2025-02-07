@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using QR.Scriptable;
+using QR.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +13,7 @@ namespace QR
         private readonly MaskPatternData _maskPatternData;
         private readonly VersionData _versionData;
 
-        public MaskPattern(out byte pattern, VersionData versionData, byte selectedPattern = 255)
+        public MaskPattern(out byte pattern, ref VersionData versionData, byte selectedPattern = 255)
         {
             _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
             _versionData = versionData;
@@ -35,23 +36,17 @@ namespace QR
 
         public void SetMask(ref Texture2D texture)
         {
-            // foreach (var versionDataPattern in _versionData.Patterns)
-            // {
-            //     var bitSize = _versionData.PatternBitOrder[versionDataPattern.Value.pattern].bitSize;
-            //     var initPosition = versionDataPattern.Value.initPosition;
-            //     
-            //     for (int x = 0; x < bitSize.x; x++)
-            //     for (int y = 0; y < bitSize.y; y++)
-            //     {
-            //         //(19,0) (19,1) 
-            //         var xPos = (byte)(initPosition.X + x); 
-            //         var yPos = (byte)(initPosition.Y - y);
-            //         var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](xPos, yPos);
-            //         var texturePixelValue = texture.GetPixel(xPos, yPos);
-            //         var maskedValue = maskFuncValue ? texturePixelValue : (texturePixelValue == Color.white ? Color.black : Color.white);  
-            //         texture.SetPixel(xPos, yPos, maskedValue);
-            //     }
-            // }
+            var matrix = _versionData.BitMatrix;
+            for (var i = 0; i < matrix.GetLength(0); i++)
+            for (var j = 0; j < matrix.GetLength(1); j++)
+            {
+                if(!matrix[i, j]) continue;
+                
+                var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](i, j);
+                var texturePixelValue = texture.GetPixel2D(i, j);
+                var maskedValue = maskFuncValue ? texturePixelValue : (texturePixelValue == Color.white ? Color.black : Color.white);  
+                texture.SetPixel2D(i, j, maskedValue);
+            }
         }
     }
 }

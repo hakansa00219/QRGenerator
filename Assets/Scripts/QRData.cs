@@ -58,7 +58,7 @@ namespace QR
             int mainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
                 .MaxMainData;
             int leftOverDataSize = mainDataSize - charSize;
-
+            
             switch (leftOverDataSize)
             {
                 case 0:
@@ -67,7 +67,7 @@ namespace QR
                     Debug.LogError("Miss calculation");
                     return;
             }
-
+            
             int paddingDataSize = 8;
             for (int i = 0; i < leftOverDataSize; i++)
             {

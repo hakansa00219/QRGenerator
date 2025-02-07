@@ -8,7 +8,7 @@ namespace QR.Scriptable
     public class MaskPatternData : ScriptableObject
     {
         // If func result is 0 ? Black : White 
-        public readonly Dictionary<byte, Func<byte, byte, bool>> MaskPatterns = new Dictionary<byte, Func<byte, byte , bool>>()
+        public readonly Dictionary<byte, Func<int, int, bool>> MaskPatterns = new Dictionary<byte, Func<int, int , bool>>()
         {
             {0, (x,y) => (y + x) % 2 != 0},
             {1, (x,y) => y % 2 != 0},

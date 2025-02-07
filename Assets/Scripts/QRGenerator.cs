@@ -91,12 +91,11 @@ namespace QR
             SetFormatInfo(ref texture, out MaskPattern maskPattern);
             // Data
             AnalyzeData();
-            // int dataBitSize = _totalDataBitSize; //208
             SetEncodingMode(ref texture); //204
             SetDataLength(ref texture);//196
             SetData(ref texture, data); //196 - (EC * 8) - Data - Padding = 0          
             SetErrorCorrectionData(ref texture); // EC * 8
-            // SetMask(ref texture, maskPattern);
+            SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
@@ -110,7 +109,10 @@ namespace QR
 
         private void SetErrorCorrectionData(ref Texture2D texture)
         {
-            
+            ErrorCorrection ec =
+                new ErrorCorrection(ref texture, ref _analyzer, ref _versionOne, _encodingType, errorCorrectionLevel,
+                    data);
+            ec.SetErrorCorrectionData();
         }
 
         private void SetData(ref Texture2D texture, string actualData)
@@ -121,7 +123,7 @@ namespace QR
 
         private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
         {
-            maskPattern = new MaskPattern(out byte pattern, _versionOne, (byte)mask);
+            maskPattern = new MaskPattern(out byte pattern, ref _versionOne, (byte)mask);
             BCH bch = new BCH(pattern, (byte)errorCorrectionLevel);
             
             int maskedFilterBits = bch.Calculation();
