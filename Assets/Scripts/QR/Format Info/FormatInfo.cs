@@ -2,20 +2,20 @@ using UnityEngine;
 
 namespace QR
 {
-    public class FilterInfo
+    public class FormatInfo
     {
         private readonly Texture2D _texture;
-        private readonly int _maskedFilterBits;
+        private readonly int _maskedFormatBits;
         
-        public FilterInfo(ref Texture2D texture, int maskedFilterBits)
+        public FormatInfo(ref Texture2D texture, int maskedFormatBits)
         {
             _texture = texture;
-            _maskedFilterBits = maskedFilterBits;
+            _maskedFormatBits = maskedFormatBits;
         }
 
-        public void SetMaskedFilterBits()
+        public void SetMaskedFormatBits()
         {
-            string binary = System.Convert.ToString(_maskedFilterBits, 2).PadLeft(15, '0');
+            string binary = System.Convert.ToString(_maskedFormatBits, 2).PadLeft(15, '0');
             Debug.Log(binary);
             
             for (var i = 0; i < binary.Length; i++)

@@ -1,7 +1,7 @@
 using System;
 using QR.Enums;
 
-namespace QR
+namespace QR.Utilities
 {
     public class QRUtility
     {

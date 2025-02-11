@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QR.Algorithms;
+using QR.Analysis;
 using QR.Enums;
+using QR.Masking;
 using QR.Scriptable;
 using QR.Utilities;
 using UnityEngine;
@@ -128,9 +131,9 @@ namespace QR
             
             int maskedFilterBits = bch.Calculation();
             //TODO: masked filter bits going to be set to texture
-            FilterInfo filterInfo = new FilterInfo(ref texture, maskedFilterBits);
+            FormatInfo formatInfo = new FormatInfo(ref texture, maskedFilterBits);
             // Debug.Log(maskedFilterBits);
-            filterInfo.SetMaskedFilterBits();
+            formatInfo.SetMaskedFormatBits();
             //001001110111110
         }
 

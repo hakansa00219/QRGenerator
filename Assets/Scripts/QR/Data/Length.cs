@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using QR.Converters;
+﻿using QR.Analysis;
 using QR.Enums;
 using QR.Scriptable;
 using QR.Utilities;

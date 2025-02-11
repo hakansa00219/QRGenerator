@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
+using QR.Analysis;
 using QR.Utilities;
 using QR.Enums;
 using QR.Scriptable;

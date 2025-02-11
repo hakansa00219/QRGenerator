@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using QR.Scriptable;
-using UnityEngine;
 
-namespace QR
+namespace QR.Analysis
 {
     public class DataAnalyzer
     {

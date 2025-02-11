@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace QR
+namespace QR.Algorithms
 {
     public class ReedSolomonGenerator
     {

@@ -1,11 +1,9 @@
-using System;
 using System.IO;
 using QR.Scriptable;
-using QR.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace QR
+namespace QR.Masking
 {
     public struct MaskPattern
     {

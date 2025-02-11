@@ -1,6 +1,6 @@
 using System;
 
-namespace QR
+namespace QR.Algorithms
 {
     public class BCH
     {

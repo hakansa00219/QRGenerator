@@ -1,5 +1,5 @@
-using System;
-using System.Linq;
+using QR.Algorithms;
+using QR.Analysis;
 using QR.Enums;
 using QR.Scriptable;
 using UnityEngine;
