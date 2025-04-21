@@ -98,7 +98,7 @@ namespace QR
             SetDataLength(ref texture);//196
             SetData(ref texture, data); //196 - (EC * 8) - Data - Padding = 0          
             SetErrorCorrectionData(ref texture); // EC * 8
-            SetMask(ref texture, maskPattern);
+            // SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
