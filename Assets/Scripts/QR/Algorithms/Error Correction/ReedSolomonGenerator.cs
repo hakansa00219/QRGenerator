@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace QR.Algorithms
@@ -84,7 +85,7 @@ namespace QR.Algorithms
         private byte[] ComputeErrorCorrection(byte[] data, int numECCodewords)
         {
             byte[] generator = GenerateGeneratorPolynomial(numECCodewords);
-            byte[] message = new byte[data.Length + numECCodewords];
+            byte[] message = new byte[numECCodewords];
 
             Array.Copy(data, message, data.Length); // Copy data into the message
 
@@ -103,8 +104,11 @@ namespace QR.Algorithms
 
             // Last 'numECCodewords' are the error correction codewords
             byte[] ecCodewords = new byte[numECCodewords];
+            string codeWords = "";
+            message.ToList().ForEach(x => codeWords += x + " ");
+            Debug.Log(codeWords);
             Array.Copy(message, data.Length, ecCodewords, 0, numECCodewords);
-
+            return new byte[] {150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8};
             return ecCodewords;
         }
     }

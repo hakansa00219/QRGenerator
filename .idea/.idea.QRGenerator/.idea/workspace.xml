@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="16d832e8-5f00-4d67-b35a-a8696bf87e00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QRGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Masking/MaskPattern.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Masking/MaskPattern.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Error Correction/ErrorCorrection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Error Correction/ErrorCorrection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Generator/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Generator/QRGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,10 +82,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5360">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6680">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5360" />
+      <option name="pid" value="6680" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -122,7 +125,8 @@
       <workItem from="1739113161317" duration="10414000" />
       <workItem from="1739293223525" duration="877000" />
       <workItem from="1739294135637" duration="1326000" />
-      <workItem from="1745261563803" duration="2770000" />
+      <workItem from="1745261563803" duration="5404000" />
+      <workItem from="1745523698939" duration="5674000" />
     </task>
     <servers />
   </component>
@@ -138,5 +142,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs</url>
+          <line>110</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QR\Algorithms\Error Correction\ReedSolomonGenerator.cs" containingFunctionPresentation="Method 'ComputeErrorCorrection'">
+            <startOffsets>
+              <option value="3790" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3887" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

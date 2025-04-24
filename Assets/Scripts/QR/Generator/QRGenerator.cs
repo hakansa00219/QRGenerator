@@ -96,8 +96,8 @@ namespace QR
             AnalyzeData();
             SetEncodingMode(ref texture); //204
             SetDataLength(ref texture);//196
-            SetData(ref texture, data); //196 - (EC * 8) - Data - Padding = 0          
-            SetErrorCorrectionData(ref texture); // EC * 8
+            SetData(ref texture, data, out byte[] combinedData); //196 - (EC * 8) - Data - Padding = 0          
+            SetErrorCorrectionData(ref texture, combinedData); // EC * 8
             // SetMask(ref texture, maskPattern);
             texture.Apply();
 
@@ -110,18 +110,18 @@ namespace QR
             Debug.Log("Data Size: " + _analyzer.BitQueue.Count);
         }
 
-        private void SetErrorCorrectionData(ref Texture2D texture)
+        private void SetErrorCorrectionData(ref Texture2D texture, byte[] combinedData)
         {
             ErrorCorrection ec =
                 new ErrorCorrection(ref texture, ref _analyzer, ref _versionOne, _encodingType, errorCorrectionLevel,
-                    data);
+                    combinedData);
             ec.SetErrorCorrectionData();
         }
 
-        private void SetData(ref Texture2D texture, string actualData)
+        private void SetData(ref Texture2D texture, string actualData, out byte[] combinedData)
         {
             QRData qrData = new QRData(ref texture, ref _analyzer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
-            qrData.SetData();
+            qrData.SetData(out combinedData);
         }
 
         private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)

@@ -1,3 +1,4 @@
+using System.Linq;
 using QR.Algorithms;
 using QR.Analysis;
 using QR.Enums;
@@ -11,11 +12,11 @@ namespace QR
         private readonly Texture2D _texture;
         private readonly DataAnalyzer _analyzer;
         private readonly int _ecDataSize;
-        private readonly string _data;
+        private readonly byte[] _data;
         private const int ERROR_CORRECTION_LENGTH = 8;
         
         
-        public ErrorCorrection(ref Texture2D texture,ref DataAnalyzer analyzer, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, string data)
+        public ErrorCorrection(ref Texture2D texture,ref DataAnalyzer analyzer, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data)
         {
             _texture = texture;    
             _analyzer = analyzer;
@@ -44,7 +45,18 @@ namespace QR
                 0b11101100
             };
             
-            var ecblocks = generator.GenerateECBlocks(dataArray, _ecDataSize);
+            // 0100        Enc
+            // 00000100    Length    
+            // 01010110    'V'
+            // 01100101    'e'
+            // 01110010    'r'
+            // 00110001    '1'
+            // 0000        End
+            // 11101100    Padding
+            // 00010001    Padding
+            // 11101100    Padding
+            
+            var ecblocks = generator.GenerateECBlocks(dataArray , _ecDataSize);
             
             for (int i = 0; i < _ecDataSize; i++) //17 characters 
             for (int j = ERROR_CORRECTION_LENGTH - 1; j >= 0; j--) //8 bits for each character

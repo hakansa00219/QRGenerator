@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using QR.Analysis;
 using QR.Enums;
@@ -29,8 +30,11 @@ namespace QR
 
         // !!! When data is over(Ver1) add 4 bit END block. Then add paddings to complete the data capacity.(so 3 more padding)
         // Rest is error correction.
-        public void SetData()
+        public void SetData(out byte[] combinedData)
         {
+            combinedData = null;
+            List<byte> combinedDataList = new List<byte>();
+            
             // THE DATA
             int charSize = _data.Length;
             int dataSize = QRUtility.GetCharacterBitSize(_encodingType);
@@ -43,6 +47,9 @@ namespace QR
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((convertedData[i] >> j) & 1) == 1 ? Color.black : Color.white);
             }
+
+            combinedDataList.AddRange(convertedData);
+            
             // DATA END
             byte endData = 0b0000;
             int endDataSize = 4;
@@ -52,6 +59,8 @@ namespace QR
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((endData >> i) & 1) == 1 ? Color.black : Color.white);
             }
+            
+            combinedDataList.Add(endData);
             
             //PADDING IF NEED
             int mainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
@@ -70,13 +79,18 @@ namespace QR
             int paddingDataSize = 8;
             for (int i = 0; i < leftOverDataSize; i++)
             {
+                byte selectedPadding = i % 2 == 0 ? firstPadding : secondPadding;
+                combinedDataList.Add(selectedPadding);
+                
                 for (int j = paddingDataSize - 1; j >= 0; j--)
                 {
                     var bitNode = _analyzer.BitQueue.Dequeue();
                     _texture.SetPixel2D(bitNode.X, bitNode.Y,
-                        (((i % 2 == 0 ? firstPadding : secondPadding) >> j) & 1) == 1 ? Color.black : Color.white);
+                        ((selectedPadding >> j) & 1) == 1 ? Color.black : Color.white);
                 }
             }
+            
+            combinedData = combinedDataList.ToArray();
         }
     }
 }
