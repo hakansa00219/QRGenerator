@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Error Correction/ErrorCorrection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Error Correction/ErrorCorrection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Format Info/FormatInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Format Info/FormatInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/QR/Generator/QRGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/QR/Generator/QRGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,10 +83,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6680">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19388">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6680" />
+      <option name="pid" value="19388" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -147,17 +148,43 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/QR/Algorithms/Error Correction/ReedSolomonGenerator.cs</url>
-          <line>110</line>
-          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QR\Algorithms\Error Correction\ReedSolomonGenerator.cs" containingFunctionPresentation="Method 'ComputeErrorCorrection'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs</url>
+          <line>68</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QR\Data\QRData.cs" containingFunctionPresentation="Method 'SetData'">
             <startOffsets>
-              <option value="3790" />
+              <option value="2661" />
             </startOffsets>
             <endOffsets>
-              <option value="3887" />
+              <option value="2722" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/QR/Data/QRData.cs</url>
+          <line>93</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QR\Data\QRData.cs" containingFunctionPresentation="Method 'SetData'">
+            <startOffsets>
+              <option value="3589" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3631" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/QR/Error Correction/ErrorCorrection.cs</url>
+          <line>67</line>
+          <properties documentPath="D:\DevelopmentStuff\Projects\QRGenerator\Assets\Scripts\QR\Error Correction\ErrorCorrection.cs" containingFunctionPresentation="Method 'SetErrorCorrectionData'">
+            <startOffsets>
+              <option value="2349" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2350" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

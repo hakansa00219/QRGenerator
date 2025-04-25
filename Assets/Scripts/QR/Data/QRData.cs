@@ -40,6 +40,7 @@ namespace QR
             int dataSize = QRUtility.GetCharacterBitSize(_encodingType);
 
             byte[] convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
+            Debug.Log("Data: " + _data);
 
             for (int i = 0; i < charSize; i++) //4 characters
             for (int j = dataSize - 1; j >= 0; j--) //8 bits for each character

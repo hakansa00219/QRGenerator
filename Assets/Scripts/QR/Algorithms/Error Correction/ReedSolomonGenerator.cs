@@ -32,18 +32,18 @@ namespace QR.Algorithms
             }
 
             // Duplicate last entry for easier modulo operation in lookup
-            expTable[255] = expTable[0];
+            expTable[255] = 0;
             
-            Debug.Log("Exponentiation Table (expTable):");
-            string s1 = "";
-            for (int i = 0; i < 256; i++)
-                s1 += $"{expTable[i]:X2} ";
-            Debug.Log(s1);
-            Debug.Log("Logarithm Table (logTable):");
-            string s2 = "";
-            for (int i = 0; i < 256; i++) 
-                s2 += $"{logTable[i]:X2} ";
-            Debug.Log(s2);
+            // Debug.Log("Exponentiation Table (expTable):");
+            // string s1 = "";
+            // for (int i = 0; i < 256; i++)
+            //     s1 += $"{expTable[i]} ";
+            // Debug.Log(s1);
+            // Debug.Log("Logarithm Table (logTable):");
+            // string s2 = "";
+            // for (int i = 0; i < 256; i++) 
+            //     s2 += $"{logTable[i]} ";
+            // Debug.Log(s2);
         }
 
         // GF(256) çarpma işlemi
@@ -54,21 +54,21 @@ namespace QR.Algorithms
             return expTable[logSum % 255]; // Mod 255 alınır (QR standardı)
         }
 
-        private byte[] GenerateGeneratorPolynomial(int numECCodewords)
+        private byte[] CreateGeneratorPolynomial(int codeWordsSize)
         {
             byte[] g = new byte[] {1}; // Start with 1 (x^0 term)
 
-            for (int i = 0; i < numECCodewords; i++)
+            for (int i = 0; i < codeWordsSize; i++)
             {
-                byte[] newG = new byte[g.Length + 1];
+                byte[] temp = new byte[g.Length + 1];
 
                 for (int j = 0; j < g.Length; j++)
                 {
-                    newG[j] ^= GaloisMultiply(g[j], expTable[i]); // (x - α^i)
+                    temp[j + 1] ^= GaloisMultiply(g[j], expTable[i]); 
+                    temp[j] ^= g[j];
                 }
-
-                newG[g.Length] = 1;
-                g = newG;
+                
+                g = temp;
             }
 
             return g;
@@ -82,10 +82,10 @@ namespace QR.Algorithms
             return ecBlocks;
         }
         
-        private byte[] ComputeErrorCorrection(byte[] data, int numECCodewords)
+        private byte[] ComputeErrorCorrection(byte[] data, int codeWordsSize)
         {
-            byte[] generator = GenerateGeneratorPolynomial(numECCodewords);
-            byte[] message = new byte[numECCodewords];
+            byte[] generator = CreateGeneratorPolynomial(codeWordsSize);
+            byte[] message = new byte[codeWordsSize + data.Length];
 
             Array.Copy(data, message, data.Length); // Copy data into the message
 
@@ -103,12 +103,11 @@ namespace QR.Algorithms
             }
 
             // Last 'numECCodewords' are the error correction codewords
-            byte[] ecCodewords = new byte[numECCodewords];
-            string codeWords = "";
-            message.ToList().ForEach(x => codeWords += x + " ");
-            Debug.Log(codeWords);
-            Array.Copy(message, data.Length, ecCodewords, 0, numECCodewords);
-            return new byte[] {150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8};
+            byte[] ecCodewords = new byte[codeWordsSize];
+            // Debug.Log("150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8");
+            Array.Copy(message, data.Length, ecCodewords, 0, codeWordsSize);
+            Debug.Log("Error Correction Words: " + string.Join(", ", ecCodewords)); //142, 180, 184, 32, 189, 250, 7, 144, 6, 122, 38, 178, 179, 128, 182, 185, 0
+            // return new byte[] {150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8};
             return ecCodewords;
         }
     }

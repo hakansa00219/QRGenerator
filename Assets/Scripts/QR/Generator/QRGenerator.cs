@@ -22,15 +22,6 @@ namespace QR
         private VersionData _versionOne;
         private QRResolution _qrResolution;
         private DataAnalyzer _analyzer;
-
-        private readonly SortedSet<DataTypes> _sortedDataTypes = new SortedSet<DataTypes>()
-        {
-            DataTypes.EncodingMode,
-            DataTypes.DataLength,
-            DataTypes.Data,
-            DataTypes.EndOfData,
-            DataTypes.ErrorCorrectionData
-        };
         
         private EncodingType _encodingType;
         private int _size;
@@ -98,7 +89,7 @@ namespace QR
             SetDataLength(ref texture);//196
             SetData(ref texture, data, out byte[] combinedData); //196 - (EC * 8) - Data - Padding = 0          
             SetErrorCorrectionData(ref texture, combinedData); // EC * 8
-            // SetMask(ref texture, maskPattern);
+            SetMask(ref texture, maskPattern);
             texture.Apply();
 
             return texture;
