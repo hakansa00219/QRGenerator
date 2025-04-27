@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using QR.Algorithms;
 using QR.Analysis;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Utilities;
 using UnityEngine;
 
 namespace QR
@@ -13,14 +15,18 @@ namespace QR
         private readonly DataAnalyzer _analyzer;
         private readonly int _ecDataSize;
         private readonly byte[] _data;
+        private readonly EncodingType _encodingType;
+        private readonly int _dataLength;
         private const int ERROR_CORRECTION_LENGTH = 8;
         
         
-        public ErrorCorrection(ref Texture2D texture,ref DataAnalyzer analyzer, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data)
+        public ErrorCorrection(ref Texture2D texture,ref DataAnalyzer analyzer, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data, int dataLength)
         {
             _texture = texture;    
             _analyzer = analyzer;
             _data = data;
+            _encodingType = encodingType;
+            _dataLength = dataLength;
 
             _ecDataSize = versionData.CharacterSizeTable[new QRType(encodingType, errorCorrectionType)]
                 .ErrorCorrectionData;
@@ -30,20 +36,28 @@ namespace QR
         {
             // Ver1 Byte High EC 17 bytes
             ReedSolomonGenerator generator = new ReedSolomonGenerator();
-            
+            // Debug.Log(string.Join(" ,", _data));
             // byte[] dataArray = _data.ToCharArray().Select(x => (byte)x).ToArray();
-            byte[] dataArray =
-            {
-                0b01000000,
-                0b01000101,
-                0b01100110,
-                0b01010111,
-                0b00100011,
-                0b00010000,
-                0b11101100,
-                0b00010001,
-                0b11101100
-            };
+            // byte[] dataArray =
+            // {
+            //     0b01000000,
+            //     0b01000101,
+            //     0b01100110,
+            //     0b01010111,
+            //     0b00100011,
+            //     0b00010000,
+            //     0b11101100,
+            //     0b00010001,
+            //     0b11101100
+            // };
+            List<byte> dataList = new List<byte>();
+            dataList.Add((byte)((byte)_encodingType << 4 | _dataLength >> 4));
+            dataList.Add((byte)(_dataLength << 4 | _data[0] >> 4));
+            for (var i = 0; i < _dataLength; i++)
+            { 
+                dataList.Add((byte)(_data[i] << 4 | _data[i + 1] >> 4));
+            }
+            dataList.AddRange(_data.Skip(_dataLength + 1));
             
             // 0100        Enc
             // 00000100    Length    
@@ -56,7 +70,7 @@ namespace QR
             // 00010001    Padding
             // 11101100    Padding
             
-            var ecblocks = generator.GenerateECBlocks(dataArray , _ecDataSize);
+            var ecblocks = generator.GenerateECBlocks(dataList.ToArray() , _ecDataSize);
             
             for (int i = 0; i < _ecDataSize; i++) //17 characters 
             for (int j = ERROR_CORRECTION_LENGTH - 1; j >= 0; j--) //8 bits for each character

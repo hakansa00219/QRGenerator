@@ -105,7 +105,7 @@ namespace QR
         {
             ErrorCorrection ec =
                 new ErrorCorrection(ref texture, ref _analyzer, ref _versionOne, _encodingType, errorCorrectionLevel,
-                    combinedData);
+                    combinedData, _dataSize);
             ec.SetErrorCorrectionData();
         }
 

@@ -36,14 +36,14 @@ namespace QR
             List<byte> combinedDataList = new List<byte>();
             
             // THE DATA
-            int charSize = _data.Length;
-            int dataSize = QRUtility.GetCharacterBitSize(_encodingType);
+            int dataSize = _data.Length;
+            int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
 
             byte[] convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
             Debug.Log("Data: " + _data);
 
-            for (int i = 0; i < charSize; i++) //4 characters
-            for (int j = dataSize - 1; j >= 0; j--) //8 bits for each character
+            for (int i = 0; i < dataSize; i++) //4 characters
+            for (int j = charBitSize - 1; j >= 0; j--) //8 bits for each character
             {   
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((convertedData[i] >> j) & 1) == 1 ? Color.black : Color.white);
@@ -66,11 +66,12 @@ namespace QR
             //PADDING IF NEED
             int mainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
                 .MaxMainData;
-            int leftOverDataSize = mainDataSize - charSize;
+            int leftOverDataSize = mainDataSize - dataSize;
             
             switch (leftOverDataSize)
             {
                 case 0:
+                    combinedData = combinedDataList.ToArray();
                     return;
                 case < 0:
                     Debug.LogError("Miss calculation");
