@@ -76,19 +76,20 @@ namespace QR
             _dataSize = (byte)data.Length;
             
             // Essential Shapes
-            SetOrientationShapes(ref texture, 0, 0);
+            SetOrientationShapes(ref texture, 0, 0); //TODO: dynamic version change
             SetOrientationShapes(ref texture, 0, 13);
             SetOrientationShapes(ref texture, 13, 13);
             SetTimingStrips(ref texture);
             SetDarkModule(ref texture);
-            // Format Info
-            SetFormatInfo(ref texture, out MaskPattern maskPattern);
             // Data
             AnalyzeData();
             SetEncodingMode(ref texture); //204
             SetDataLength(ref texture);//196
             SetData(ref texture, data, out byte[] combinedData); //196 - (EC * 8) - Data - Padding = 0          
             SetErrorCorrectionData(ref texture, combinedData); // EC * 8
+            // Format Info
+            SetFormatInfo(ref texture, out MaskPattern maskPattern);
+            // Mask
             SetMask(ref texture, maskPattern);
             texture.Apply();
 

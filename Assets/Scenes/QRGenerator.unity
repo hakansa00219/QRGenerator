@@ -370,9 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  mask: 1
-  errorCorrectionLevel: 2
-  data: Voidian
+  mask: 7
+  errorCorrectionLevel: 8
+  data: VictoryVictoryWW
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0

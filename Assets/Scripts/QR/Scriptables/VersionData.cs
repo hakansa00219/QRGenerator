@@ -65,15 +65,20 @@ namespace QR.Scriptable
         
     }
     
-    public struct QRType
+    public struct QRType 
     {
-        public EncodingType EncodingType;
-        public ErrorCorrectionLevel ErrorCorrectionLevel;
+        public readonly EncodingType EncodingType;
+        public readonly ErrorCorrectionLevel ErrorCorrectionLevel;
 
         public QRType(EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel)
         {
             EncodingType = encodingType;
             ErrorCorrectionLevel = errorCorrectionLevel;
+        }
+
+        public override int GetHashCode()
+        {
+            return (byte)EncodingType | (byte)ErrorCorrectionLevel;
         }
     }
 }

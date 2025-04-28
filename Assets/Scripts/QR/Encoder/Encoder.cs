@@ -74,7 +74,7 @@ namespace QR
             }
             if (errorCorrectionLevel != ErrorCorrectionLevel.Low)
             {
-                return CheckCompatibility(errorCorrectionLevel + 1, data, out encodingType);
+                return CheckCompatibility((ErrorCorrectionLevel)((byte)errorCorrectionLevel >> 1), data, out encodingType);
             }
 
             encodingType = EncodingType.Byte;
