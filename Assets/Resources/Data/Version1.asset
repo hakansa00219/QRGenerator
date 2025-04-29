@@ -439,7 +439,7 @@ MonoBehaviour:
       Data: 4
     - Name: ErrorCorrectionLevel
       Entry: 3
-      Data: 8
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -447,41 +447,11 @@ MonoBehaviour:
       Entry: 7
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
-      Entry: 3
-      Data: 7
-    - Name: ErrorCorrectionData
       Entry: 3
       Data: 17
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: QR.Scriptable.QRType, Assembly-CSharp
-    - Name: EncodingType
-      Entry: 3
-      Data: 4
-    - Name: ErrorCorrectionLevel
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
-    - Name: MaxMainData
-      Entry: 3
-      Data: 10
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 14
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -508,6 +478,36 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
+      Data: 7
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 4
+    - Name: ErrorCorrectionLevel
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
       Data: 14
     - Name: ErrorCorrectionData
       Entry: 3
@@ -529,7 +529,7 @@ MonoBehaviour:
       Data: 4
     - Name: ErrorCorrectionLevel
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -538,10 +538,10 @@ MonoBehaviour:
       Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
-      Data: 17
+      Data: 10
     - Name: ErrorCorrectionData
       Entry: 3
-      Data: 7
+      Data: 14
     - Name: 
       Entry: 8
       Data: 

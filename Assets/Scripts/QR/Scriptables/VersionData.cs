@@ -78,7 +78,7 @@ namespace QR.Scriptable
 
         public override int GetHashCode()
         {
-            return (byte)EncodingType | (byte)ErrorCorrectionLevel;
+            return ((byte)EncodingType << 4) | (byte)ErrorCorrectionLevel;
         }
     }
 }

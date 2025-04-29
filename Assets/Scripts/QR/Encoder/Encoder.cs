@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using QR.Analysis;
 using QR.Utilities;
@@ -74,7 +75,12 @@ namespace QR
             }
             if (errorCorrectionLevel != ErrorCorrectionLevel.Low)
             {
-                return CheckCompatibility((ErrorCorrectionLevel)((byte)errorCorrectionLevel >> 1), data, out encodingType);
+                return CheckCompatibility(errorCorrectionLevel switch
+                {
+                    ErrorCorrectionLevel.High => ErrorCorrectionLevel.Quality,
+                    ErrorCorrectionLevel.Quality => ErrorCorrectionLevel.Medium,
+                    ErrorCorrectionLevel.Medium  => ErrorCorrectionLevel.Low
+                }, data, out encodingType);
             }
 
             encodingType = EncodingType.Byte;

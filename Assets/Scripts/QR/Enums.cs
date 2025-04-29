@@ -13,10 +13,10 @@ namespace QR.Enums
 
     public enum ErrorCorrectionLevel : byte
     {
-        High = 0b1000,
-        Quality = 0b0100,
-        Medium = 0b0010,
-        Low = 0b0001
+        High = 0b10,
+        Quality = 0b11,
+        Medium = 0b00,
+        Low = 0b01
     }
 
     public enum EncodingType : byte

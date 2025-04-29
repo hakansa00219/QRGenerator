@@ -34,22 +34,8 @@ namespace QR
 
         public void SetErrorCorrectionData()
         {
-            // Ver1 Byte High EC 17 bytes
             ReedSolomonGenerator generator = new ReedSolomonGenerator();
-            // Debug.Log(string.Join(" ,", _data));
-            // byte[] dataArray = _data.ToCharArray().Select(x => (byte)x).ToArray();
-            // byte[] dataArray =
-            // {
-            //     0b01000000,
-            //     0b01000101,
-            //     0b01100110,
-            //     0b01010111,
-            //     0b00100011,
-            //     0b00010000,
-            //     0b11101100,
-            //     0b00010001,
-            //     0b11101100
-            // };
+
             List<byte> dataList = new List<byte>();
             dataList.Add((byte)((byte)_encodingType << 4 | _dataLength >> 4));
             dataList.Add((byte)(_dataLength << 4 | _data[0] >> 4));
@@ -61,10 +47,10 @@ namespace QR
             
             // 0100        Enc
             // 00000100    Length    
-            // 01010110    'V'
-            // 01100101    'e'
-            // 01110010    'r'
-            // 00110001    '1'
+            // 01010110    Data Start
+            // 01100101    *
+            // 01110010    *
+            // 00110001    Data End
             // 0000        End
             // 11101100    Padding
             // 00010001    Padding
@@ -77,7 +63,7 @@ namespace QR
             {   
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((ecblocks[i] >> j) & 1) == 1 ? Color.black : Color.white);
-                // Debug.Log(((ecblocks[i] >> j) & 1) == 1 ? "1" : "0");
+                Debug.Log($"{bitNode.X}, {bitNode.Y}");
             }
         }
         
