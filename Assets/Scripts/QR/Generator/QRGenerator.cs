@@ -118,7 +118,7 @@ namespace QR
 
         private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
         {
-            maskPattern = new MaskPattern(out byte pattern, ref _versionOne, (byte)mask);
+            maskPattern = new MaskPattern(out byte pattern, ref _versionOne, ref texture);
             BCH bch = new BCH(pattern, (byte)errorCorrectionLevel);
             
             int maskedFilterBits = bch.Calculation();

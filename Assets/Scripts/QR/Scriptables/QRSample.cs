@@ -25,14 +25,9 @@ public class QRSample : SerializedScriptableObject
         if (UnmaskedBitMatrix == null) UnmaskedBitMatrix = new bool[BitMatrix.GetLength(0), BitMatrix.GetLength(1)];
         
         VersionData versionOne = Resources.Load<VersionData>("Data/Version1");
-        MaskPattern maskTool = new MaskPattern(out _, ref versionOne, maskPattern);
+        MaskPatternTest maskTool = new MaskPatternTest(ref versionOne, maskPattern);
         UnmaskedBitMatrix = maskTool.UnmaskedVersion(BitMatrix);
         
-        // for (var i = 0; i < UnmaskedBitMatrix.GetLength(0); i++)
-        // for (var j = 0; j < UnmaskedBitMatrix.GetLength(1); j++)
-        // {
-        //     UnmaskedBitMatrix[i, j] = !BitMatrix[i, j];
-        // }
     }
 
     private void CreateBitMatrix()
