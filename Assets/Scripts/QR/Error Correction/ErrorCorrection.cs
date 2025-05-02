@@ -63,7 +63,7 @@ namespace QR
             {   
                 var bitNode = _analyzer.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((ecblocks[i] >> j) & 1) == 1 ? Color.black : Color.white);
-                Debug.Log($"{bitNode.X}, {bitNode.Y}");
+                // Debug.Log($"{bitNode.X}, {bitNode.Y}");
             }
         }
         

@@ -8,7 +8,6 @@ namespace QR.Masking
 {
     public class MaskPattern
     {
-        private readonly byte _pattern;
         private readonly MaskPatternData _maskPatternData;
         private readonly VersionData _versionData;
 
@@ -19,10 +18,13 @@ namespace QR.Masking
             new ThirdEvaluation(),
             new FourthEvaluation()
         };
-        
-        public MaskPattern(out byte pattern, ref VersionData versionData, ref Texture2D texture)
+
+        public Texture2D CachedBestTexture { get; private set; }
+        public int LowestScore { get; private set; } = int.MaxValue;
+        public byte BestMask { get; private set; } = 255;
+        public MaskPattern(ref VersionData versionData, ref MaskPatternData maskPatternData)
         {
-            _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
+            _maskPatternData = maskPatternData;
             _versionData = versionData;
             
             if (_maskPatternData == null)
@@ -30,37 +32,33 @@ namespace QR.Masking
                 Debug.LogError("Mask pattern data could not be loaded.");
                 throw new FileNotFoundException();
             }
-
-            pattern = GetBestPattern(ref texture);
         }
 
-        private byte GetBestPattern(ref Texture2D texture)
+        public void CheckPenalty(ref Texture2D texture, byte mask)
         {
-            int lowestScore = int.MaxValue;
-            byte bestMask = 255;
-            for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
-            {
-                int currentScore = SumOfEvaluations(i, ref texture);
+            int currentScore = SumOfEvaluations(ref texture, mask);
                 
-                if (currentScore >= lowestScore) continue;
+            if (currentScore >= LowestScore) return;
                 
-                lowestScore = currentScore;
-                bestMask = (byte)i;
-            }
-            return bestMask;
+            LowestScore = currentScore;
+            BestMask = mask;
+            CachedBestTexture = texture;
         }
 
-        private int SumOfEvaluations(byte mask, ref Texture2D texture)
+        private int SumOfEvaluations(ref Texture2D texture, byte mask)
         {
             int sum = 0;
+            SetMask(ref texture, mask);
             foreach (var evaluation in Evaluations)
             {
                 sum += evaluation.Calculation(mask, ref texture);
             }
+            UnMask(ref texture, mask);
+            Debug.Log($"Mask:{mask} - Sum of evaluations is {sum}");
             return sum;
         }
-
-        public void SetMask(ref Texture2D texture)
+        
+        public void SetMask(ref Texture2D texture, byte mask)
         {
             var matrix = _versionData.BitMatrix;
             for (var i = 0; i < matrix.GetLength(0); i++)
@@ -68,11 +66,17 @@ namespace QR.Masking
             {
                 if(!matrix[i, j]) continue;
                 
-                var maskFuncValue = _maskPatternData.MaskPatterns[_pattern](i, j);
+                var maskFuncValue = _maskPatternData.MaskPatterns[mask](i, j);
                 var texturePixelValue = texture.GetPixel2D(i, j);
                 var maskedValue = maskFuncValue ? texturePixelValue : (texturePixelValue == Color.white ? Color.black : Color.white);  
                 texture.SetPixel2D(i, j, maskedValue);
             }
+        }
+
+
+        private void UnMask(ref Texture2D texture, byte mask)
+        {
+            SetMask(ref texture, mask);
         }
     }
 }

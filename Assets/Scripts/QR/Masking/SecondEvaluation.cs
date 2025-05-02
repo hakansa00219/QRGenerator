@@ -6,7 +6,7 @@ namespace QR.Masking
     {
         public override int Calculation(byte mask, ref Texture2D texture)
         {
-            throw new System.NotImplementedException();
+            return 0;
         }
     }
 }

@@ -16,8 +16,7 @@ namespace QR
         public void SetMaskedFormatBits()
         {
             string binary = System.Convert.ToString(_maskedFormatBits, 2).PadLeft(15, '0');
-            Debug.Log(binary);
-            
+
             for (var i = 0; i < binary.Length; i++)
             {
                 switch (i)

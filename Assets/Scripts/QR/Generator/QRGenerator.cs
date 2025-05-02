@@ -22,6 +22,7 @@ namespace QR
         private VersionData _versionOne;
         private QRResolution _qrResolution;
         private DataAnalyzer _analyzer;
+        private MaskPatternData _maskPatternData;
         
         private EncodingType _encodingType;
         private int _size;
@@ -35,6 +36,7 @@ namespace QR
         {
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
+            _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
             
             _totalDataBitSize = VersionUtility.GetTotalBitCount(version);
                 
@@ -87,9 +89,9 @@ namespace QR
             SetDataLength(ref texture);//196
             SetData(ref texture, data, out byte[] combinedData); //196 - (EC * 8) - Data - Padding = 0          
             SetErrorCorrectionData(ref texture, combinedData); // EC * 8
-            // Format Info
-            SetFormatInfo(ref texture, out MaskPattern maskPattern);
-            // Mask
+            // Mask and Format Info
+            CheckBestMask(ref texture, out MaskPattern maskPattern);
+            SetFormatInfo(ref texture);
             SetMask(ref texture, maskPattern);
             texture.Apply();
 
@@ -116,22 +118,43 @@ namespace QR
             qrData.SetData(out combinedData);
         }
 
-        private void SetFormatInfo(ref Texture2D texture, out MaskPattern maskPattern)
+        private void CheckBestMask(ref Texture2D texture, out MaskPattern maskPattern)
         {
-            maskPattern = new MaskPattern(out byte pattern, ref _versionOne, ref texture);
-            BCH bch = new BCH(pattern, (byte)errorCorrectionLevel);
             
+            Texture2D tempTexture = new Texture2D(21, 21, TextureFormat.RGB565, false)
+            {
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
+            tempTexture.SetPixels(texture.GetPixels());
+            tempTexture.Apply();
+            
+            maskPattern = new MaskPattern(ref _versionOne, ref _maskPatternData);
+            
+            for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
+            {
+                BCH bch = new BCH(i, (byte)errorCorrectionLevel);
+                int maskedFilterBits = bch.Calculation();
+                FormatInfo formatInfo = new FormatInfo(ref tempTexture, maskedFilterBits);
+                formatInfo.SetMaskedFormatBits();
+                maskPattern.CheckPenalty(ref tempTexture, i);
+            }
+            
+            mask = maskPattern.BestMask;
+            Debug.Log($"Applied lowest penalty mask: {mask} - Score: {maskPattern.LowestScore}");
+        }
+
+        private void SetFormatInfo(ref Texture2D texture)
+        {
+            BCH bch = new BCH((byte)mask, (byte)errorCorrectionLevel);
             int maskedFilterBits = bch.Calculation();
-            //TODO: masked filter bits going to be set to texture
             FormatInfo formatInfo = new FormatInfo(ref texture, maskedFilterBits);
-            // Debug.Log(maskedFilterBits);
             formatInfo.SetMaskedFormatBits();
-            //001001110111110
         }
 
         private void SetMask(ref Texture2D texture, MaskPattern maskPattern)
         {
-            maskPattern.SetMask(ref texture);
+            maskPattern.SetMask(ref texture, (byte)mask);
         }
 
         private void SetDataLength(ref Texture2D texture)
