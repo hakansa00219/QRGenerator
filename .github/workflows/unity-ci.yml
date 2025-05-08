@@ -5,7 +5,7 @@ on:
     pull_request:
         branches: [main, Development]
 jobs: 
-    build-webgl:
+    build:
         name: Build for WebGL
         runs-on: ubuntu-latest
         
