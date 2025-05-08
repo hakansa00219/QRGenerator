@@ -1,0 +1,26 @@
+name: QR CI
+on:
+    push:
+        branches: [main, Development]
+    pull_request:
+        branches: [main, Development]
+jobs: 
+    build-webgl:
+        name: Build for WebGL
+        runs-on: ubuntu-latest
+        
+        steps:
+        - name: Checkout repository
+        uses: actions/checkout@v3
+        
+        - name: Install Unity
+        uses: game-ci/unity-installer@v2
+        with:
+            unityVersion: 6000.0.22f1
+        
+        - name: Build project for WebGL
+        uses: game-ci/unity-builder@v2
+        with:
+            targetPlatform: WebGL
+            buildName: WebGL_Build
+            outputPath: build/webgl
