@@ -12,6 +12,14 @@ jobs:
         steps:
         # Checkout
         - uses: actions/checkout@v4
+        # Cache
+        - uses: actions/cache@v3
+          with:
+              path: Library
+              key: Library-QRGenerator-WebGL
+              restore-keys: |
+                  Library-QRGenerator-
+                  Library-  
         # Tests
         - uses: game-ci/unity-test-runner@v4
           id: TestRunner
