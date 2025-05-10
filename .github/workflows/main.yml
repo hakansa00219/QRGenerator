@@ -22,7 +22,7 @@ jobs:
           with:
              projectPath: Assets
              githubToken: ${{ secrets.GITHUB_TOKEN }}
-             unityVersion: 6000.0.22
+             unityVersion: 6000.0.22f1
         # Test Results
         - uses: actions/upload-artifact@v4
           if: always()
