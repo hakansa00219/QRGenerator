@@ -16,9 +16,9 @@ jobs:
         - uses: actions/cache@v3
           with:
               path: Library
-              key: Library-QRGenerator-WebGL
+              key: Library-${{ vars.PROJECT.NAME }}-WebGL
               restore-keys: |
-                  Library-QRGenerator-
+                  Library-${{ vars.PROJECT.NAME }}-
                   Library-  
         # Tests
         - uses: game-ci/unity-test-runner@v4
