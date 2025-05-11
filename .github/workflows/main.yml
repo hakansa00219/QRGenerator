@@ -48,34 +48,10 @@ jobs:
           with:
             name: Coverage results
             path: ${{ steps.TestRunner.outputs.coveragePath }}
-
-        # Uncommitted stuff
-        - name: Show uncommitted changes
-          run: |
-            echo "Modified files:"
-            git status --short
             
-        # Diff
+        # Show Diff
         - name: Show git diff
           run: git diff
-          
-        # Storing the status
-        - name: Save git status to file
-          run: git status > git-status.txt
-          
-        - name: Upload git status as artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: git-status
-            path: git-status.txt
-
-        # Temp print
-        - name: Print manifest.json and packages-lock.json
-          run: |
-            echo "===== manifest.json ====="
-            cat Packages/manifest.json
-            echo "===== packages-lock.json ====="
-            cat Packages/packages-lock.json
             
         # Builder (WebGL)
         - uses: game-ci/unity-builder@v4
