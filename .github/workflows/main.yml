@@ -15,22 +15,22 @@ jobs:
         # Cache
         - uses: actions/cache@v3
           with:
-              path: Library
-              key: Library-${{ vars.PROJECT_NAME }}-WebGL
-              restore-keys: |
-                  Library-${{ vars.PROJECT_NAME }}-
-                  Library-  
+            path: Library
+            key: Library-${{ vars.PROJECT_NAME }}-WebGL
+            restore-keys: |
+                Library-${{ vars.PROJECT_NAME }}-
+                Library-  
         # Tests
         - uses: game-ci/unity-test-runner@v4
           id: TestRunner
           env:
-             UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-             UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-             UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+            UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+            UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           with:
-             projectPath: .
-             githubToken: ${{ secrets.GITHUB_TOKEN }}
-             unityVersion: 6000.0.22f1
+            projectPath: .
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
+            unityVersion: 6000.0.22f1
         # Test Results
         - uses: actions/upload-artifact@v4
           if: always()
@@ -43,4 +43,16 @@ jobs:
           with:
             name: Coverage results
             path: ${{ steps.TestRunner.outputs.coveragePath }}
-            
+        # Builder (WebGL)
+        - uses: game-ci/unity-builder@4
+          env:
+            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+            UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+            UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          with:
+            targetPlatform: WebGL
+        # Storing Build
+        - uses: actions/upload-artifact@v4
+          with:
+            name: Build
+            path: build
