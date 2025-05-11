@@ -10,8 +10,10 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+        
         # Checkout
         - uses: actions/checkout@v4
+        
         # Cache
         - uses: actions/cache@v3
           with:
@@ -20,6 +22,7 @@ jobs:
             restore-keys: |
                 Library-${{ vars.PROJECT_NAME }}-
                 Library-  
+                
         # Tests
         - uses: game-ci/unity-test-runner@v4
           id: TestRunner
@@ -31,18 +34,41 @@ jobs:
             projectPath: .
             githubToken: ${{ secrets.GITHUB_TOKEN }}
             unityVersion: 6000.0.22f1
+            
         # Test Results
         - uses: actions/upload-artifact@v4
           if: always()
           with:
             name: Test results
             path: ${{ steps.TestRunner.outputs.artifactsPath }} 
+            
         # Code Coverage
         - uses: actions/upload-artifact@v4
           if: always()
           with:
             name: Coverage results
             path: ${{ steps.TestRunner.outputs.coveragePath }}
+
+        # Uncommitted stuff
+        - name: Show uncommitted changes
+          run: |
+            echo "Modified files:"
+            git status --short
+            
+        # Diff
+        - name: Show git diff
+          run: git diff
+          
+        # Storing the status
+        - name: Save git status to file
+          run: git status > git-status.txt
+          
+        - name: Upload git status as artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: git-status
+            path: git-status.txt
+            
         # Builder (WebGL)
         - uses: game-ci/unity-builder@v4
           env:
@@ -51,6 +77,7 @@ jobs:
             UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           with:
             targetPlatform: WebGL
+            
         # Storing Build
         - uses: actions/upload-artifact@v4
           with:
