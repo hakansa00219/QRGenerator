@@ -28,7 +28,7 @@ jobs:
              UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
              UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           with:
-             projectPath: Assets
+             projectPath: .
              githubToken: ${{ secrets.GITHUB_TOKEN }}
              unityVersion: 6000.0.22f1
         # Test Results
