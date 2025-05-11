@@ -76,4 +76,3 @@ crashlytics-build.properties
 .idea/
 .idea/.idea.QRGenerator/.idea/workspace.xml
 CodeCoverage/
-artifacts/
