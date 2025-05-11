@@ -68,6 +68,14 @@ jobs:
           with:
             name: git-status
             path: git-status.txt
+
+        # Temp print
+        - name: Print manifest.json and packages-lock.json
+          run: |
+            echo "===== manifest.json ====="
+            cat Packages/manifest.json
+            echo "===== packages-lock.json ====="
+            cat Packages/packages-lock.json
             
         # Builder (WebGL)
         - uses: game-ci/unity-builder@v4
