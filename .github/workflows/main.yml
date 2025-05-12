@@ -107,14 +107,5 @@ jobs:
               uses: peaceiris/actions-gh-pages@v3
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                target_branch: gh-pages
-                source_dir: build/WebGL
-
-            # Push the build to gh-pages
-            - name: Deploy WebGL Build to Github Pages
-              run: |
-                git config --global user.name "Github Actions"
-                git config --global user.email "actions@github.com"
-                git add .
-                git commit -m "Deploy WebGL Build"
-                git push origin gh-pages
+                publish_branch: gh-pages
+                publish_dir: build/WebGL
