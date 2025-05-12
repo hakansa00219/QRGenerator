@@ -52,27 +52,26 @@ jobs:
         # Show Diff
         - name: Show git diff
           run: git diff
-
-        # Upload Library for Build
-        - uses: actions/upload-artifact@v4
-          with:
-            name: LibraryCache
-            path: Library
           
     build:
         name: Build for WebGL
         runs-on: ubuntu-latest
         needs: tests
+        if: success()
 
         steps:
+        
         # Checkout
         - uses: actions/checkout@v4
-        
-        # Download Library for Build
-        - uses: actions/download-artifact@v4
+
+        # Cache
+        - uses: actions/cache@v3
           with:
-            name: LibraryCache
             path: Library
+            key: Library-${{ vars.PROJECT_NAME }}-WebGL
+            restore-keys: |
+              Library-${{ vars.PROJECT_NAME }}-
+              Library-
 
         # Show Diff
         - name: Show git diff
@@ -92,6 +91,7 @@ jobs:
           with:
             name: Build
             path: build
+            
     deploy:
         name: Deploy to Github Pages
         runs-on: ubuntu-latest
@@ -99,6 +99,7 @@ jobs:
         if: success()
 
         steps:
+            # Checkout
             - uses: actions/checkout@v4
 
             # Checkout gh pages branch
