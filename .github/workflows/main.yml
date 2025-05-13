@@ -91,6 +91,9 @@ jobs:
           with:
             name: Build
             path: build
+
+        - name: List build directory
+          run: ls -R build
             
     deploy-pages:
         name: Deploy to Github Pages
