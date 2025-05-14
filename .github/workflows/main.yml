@@ -119,13 +119,19 @@ jobs:
                 name: WebGL-Build
                 path: build/WebGL
 
+            # Move build
+            - name: Move build to root of build/
+              run: |
+                mv build/WebGL/* build/
+                rm -r build/WebGL
+
             # Checkout gh pages branch
             - name: Checkout gh-pages branch
               uses: peaceiris/actions-gh-pages@v3
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_branch: gh-pages
-                publish_dir: build/WebGL
+                publish_dir: build
                 
     deploy-itch:
         name: Deploy to Itch.io
@@ -141,6 +147,12 @@ jobs:
             with:
               name: WebGL-Build
               path: build/WebGL
+
+         # Move build
+          - name: Move build to root of build/
+            run: |
+              mv build/WebGL/* build/
+              rm -r build/WebGL
         
           # Install butler
           - name: Install butler
@@ -159,6 +171,6 @@ jobs:
           # Push html5
           - name: Push WebGL build to Itch.io
             run: |
-              butler push build/WebGL hsari/qr-generator:html5
+              butler push build hsari/qr-generator:html5
             env:
               BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
