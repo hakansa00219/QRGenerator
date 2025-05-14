@@ -86,7 +86,15 @@ jobs:
           with:
             targetPlatform: WebGL
             buildName: .
-            
+
+        # Show current dir
+        - name: Show current directory
+          run: pwd
+
+        # List all contents
+        - name: List contents
+          run: ls -R
+          
         # Storing Build
         - uses: actions/upload-artifact@v4
           with:
