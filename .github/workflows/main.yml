@@ -119,6 +119,13 @@ jobs:
           run: |
             mv build Deploy
 
+        # Adjust permissions for Deploy directory
+        - name: Fix Deploy Directory Permissions
+          run: |
+            sudo chmod -R 777 Deploy
+            sudo mkdir -p /home/runner/work/QRGenerator/QRGenerator/Deploy
+            sudo chmod -R 777 /home/runner/work/QRGenerator/QRGenerator/Deploy
+
         # Move the build output to the desired path
         - name: Adjust build output path
           run: |
