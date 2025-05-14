@@ -112,6 +112,7 @@ jobs:
           with:
             targetPlatform: WebGL
             buildName: WebGL
+            buildPath: Build/WebGL
 
         # Show current dir
         - name: Show current directory
@@ -125,10 +126,10 @@ jobs:
         - uses: actions/upload-artifact@v4
           with:
             name: WebGL-Build
-            path: build/WebGL
+            path: Build/WebGL
 
         - name: List build directory
-          run: ls -R build
+          run: ls -R Build
             
     deploy-pages:
         name: Deploy to Github Pages
@@ -143,7 +144,7 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                 name: WebGL-Build
-                path: build
+                path: Build
 
             # Checkout gh pages branch
             - name: Checkout gh-pages branch
@@ -151,7 +152,7 @@ jobs:
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_branch: gh-pages
-                publish_dir: build
+                publish_dir: Build
                 
     deploy-itch:
         name: Deploy to Itch.io
@@ -166,7 +167,7 @@ jobs:
           - uses: actions/download-artifact@v4
             with:
               name: WebGL-Build
-              path: build
+              path: Build
         
           # Install butler
           - name: Install butler
@@ -185,6 +186,6 @@ jobs:
           # Push html5
           - name: Push WebGL build to Itch.io
             run: |
-              butler push build hsari/qr-generator:html5
+              butler push Build hsari/qr-generator:html5
             env:
               BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
