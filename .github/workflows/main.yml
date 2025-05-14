@@ -23,10 +23,11 @@ jobs:
         # Batch mode and no graphics setting
         - name: Setup Unity Environment
           run: |
-            mkdir -p /root/.cache/unity3d
+            sudo mkdir -p /root/.cache/unity3d
+            sudo chmod -R 777 /root/.cache/unity3d
             export UNITY_BATCH_MODE=true
             export UNITY_NO_GRAPHICS=true
-
+            
         # Arial font
         - name: Install Arial Font
           run: |
