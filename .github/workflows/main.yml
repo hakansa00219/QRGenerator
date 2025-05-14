@@ -85,6 +85,7 @@ jobs:
             UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           with:
             targetPlatform: WebGL
+            buildName: .
             
         # Storing Build
         - uses: actions/upload-artifact@v4
@@ -110,7 +111,7 @@ jobs:
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_branch: gh-pages
-                publish_dir: build/WebGL/WebGL
+                publish_dir: build/WebGL
                 
     deploy-itch:
         name: Deploy to Itch.io
