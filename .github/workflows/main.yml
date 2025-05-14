@@ -85,7 +85,7 @@ jobs:
             UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           with:
             targetPlatform: WebGL
-            buildName: .
+            buildName: WebGL
 
         # Show current dir
         - name: Show current directory
@@ -99,7 +99,7 @@ jobs:
         - uses: actions/upload-artifact@v4
           with:
             name: Build
-            path: build
+            path: build/WebGL
 
         - name: List build directory
           run: ls -R build
@@ -112,6 +112,11 @@ jobs:
         steps:
             # Checkout
             - uses: actions/checkout@v4
+
+            - uses: actions/download-artifact@v4
+              with:
+                name: WebGL-Build
+                path: build/WebGL
 
             # Checkout gh pages branch
             - name: Checkout gh-pages branch
@@ -127,20 +132,24 @@ jobs:
         needs: build
 
         steps:
+          # Checkout
           - uses: actions/checkout@v4
 
+          # Install butler
           - name: Install butler
             run: |
               wget https://broth.itch.ovh/butler/linux-amd64/head/butler
               chmod +x butler
               sudo mv butler /usr/local/bin/
 
+          # Login
           - name: Authenticate butler
             run: |
               butler login
             env:
               BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
 
+          # Push html5
           - name: Push WebGL build to Itch.io
             run: |
               butler push build/WebGL hsari/qr-generator:html5
