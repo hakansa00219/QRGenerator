@@ -16,8 +16,9 @@ jobs:
           run: |
             sudo apt-get update
             sudo apt-get install -y libgtk-3-0 libnss3
-                # Checkout
-                - uses: actions/checkout@v4
+            
+        # Checkout
+        - uses: actions/checkout@v4
 
         # Batch mode and no graphics setting
         - name: Setup Unity Environment
