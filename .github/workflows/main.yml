@@ -125,7 +125,7 @@ jobs:
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 publish_branch: gh-pages
-                publish_dir: WebGL
+                publish_dir: build/WebGL
                 
     deploy-itch:
         name: Deploy to Itch.io
@@ -159,6 +159,6 @@ jobs:
           # Push html5
           - name: Push WebGL build to Itch.io
             run: |
-              butler push WebGL hsari/qr-generator:html5
+              butler push build/WebGL hsari/qr-generator:html5
             env:
               BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
