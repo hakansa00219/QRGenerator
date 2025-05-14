@@ -10,10 +10,34 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        
-        # Checkout
-        - uses: actions/checkout@v4
-        
+
+        # Make sure gtk libraries updated
+        - name: Install GTK libraries
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y libgtk-3-0 libnss3
+                # Checkout
+                - uses: actions/checkout@v4
+
+        # Batch mode and no graphics setting
+        - name: Setup Unity Environment
+          run: |
+            mkdir -p /root/.cache/unity3d
+            export UNITY_BATCH_MODE=true
+            export UNITY_NO_GRAPHICS=true
+
+        # Arial font
+        - name: Install Arial Font
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y ttf-mscorefonts-installer
+
+        # Permissions
+        - name: Fix Cache Directory Permissions
+          run: |
+            sudo mkdir -p /root/.cache/unity3d
+            sudo chmod -R 777 /root/.cache/unity3d
+            
         # Cache
         - uses: actions/cache@v3
           with:
