@@ -117,13 +117,7 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                 name: WebGL-Build
-                path: build/WebGL
-
-            # Move build
-            - name: Move build to root of build/
-              run: |
-                mv build/WebGL/* build/
-                rm -r build/WebGL
+                path: build
 
             # Checkout gh pages branch
             - name: Checkout gh-pages branch
@@ -146,13 +140,7 @@ jobs:
           - uses: actions/download-artifact@v4
             with:
               name: WebGL-Build
-              path: build/WebGL
-
-         # Move build
-          - name: Move build to root of build/
-            run: |
-              mv build/WebGL/* build/
-              rm -r build/WebGL
+              path: build
         
           # Install butler
           - name: Install butler
