@@ -118,7 +118,13 @@ jobs:
         - name: Rename build directory
           run: |
             mv build Deploy
-            
+
+        # Move the build output to the desired path
+        - name: Adjust build output path
+          run: |
+            rsync -a Deploy/WebGL/WebGL/ Deploy/
+            rm -r Deploy/WebGL/WebGL
+
         # Show current dir
         - name: Show current directory
           run: pwd
@@ -134,7 +140,7 @@ jobs:
             path: Deploy
 
         - name: List build directory
-          run: ls -R Build
+          run: ls -R Deploy
             
     deploy-pages:
         name: Deploy to Github Pages
