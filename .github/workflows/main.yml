@@ -98,7 +98,7 @@ jobs:
         # Storing Build
         - uses: actions/upload-artifact@v4
           with:
-            name: Build
+            name: WebGL-Build
             path: build/WebGL
 
         - name: List build directory
@@ -113,6 +113,7 @@ jobs:
             # Checkout
             - uses: actions/checkout@v4
 
+            # Download build
             - uses: actions/download-artifact@v4
               with:
                 name: WebGL-Build
@@ -135,6 +136,12 @@ jobs:
           # Checkout
           - uses: actions/checkout@v4
 
+         # Download build
+          - uses: actions/download-artifact@v4
+            with:
+              name: WebGL-Build
+              path: build/WebGL
+        
           # Install butler
           - name: Install butler
             run: |
