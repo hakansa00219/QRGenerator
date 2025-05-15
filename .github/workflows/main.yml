@@ -129,7 +129,7 @@ jobs:
         # Move the build output to the desired path
         - name: Adjust build output path
           run: |
-            rsync -a Deploy/WebGL/WebGL/ Deploy/
+            rsync -a --no-t Deploy/WebGL/WebGL/ Deploy/
             rm -r Deploy/WebGL/WebGL
 
         # Show current dir
