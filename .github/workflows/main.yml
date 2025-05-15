@@ -183,11 +183,14 @@ jobs:
               path: Deploy
         
           # Install butler
-          - name: Install butler
+          - name: Download latest Butler release
             run: |
-              wget https://broth.itch.ovh/butler/linux-amd64/head/butler
+              echo "Getting latest version ID..."
+              VERSION_ID=$(curl -s https://broth.itch.zone/butler/linux-amd64/LATEST)
+              echo "Latest version: $VERSION_ID"
+              wget "https://broth.itch.zone/butler/linux-amd64/versions/${VERSION_ID}/butler" -O butler
               chmod +x butler
-              sudo mv butler /usr/local/bin/
+              sudo mv butler /usr/local/bin/butler
 
           # Login
           - name: Authenticate butler
