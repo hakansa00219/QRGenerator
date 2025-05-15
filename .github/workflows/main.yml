@@ -185,12 +185,16 @@ jobs:
           # Install butler
           - name: Download latest Butler release
             run: |
-              echo "Getting latest version ID..."
-              VERSION_ID=$(curl -s https://broth.itch.zone/butler/linux-amd64/LATEST)
-              echo "Latest version: $VERSION_ID"
-              wget "https://broth.itch.zone/butler/linux-amd64/versions/${VERSION_ID}/butler" -O butler
-              chmod +x butler
-              sudo mv butler /usr/local/bin/butler
+              wget https://broth.itch.zone/butler/linux-amd64/15.24.0/archive-default -O butler.zip
+              mkdir -p butler-dir
+              unzip butler.zip -d butler-dir
+              chmod +x butler-dir/butler
+              sudo mv butler-dir/butler /usr/local/bin/butler
+
+              sudo mv butler-dir/7z.so /usr/local/lib/
+              sudo mv butler-dir/libc7zip.so /usr/local/lib/
+              
+              sudo ldconfig
 
           # Login
           - name: Authenticate butler
