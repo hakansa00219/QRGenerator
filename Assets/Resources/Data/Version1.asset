@@ -21,872 +21,14 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: Patterns
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.ValueTuple`2[[QR.Enums.BytePattern,
-        Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition, Assembly-CSharp]],
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 27
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 19
-    - Name: Y
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 19
-    - Name: Y
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 19
-    - Name: Y
-      Entry: 3
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 17
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 17
-    - Name: Y
-      Entry: 3
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 5
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 17
-    - Name: Y
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 6
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 15
-    - Name: Y
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 7
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 15
-    - Name: Y
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 8
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 15
-    - Name: Y
-      Entry: 3
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 9
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 13
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 13
-    - Name: Y
-      Entry: 3
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 11
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 13
-    - Name: Y
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 12
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 11
-    - Name: Y
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 13
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 11
-    - Name: Y
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 14
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 11
-    - Name: Y
-      Entry: 3
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 15
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 11
-    - Name: Y
-      Entry: 3
-      Data: 13
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 16
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 11
-    - Name: Y
-      Entry: 3
-      Data: 18
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 17
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 20
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 18
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 18
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 19
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 5
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 13
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 21
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 22
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 9
-    - Name: Y
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 23
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 7
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 24
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 4
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 25
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 0
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 2
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 26
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.BytePattern, Assembly-CSharp],[QR.Scriptable.VersionData+InitPosition,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 7
-      Data: QR.Scriptable.VersionData+InitPosition, Assembly-CSharp
-    - Name: X
-      Entry: 3
-      Data: 0
-    - Name: Y
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: PatternBitOrder
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[QR.Enums.BytePattern, Assembly-CSharp],[System.ValueTuple`2[[System.ValueTuple`2[[System.Int32,
+      Data: 0|System.Collections.Generic.Dictionary`2[[QR.Enums.BytePattern, Assembly-CSharp],[System.ValueTuple`2[[System.ValueTuple`2[[System.Int32,
         mscorlib],[System.Int32, mscorlib]], mscorlib],[System.Int32[], mscorlib]],
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[QR.Enums.BytePattern,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[QR.Enums.BytePattern,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -920,6 +62,136 @@ MonoBehaviour:
     - Name: Item2
       Entry: 3
       Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Item2
+      Entry: 7
+      Data: 2|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 8
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
+        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
+    - Name: Item1
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 3
+      Data: 2
+    - Name: Item2
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Item2
+      Entry: 7
+      Data: 3|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 8
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
+        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
+    - Name: Item1
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 3
+      Data: 4
+    - Name: Item2
+      Entry: 3
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -937,6 +209,12 @@ MonoBehaviour:
       Data: 6
     - Name: 
       Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
       Data: 5
     - Name: 
       Entry: 3
@@ -947,12 +225,6 @@ MonoBehaviour:
     - Name: 
       Entry: 3
       Data: 2
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -970,7 +242,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
@@ -981,10 +253,10 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 3
-      Data: 2
+      Data: 4
     - Name: Item2
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -996,10 +268,10 @@ MonoBehaviour:
       Data: 8
     - Name: 
       Entry: 3
-      Data: 1
+      Data: 5
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 4
     - Name: 
       Entry: 3
       Data: 3
@@ -1008,16 +280,16 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
       Data: 7
     - Name: 
       Entry: 3
       Data: 6
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -1035,7 +307,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 2
+      Data: 4
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
@@ -1046,7 +318,7 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: Item2
       Entry: 3
       Data: 2
@@ -1058,24 +330,6 @@ MonoBehaviour:
       Data: 6|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
       Data: 4
     - Name: 
       Entry: 3
@@ -1083,6 +337,12 @@ MonoBehaviour:
     - Name: 
       Entry: 3
       Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -1100,7 +360,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 3
+      Data: 5
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
@@ -1111,7 +371,7 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 3
-      Data: 4
+      Data: 2
     - Name: Item2
       Entry: 3
       Data: 2
@@ -1121,124 +381,6 @@ MonoBehaviour:
     - Name: Item2
       Entry: 7
       Data: 7|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 8|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 5
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 9|System.Int32[], mscorlib
     - Name: 
       Entry: 14
       Data: 4
@@ -1274,39 +416,45 @@ MonoBehaviour:
       Data: 
     - Name: CharacterSizeTable
       Entry: 7
-      Data: 10|System.Collections.Generic.Dictionary`2[[System.ValueTuple`2[[QR.Enums.EncodingType,
-        Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel, Assembly-CSharp]], mscorlib],[System.Byte,
-        mscorlib]], mscorlib
+      Data: 8|System.Collections.Generic.Dictionary`2[[QR.Scriptable.QRType, Assembly-CSharp],[QR.Scriptable.VersionData+CharacterSize,
+        Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 11|System.Collections.Generic.GenericEqualityComparer`1[[System.ValueTuple`2[[QR.Enums.EncodingType,
-        Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel, Assembly-CSharp]], mscorlib]],
-        mscorlib
+      Data: 9|System.Collections.Generic.ObjectEqualityComparer`1[[QR.Scriptable.QRType,
+        Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 16
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 3
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
       Entry: 3
-      Data: 41
+      Data: 17
+    - Name: ErrorCorrectionData
+      Entry: 3
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -1315,87 +463,29 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 1
-    - Name: Item2
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 2
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
-      Entry: 3
-      Data: 34
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
       Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 27
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 1
-    - Name: Item2
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
+      Data: 7
+    - Name: ErrorCorrectionData
       Entry: 3
       Data: 17
     - Name: 
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 25
-    - Name: 
       Entry: 8
       Data: 
     - Name: 
@@ -1403,87 +493,29 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
       Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 20
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 16
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 0
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 14
+    - Name: ErrorCorrectionData
       Entry: 3
       Data: 10
     - Name: 
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 17
-    - Name: 
       Entry: 8
       Data: 
     - Name: 
@@ -1491,152 +523,28 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
+      Data: QR.Scriptable.QRType, Assembly-CSharp
+    - Name: EncodingType
+      Entry: 3
+      Data: 4
+    - Name: ErrorCorrectionLevel
       Entry: 3
       Data: 3
-    - Name: Item2
-      Entry: 3
-      Data: 2
     - Name: 
       Entry: 8
       Data: 
     - Name: $v
+      Entry: 7
+      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+    - Name: MaxMainData
+      Entry: 3
+      Data: 10
+    - Name: ErrorCorrectionData
       Entry: 3
       Data: 14
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 3
-    - Name: Item2
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 8
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: System.ValueTuple`2[[QR.Enums.EncodingType, Assembly-CSharp],[QR.Enums.ErrorCorrectionLevel,
-        Assembly-CSharp]], mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 3
-      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -1646,3 +554,1343 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: BitMatrix
+      Entry: 7
+      Data: 10|System.Boolean[,], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 441
+    - Name: ranks
+      Entry: 1
+      Data: 21|21
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dataVersion: 1
+  dataSize: 208
