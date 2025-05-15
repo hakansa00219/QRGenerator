@@ -1,9 +1,9 @@
 name: QR CI
 on:
     push:
-        branches: [main, Development]
+        branches: [main]
     pull_request:
-        branches: [main, Development]
+        branches: [main]
 jobs: 
     tests:
         name: Unity Tests
@@ -112,7 +112,7 @@ jobs:
           with:
             targetPlatform: WebGL
             buildName: WebGL
-            buildPath: Deploy
+            buildsPath: Deploy
 
         # Rename build directory
         - name: Rename build directory
