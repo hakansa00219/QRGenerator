@@ -114,11 +114,6 @@ jobs:
             buildName: WebGL
             buildsPath: Deploy
 
-        # Rename build directory
-        - name: Rename build directory
-          run: |
-            mv build Deploy
-
         # Adjust permissions for Deploy directory
         - name: Fix Deploy Directory Permissions
           run: |
