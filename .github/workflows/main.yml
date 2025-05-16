@@ -270,6 +270,6 @@ jobs:
           # Push html5
           - name: Push WebGL build to Itch.io
             run: |
-              butler push Deploy hsari/qr-generator:html5
+              butler push Deploy hsari/qr-generator:html5 --userversion ${{ needs.auto-tag.outputs.new_tag }}
             env:
               BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
