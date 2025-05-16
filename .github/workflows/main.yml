@@ -185,7 +185,7 @@ jobs:
           # Install butler
           - name: Download latest Butler release
             run: |
-              wget https://broth.itch.zone/butler/linux-amd64/15.24.0/archive-default -O butler.zip
+              wget https://broth.itch.zone/butler/linux-amd64/15.24.0/archive/default -O butler.zip
               mkdir -p butler-dir
               unzip butler.zip -d butler-dir
               chmod +x butler-dir/butler
