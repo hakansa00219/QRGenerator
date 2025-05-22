@@ -4,7 +4,7 @@ using QR.Algorithms;
 using QR.Analysis;
 using QR.Enums;
 using QR.Scriptable;
-using QR.Utilities;
+using QR.Structs;
 using UnityEngine;
 
 namespace QR
@@ -12,7 +12,7 @@ namespace QR
     public class ErrorCorrection
     {
         private readonly Texture2D _texture;
-        private readonly DataAnalyzer _analyzer;
+        private readonly IBitProvider _bitProvider;
         private readonly int _ecDataSize;
         private readonly byte[] _data;
         private readonly EncodingType _encodingType;
@@ -20,10 +20,10 @@ namespace QR
         private const int ERROR_CORRECTION_LENGTH = 8;
         
         
-        public ErrorCorrection(ref Texture2D texture,ref DataAnalyzer analyzer, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data, int dataLength)
+        public ErrorCorrection(ref Texture2D texture,ref IBitProvider bitProvider, ref VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data, int dataLength)
         {
             _texture = texture;    
-            _analyzer = analyzer;
+            _bitProvider = bitProvider;
             _data = data;
             _encodingType = encodingType;
             _dataLength = dataLength;
@@ -56,12 +56,12 @@ namespace QR
             // 00010001    Padding
             // 11101100    Padding
             
-            var ecblocks = generator.GenerateECBlocks(dataList.ToArray() , _ecDataSize);
+            var ecblocks = generator.GenerateErrorCorrectionBlocks(dataList.ToArray() , _ecDataSize);
             
             for (int i = 0; i < _ecDataSize; i++) //17 characters 
             for (int j = ERROR_CORRECTION_LENGTH - 1; j >= 0; j--) //8 bits for each character
             {   
-                var bitNode = _analyzer.BitQueue.Dequeue();
+                var bitNode = _bitProvider.BitQueue.Dequeue();
                 _texture.SetPixel2D(bitNode.X, bitNode.Y, ((ecblocks[i] >> j) & 1) == 1 ? Color.black : Color.white);
                 // Debug.Log($"{bitNode.X}, {bitNode.Y}");
             }

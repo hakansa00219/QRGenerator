@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using QR.Analysis;
 using QR.Utilities;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Structs;
 using UnityEngine;
 
-namespace QR
+namespace QR.Encoding
 {
-    public class Encoder
+    public class EncodingSelector
     {
         private const string AlphaNumericPattern = @"^[0-9A-Z $%*+-./:]+$";
 
@@ -18,22 +18,22 @@ namespace QR
         private ErrorCorrectionLevel _errorCorrectionLevel;
         private readonly Texture2D _texture;
         private readonly VersionData _versionData;
-        private readonly DataAnalyzer _analyzer;
+        private readonly IBitProvider _bitProvider;
         
-        public Encoder(ref Texture2D qrTexture, ref DataAnalyzer analyzer, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
+        public EncodingSelector(ref Texture2D qrTexture, ref IBitProvider bitProvider, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
         {
-            _analyzer = analyzer;
+            _bitProvider = bitProvider;
             _charSize = charSize;
             _texture = qrTexture;
             _versionData = versionData;
             _errorCorrectionLevel = errorCorrectionLevel;
 
             // Check the compatibility of data to find the encoding type. TODO: later fix this rn only byte exist
-            //
+            
             if (!CheckCompatibility(errorCorrectionLevel, data, out _encodingType))
             {
                 Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
-                //TODO: Automatically select higher level version if selected Auto to version
+                //TODO: Automatically select higher level version if selected Auto to version if you developed higher versions
             }
         }
         public EncodingType SetEncoding(out ErrorCorrectionLevel errorCorrectionLevel)
@@ -43,8 +43,8 @@ namespace QR
             byte encodingType = (byte)_encodingType;
             for (var i = dataSize - 1; i >= 0; i--)
             {
-                var bitNode = _analyzer.BitQueue.Dequeue();
-                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((encodingType >> i) & 1) == 1 ? Color.black : Color.white);
+                var bitNode = _bitProvider.BitQueue.Dequeue();
+                _texture.SetPixel2D(bitNode.X, bitNode.Y, encodingType, i);
             }
             errorCorrectionLevel = _errorCorrectionLevel;
             return _encodingType;
