@@ -1,15 +1,16 @@
+using QR.Encoding;
 using UnityEngine;
 
 namespace QR
 {
     public class FormatInfo
     {
-        private readonly Texture2D _texture;
+        private readonly ITextureRenderer _textureRenderer;
         private readonly int _maskedFormatBits;
         
-        public FormatInfo(ref Texture2D texture, int maskedFormatBits)
+        public FormatInfo(ITextureRenderer textureRenderer, int maskedFormatBits)
         {
-            _texture = texture;
+            _textureRenderer = textureRenderer;
             _maskedFormatBits = maskedFormatBits;
         }
 
@@ -19,15 +20,16 @@ namespace QR
 
             for (var i = 0; i < binary.Length; i++)
             {
+                bool value = binary[i] == '1';
                 switch (i)
                 {
                     case < 7:
-                        _texture.SetPixel(8, i, binary[i] == '0' ? Color.white : Color.black); 
-                        _texture.SetPixel(i + (int)Mathf.Floor(i / 6), 12, binary[i] == '0' ? Color.white : Color.black);
+                        _textureRenderer.RenderBitToTexture(8, i, value); 
+                        _textureRenderer.RenderBitToTexture(i + (int)Mathf.Floor(i / 6), 12, value);
                         break;
                     case >= 7:
-                        _texture.SetPixel(8, 5 + i + (int)Mathf.Floor(i / 9), binary[i] == '0' ? Color.white : Color.black); 
-                        _texture.SetPixel(6 + i, 12, binary[i] == '0' ? Color.white : Color.black);
+                        _textureRenderer.RenderBitToTexture(8, 5 + i + (int)Mathf.Floor(i / 9), value); 
+                        _textureRenderer.RenderBitToTexture(6 + i, 12, value);
                         break;
                 }
             }

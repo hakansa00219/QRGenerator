@@ -20,7 +20,7 @@ namespace QR.Encoding
         private readonly VersionData _versionData;
         private readonly IBitProvider _bitProvider;
         
-        public EncodingSelector(ref Texture2D qrTexture, ref IBitProvider bitProvider, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
+        public EncodingSelector(ref Texture2D qrTexture, IBitProvider bitProvider, VersionData versionData, ErrorCorrectionLevel errorCorrectionLevel, string data, byte charSize)
         {
             _bitProvider = bitProvider;
             _charSize = charSize;

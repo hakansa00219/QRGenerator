@@ -23,6 +23,7 @@ namespace QR
         private VersionData _versionOne;
         private QRResolution _qrResolution;
         private IBitProvider _bitProvider;
+        private ITextureRenderer _textureRenderer;
         private MaskPatternData _maskPatternData;
         
         private EncodingType _encodingType;
@@ -86,10 +87,11 @@ namespace QR
             SetDarkModule(ref texture);
             // Data
             AnalyzeData();
-            SetEncodingMode(ref texture); //204
-            SetDataLength(ref texture);//196
-            SetData(ref texture, data, out byte[] combinedData); //196 - (EC * 8) - Data - Padding = 0          
-            SetErrorCorrectionData(ref texture, combinedData); // EC * 8
+            ImplementTextureRendererService(ref texture);
+            SetEncodingMode(ref texture);
+            SetDataLength();
+            SetData(data, out byte[] combinedData);     
+            SetErrorCorrectionData(combinedData); 
             // Mask and Format Info
             CheckBestMask(ref texture, out MaskPattern maskPattern);
             SetFormatInfo(ref texture);
@@ -99,23 +101,28 @@ namespace QR
             return texture;
         }
 
+        private void ImplementTextureRendererService(ref Texture2D texture)
+        {
+            _textureRenderer = new Encoder(ref texture, _bitProvider);
+        }
+
         private void AnalyzeData()
         {
             _bitProvider = new DataAnalyzer(_versionOne, _qrResolution.VersionResolutions[version]);
             Debug.Log("Data Size: " + _bitProvider.BitQueue.Count);
         }
 
-        private void SetErrorCorrectionData(ref Texture2D texture, byte[] combinedData)
+        private void SetErrorCorrectionData(byte[] combinedData)
         {
             ErrorCorrection ec =
-                new ErrorCorrection(ref texture, ref _bitProvider, ref _versionOne, _encodingType, errorCorrectionLevel,
+                new ErrorCorrection(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel,
                     combinedData, _dataSize);
             ec.SetErrorCorrectionData();
         }
 
-        private void SetData(ref Texture2D texture, string actualData, out byte[] combinedData)
+        private void SetData(string actualData, out byte[] combinedData)
         {
-            QRData qrData = new QRData(ref texture, ref _bitProvider, _versionOne, _encodingType, errorCorrectionLevel, actualData);
+            QRData qrData = new QRData(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
             qrData.SetData(out combinedData);
         }
 
@@ -136,7 +143,7 @@ namespace QR
             {
                 BCH bch = new BCH(i, (byte)errorCorrectionLevel);
                 int maskedFilterBits = bch.Calculation();
-                FormatInfo formatInfo = new FormatInfo(ref tempTexture, maskedFilterBits);
+                FormatInfo formatInfo = new FormatInfo(_textureRenderer, maskedFilterBits);
                 formatInfo.SetMaskedFormatBits();
                 maskPattern.CheckPenalty(ref tempTexture, i);
             }
@@ -149,7 +156,7 @@ namespace QR
         {
             BCH bch = new BCH((byte)mask, (byte)errorCorrectionLevel);
             int maskedFilterBits = bch.Calculation();
-            FormatInfo formatInfo = new FormatInfo(ref texture, maskedFilterBits);
+            FormatInfo formatInfo = new FormatInfo(_textureRenderer, maskedFilterBits);
             formatInfo.SetMaskedFormatBits();
         }
 
@@ -158,9 +165,9 @@ namespace QR
             maskPattern.SetMask(ref texture, (byte)mask);
         }
 
-        private void SetDataLength(ref Texture2D texture)
+        private void SetDataLength()
         {
-            Length lengthModule = new Length(ref texture, ref _bitProvider, _encodingType, _versionOne, _dataSize);
+            Length lengthModule = new Length(_textureRenderer, _encodingType, _versionOne, _dataSize);
             lengthModule.SetLength();
         }
 
@@ -206,7 +213,7 @@ namespace QR
         private void SetEncodingMode(ref Texture2D texture)
         {
             //TODO: make it viable for every versions of QR
-            EncodingSelector encoder = new EncodingSelector(ref texture, ref _bitProvider,  _versionOne, errorCorrectionLevel, data, _dataSize);
+            EncodingSelector encoder = new EncodingSelector(ref texture, _bitProvider,  _versionOne, errorCorrectionLevel, data, _dataSize);
             _encodingType = encoder.SetEncoding(out errorCorrectionLevel);
             _capacity = _versionOne.CharacterSizeTable[new QRType(_encodingType, errorCorrectionLevel)].MaxMainData;
         }
