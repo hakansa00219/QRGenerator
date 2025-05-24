@@ -58,7 +58,7 @@ namespace QR
             
             byte[] ecBlocks = generator.GenerateErrorCorrectionBlocks(dataList.ToArray() , _ecDataSize);
             
-            _textureRenderer.RenderDataToTexture(ecBlocks);
+            _textureRenderer.RenderingDataToTexture(ecBlocks);
         }
         
         

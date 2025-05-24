@@ -65,7 +65,7 @@ namespace QR
                 byte selectedPadding = i % 2 == 0 ? FirstPadding : SecondPadding;
                 combinedDataList.Add(selectedPadding);
                 // Foreach leftoverData color the QR.
-                _textureRenderer.RenderDataToTexture(selectedPadding, PaddingDataSize);
+                _textureRenderer.RenderingDataToTexture(selectedPadding, PaddingDataSize);
             }
             
             combinedData = combinedDataList.ToArray();
@@ -76,7 +76,7 @@ namespace QR
             endData = 0b0000;
             int endDataSize = 4;
             
-            _textureRenderer.RenderDataToTexture(endData, endDataSize);
+            _textureRenderer.RenderingDataToTexture(endData, endDataSize);
         }
 
         private void RenderMainData(out int dataSize, out byte[] convertedData)
@@ -88,7 +88,7 @@ namespace QR
             Debug.Log("Data: " + _data);
             
             //TODO: Whats going to happen if data is not byte. Need to check this.
-            _textureRenderer.RenderDataToTexture(convertedData);
+            _textureRenderer.RenderingDataToTexture(convertedData);
         }
     }
 }

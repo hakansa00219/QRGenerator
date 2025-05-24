@@ -24,12 +24,12 @@ namespace QR
                 switch (i)
                 { 
                     case < 7:
-                        _textureRenderer.RenderBitToTexture(8, 20 - i, value); 
-                        _textureRenderer.RenderBitToTexture(i + (int)MathF.Floor(i / 6), 8, value);
+                        _textureRenderer.RenderingBitToTexture(8, _textureRenderer.TextureSize - 1 - i, value); 
+                        _textureRenderer.RenderingBitToTexture(i + (int)MathF.Floor(i / 6), 8, value);
                         break;
                     case >= 7:
-                        _textureRenderer.RenderBitToTexture(8, 15 + i + (int)MathF.Floor(i / 9), value); 
-                        _textureRenderer.RenderBitToTexture(6 + i, 8, value);
+                        _textureRenderer.RenderingBitToTexture(8, _textureRenderer.TextureSize - 6 - i - (int)MathF.Floor(i / 9), value); 
+                        _textureRenderer.RenderingBitToTexture(6 + i, 8, value);
                         break;
                 }
             }

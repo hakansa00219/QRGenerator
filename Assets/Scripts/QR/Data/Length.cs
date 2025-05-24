@@ -24,7 +24,7 @@ namespace QR
         public void SetLength()
         {
             int dataSize = VersionUtility.GetCharacterBitLength(_versionData.dataVersion, _encodingType);
-            _textureRenderer.RenderDataToTexture(_data, dataSize);
+            _textureRenderer.RenderingDataToTexture(_data, dataSize);
         }
     }
 }
