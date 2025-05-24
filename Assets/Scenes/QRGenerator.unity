@@ -372,7 +372,7 @@ MonoBehaviour:
   version: 1
   mask: 0
   errorCorrectionLevel: 2
-  data: Victory
+  data: Ver1
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0

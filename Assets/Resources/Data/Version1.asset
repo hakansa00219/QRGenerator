@@ -21,406 +21,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: PatternBitOrder
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[QR.Enums.BytePattern, Assembly-CSharp],[System.ValueTuple`2[[System.ValueTuple`2[[System.Int32,
-        mscorlib],[System.Int32, mscorlib]], mscorlib],[System.Int32[], mscorlib]],
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[QR.Enums.BytePattern,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 2|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 3|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 4|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 4
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 5|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 8
-    - Name: 
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 7
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 6|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 5
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib],[System.Int32[], mscorlib]], mscorlib
-    - Name: Item1
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Int32, mscorlib],[System.Int32, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 3
-      Data: 2
-    - Name: Item2
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Item2
-      Entry: 7
-      Data: 7|System.Int32[], mscorlib
-    - Name: 
-      Entry: 14
-      Data: 4
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: CharacterSizeTable
       Entry: 7
-      Data: 8|System.Collections.Generic.Dictionary`2[[QR.Scriptable.QRType, Assembly-CSharp],[QR.Scriptable.VersionData+CharacterSize,
+      Data: 0|System.Collections.Generic.Dictionary`2[[QR.Structs.QRType, Assembly-CSharp],[QR.Structs.CharacterSize,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 9|System.Collections.Generic.ObjectEqualityComparer`1[[QR.Scriptable.QRType,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[QR.Structs.QRType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -433,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: QR.Scriptable.QRType, Assembly-CSharp
+      Data: QR.Structs.QRType, Assembly-CSharp
     - Name: EncodingType
       Entry: 3
       Data: 4
@@ -445,7 +52,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+      Data: QR.Structs.CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
       Data: 17
@@ -463,7 +70,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: QR.Scriptable.QRType, Assembly-CSharp
+      Data: QR.Structs.QRType, Assembly-CSharp
     - Name: EncodingType
       Entry: 3
       Data: 4
@@ -475,7 +82,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+      Data: QR.Structs.CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
       Data: 7
@@ -493,7 +100,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: QR.Scriptable.QRType, Assembly-CSharp
+      Data: QR.Structs.QRType, Assembly-CSharp
     - Name: EncodingType
       Entry: 3
       Data: 4
@@ -505,7 +112,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+      Data: QR.Structs.CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
       Data: 14
@@ -523,7 +130,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 7
-      Data: QR.Scriptable.QRType, Assembly-CSharp
+      Data: QR.Structs.QRType, Assembly-CSharp
     - Name: EncodingType
       Entry: 3
       Data: 4
@@ -535,7 +142,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 7
-      Data: QR.Scriptable.VersionData+CharacterSize, Assembly-CSharp
+      Data: QR.Structs.CharacterSize, Assembly-CSharp
     - Name: MaxMainData
       Entry: 3
       Data: 10
@@ -556,7 +163,7 @@ MonoBehaviour:
       Data: 
     - Name: BitMatrix
       Entry: 7
-      Data: 10|System.Boolean[,], mscorlib
+      Data: 2|System.Boolean[,], mscorlib
     - Name: 
       Entry: 12
       Data: 441

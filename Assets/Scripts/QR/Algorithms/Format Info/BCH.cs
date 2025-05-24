@@ -1,11 +1,9 @@
-using System;
-
 namespace QR.Algorithms
 {
     public class BCH
     {
-        private const int PolynomialGenerator = 0b10100110111;
-        private const int FormatMask = 0b101010000010010;
+        private const int PolynomialGenerator = 0b10100110111; // BCH poly gen 
+        private const int FormatMask = 0b101010000010010;// BCH format mask
 
         private readonly byte _maskPattern;
         private readonly byte _errorCorrection;

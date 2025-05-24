@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using QR.Analysis;
+using QR.Encoding;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Structs;
 using QR.Utilities;
 using UnityEngine;
 
@@ -10,18 +11,19 @@ namespace QR
 {
     public class QRData
     {
-        private readonly Texture2D _texture;
         private readonly string _data;
-        private readonly DataAnalyzer _analyzer;
+        private readonly ITextureRenderer _textureRenderer;
         private readonly VersionData _versionData;
         private readonly EncodingType _encodingType;
         private readonly ErrorCorrectionLevel _errorCorrectionLevel;
-        private const byte firstPadding = 0xEC;
-        private const byte secondPadding = 0x11;
-        public QRData(ref Texture2D texture, ref DataAnalyzer analyzer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
+        
+        private const byte FirstPadding = 0xEC;
+        private const byte SecondPadding = 0x11;
+        private const int PaddingDataSize = 8;
+        
+        public QRData(ITextureRenderer textureRenderer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
         {
-            _texture = texture;
-            _analyzer = analyzer;
+            _textureRenderer = textureRenderer;
             _data = data;
             _versionData = versionData;
             _encodingType = encodingType;
@@ -29,44 +31,24 @@ namespace QR
         }
 
         // !!! When data is over(Ver1) add 4 bit END block. Then add paddings to complete the data capacity.(so 3 more padding)
-        // Rest is error correction.
         public void SetData(out byte[] combinedData)
         {
             combinedData = null;
             List<byte> combinedDataList = new List<byte>();
             
             // THE DATA
-            int dataSize = _data.Length;
-            int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
-
-            byte[] convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
-            Debug.Log("Data: " + _data);
-
-            for (int i = 0; i < dataSize; i++) //4 characters
-            for (int j = charBitSize - 1; j >= 0; j--) //8 bits for each character
-            {   
-                var bitNode = _analyzer.BitQueue.Dequeue();
-                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((convertedData[i] >> j) & 1) == 1 ? Color.black : Color.white);
-            }
-
+            RenderMainData(out var dataSize, out var convertedData);
             combinedDataList.AddRange(convertedData);
             
             // DATA END
-            byte endData = 0b0000;
-            int endDataSize = 4;
-
-            for (int i = endDataSize - 1; i >= 0; i--)
-            {
-                var bitNode = _analyzer.BitQueue.Dequeue();
-                _texture.SetPixel2D(bitNode.X, bitNode.Y, ((endData >> i) & 1) == 1 ? Color.black : Color.white);
-            }
-            
+            RenderEndData(out var endData);
             combinedDataList.Add(endData);
             
             //PADDING IF NEED
-            int mainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
+            // Get the maximum main data size depending on QR type.
+            int qrMainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
                 .MaxMainData;
-            int leftOverDataSize = mainDataSize - dataSize;
+            int leftOverDataSize = qrMainDataSize - dataSize;
             
             switch (leftOverDataSize)
             {
@@ -78,21 +60,35 @@ namespace QR
                     return;
             }
             
-            int paddingDataSize = 8;
             for (int i = 0; i < leftOverDataSize; i++)
             {
-                byte selectedPadding = i % 2 == 0 ? firstPadding : secondPadding;
+                byte selectedPadding = i % 2 == 0 ? FirstPadding : SecondPadding;
                 combinedDataList.Add(selectedPadding);
-                
-                for (int j = paddingDataSize - 1; j >= 0; j--)
-                {
-                    var bitNode = _analyzer.BitQueue.Dequeue();
-                    _texture.SetPixel2D(bitNode.X, bitNode.Y,
-                        ((selectedPadding >> j) & 1) == 1 ? Color.black : Color.white);
-                }
+                // Foreach leftoverData color the QR.
+                _textureRenderer.RenderingDataToTexture(selectedPadding, PaddingDataSize);
             }
             
             combinedData = combinedDataList.ToArray();
+        }
+
+        private void RenderEndData(out byte endData)
+        {
+            endData = 0b0000;
+            int endDataSize = 4;
+            
+            _textureRenderer.RenderingDataToTexture(endData, endDataSize);
+        }
+
+        private void RenderMainData(out int dataSize, out byte[] convertedData)
+        {
+            dataSize = _data.Length;
+            int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
+            // convert string data to byte array. TODO: only works for byte (charBitSize == 8)!!
+            convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
+            Debug.Log("Data: " + _data);
+            
+            //TODO: Whats going to happen if data is not byte. Need to check this.
+            _textureRenderer.RenderingDataToTexture(convertedData);
         }
     }
 }

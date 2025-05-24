@@ -1,16 +1,15 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace QR.Algorithms
 {
     public class ReedSolomonGenerator
     {
-        private readonly int PRIMITIVE_POLY = 0x11D; // GF(256) için ilkel polinom
-        private readonly byte[] expTable = new byte[256]; // Üstel tablo (antilog)
-        private readonly byte[] logTable = new byte[256]; // Logaritma tablosu
+        private readonly int PRIMITIVE_POLY = 0x11D; // GF(256) primitive polynomial
+        private readonly byte[] expTable = new byte[256]; // expo table
+        private readonly byte[] logTable = new byte[256]; // logarithmic table
 
-        // GF(256) alanını başlat
+        // GF(256) field
         private void InitializeGaloisField()
         {
             int value = 1;
@@ -33,25 +32,14 @@ namespace QR.Algorithms
 
             // Duplicate last entry for easier modulo operation in lookup
             expTable[255] = 0;
-            
-            // Debug.Log("Exponentiation Table (expTable):");
-            // string s1 = "";
-            // for (int i = 0; i < 256; i++)
-            //     s1 += $"{expTable[i]} ";
-            // Debug.Log(s1);
-            // Debug.Log("Logarithm Table (logTable):");
-            // string s2 = "";
-            // for (int i = 0; i < 256; i++) 
-            //     s2 += $"{logTable[i]} ";
-            // Debug.Log(s2);
         }
 
-        // GF(256) çarpma işlemi
+        // GF(256) multiply
         private byte GaloisMultiply(byte a, byte b)
         {
             if (a == 0 || b == 0) return 0;
             int logSum = logTable[a] + logTable[b];
-            return expTable[logSum % 255]; // Mod 255 alınır (QR standardı)
+            return expTable[logSum % 255]; // mod 255
         }
 
         private byte[] CreateGeneratorPolynomial(int codeWordsSize)
@@ -74,7 +62,7 @@ namespace QR.Algorithms
             return g;
         }
 
-        public byte[] GenerateECBlocks(byte[] data, int errorCorrectionDataBlockSize)
+        public byte[] GenerateErrorCorrectionBlocks(byte[] data, int errorCorrectionDataBlockSize)
         {
             InitializeGaloisField();
             byte[] ecBlocks = ComputeErrorCorrection(data, errorCorrectionDataBlockSize);

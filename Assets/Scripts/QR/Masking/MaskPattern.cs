@@ -41,7 +41,7 @@ namespace QR.Masking
             if (currentScore >= LowestScore) return;
                 
             LowestScore = currentScore;
-            BestMask = mask;
+            BestMask = 1; //for test
             CachedBestTexture = texture;
         }
 
