@@ -4,86 +4,57 @@ namespace QR.Masking
 {
     public class FirstEvaluation : Evaluation
     {
-        public override int Calculation(byte mask, ref Texture2D texture)
+        public override int Calculation(in Color[] pixels, int texSize, byte mask)
         {
-            int horizontalTotal = 0, verticalTotal = 0;
+            int horizontalTotal = CalculateTotals(pixels, texSize, true);
+            int verticalTotal = CalculateTotals(pixels, texSize, false);
             
-            int width = texture.width;
-            int height = texture.height;
-
-            var test = new GameObject(mask.ToString(), typeof(SpriteRenderer));
-            test.SetActive(false);
-            SpriteRenderer rawImage = test.GetComponent<SpriteRenderer>();
-            
-            Texture2D newtx = new Texture2D(21, 21, TextureFormat.RGB565, false)
-            {
-                filterMode = FilterMode.Point,
-                anisoLevel = 0
-            };
-            newtx.SetPixels(texture.GetPixels());
-            newtx.Apply();
-            
-            rawImage.sprite = Sprite.Create(newtx, new Rect(0, 0, 21, 21), new Vector2(0.5f, 0.5f));
-
-            int stackCount;
-            Color lastBitColor;
-            
-            for (int y = 0; y < height; y++)
-            {
-                lastBitColor = Color.clear;
-                stackCount = 0;
-                for (int x = 0; x < width; x++)
-                {
-                    var nextBitColor = texture.GetPixel2D(x, y);
-                    if (lastBitColor == nextBitColor) stackCount++;
-                    else
-                    {
-                        lastBitColor = nextBitColor;
-                        stackCount = 1;
-                        continue;
-                    }
-
-                    switch (stackCount)
-                    {
-                        case 5:
-                            horizontalTotal += 3;
-                            break;
-                        case > 5:
-                            horizontalTotal++;
-                            break;
-                    }
-                }
-            }
-
-
-            for (int x = 0; x < width; x++)
-            {
-                lastBitColor = Color.clear;
-                stackCount = 0;
-                for (int y = 0; y < height; y++)
-                {
-                    var nextBitColor = texture.GetPixel2D(x, y);
-                    if (lastBitColor == nextBitColor) stackCount++;
-                    else
-                    {
-                        lastBitColor = nextBitColor;
-                        stackCount = 1;
-                        continue;
-                    }
-
-                    switch (stackCount)
-                    {
-                        case 5:
-                            verticalTotal += 3;
-                            break;
-                        case > 5:
-                            verticalTotal++;
-                            break;
-                    }
-                }
-            }
-
             return horizontalTotal + verticalTotal;
+        }
+
+        /// <summary>
+        /// If horizontal/vertical line has more than 5 same color back to back it gives penalty to evaluation.
+        /// </summary>
+        /// <param name="pixels"></param>
+        /// <param name="texSize"></param>
+        /// <param name="isHorizontal"></param>
+        /// <returns></returns>
+        private static int CalculateTotals(in Color[] pixels, int texSize, bool isHorizontal)
+        {
+            const int penaltyCount = 5;
+            const int penaltyIncrement = 3;
+            
+            int total = 0;
+            for (int y = 0; y < texSize; y++)
+            {
+                Color lastBitColor = Color.clear;
+                int stackCount = 0;
+                for (int x = 0; x < texSize; x++)
+                {
+                    int index = isHorizontal ? y * texSize + x : x * texSize + y;
+                    Color nextBitColor = pixels[index];
+                    
+                    if (lastBitColor == nextBitColor) stackCount++;
+                    else
+                    {
+                        lastBitColor = nextBitColor;
+                        stackCount = 1;
+                        continue;
+                    }
+
+                    switch (stackCount)
+                    {
+                        case penaltyCount:
+                            total += penaltyIncrement;
+                            break;
+                        case > penaltyCount:
+                            total++;
+                            break;
+                    }
+                }
+            }
+
+            return total;
         }
     }
 }

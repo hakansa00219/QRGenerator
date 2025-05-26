@@ -1,5 +1,4 @@
 using QR.Enums;
-using Sirenix.Serialization;
 
 namespace QR.Structs
 {

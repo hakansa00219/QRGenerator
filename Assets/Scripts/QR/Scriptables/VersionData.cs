@@ -3,7 +3,6 @@ using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using QR.Enums;
 using QR.Structs;
 using Sirenix.Utilities;
 using UnityEditor;
