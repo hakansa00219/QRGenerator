@@ -7,6 +7,7 @@ using QR.Masking;
 using QR.Scriptable;
 using QR.Structs;
 using QR.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Version = QR.Enums.Version;
 
@@ -28,7 +29,10 @@ namespace QR
         private EncodingType _encodingType;
         private int _size;
         private byte _dataSize;
+        
+        [ShowInInspector, ReadOnly]
         private int _capacity;
+        [ShowInInspector, ReadOnly]
         private int _totalDataBitSize;
         
         // !! White = 0 Black = 1
