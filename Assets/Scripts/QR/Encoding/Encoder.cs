@@ -6,7 +6,6 @@ namespace QR.Encoding
     public class Encoder : ITextureRenderer
     {
         private readonly IBitProvider _bitProvider;
-        private Color[] _pixels;
         public Encoder(ref Texture2D texture, IBitProvider bitProvider)
         {
             _bitProvider = bitProvider;
@@ -16,19 +15,19 @@ namespace QR.Encoding
 
         public int TextureSize { get; }
         public Texture2D Texture { get; }
-        public Color[] Pixels => _pixels ??= Texture.GetPixels();
+        public Color[] Pixels => Texture.GetPixels();
 
         public Texture2D GetCopyTexture()
         {
-            Texture2D CopyTexture = new Texture2D(TextureSize, TextureSize, TextureFormat.RGB565, false)
+            Texture2D copyTexture = new Texture2D(TextureSize, TextureSize, TextureFormat.RGB565, false)
             {
                 filterMode = FilterMode.Point,
                 anisoLevel = 0
             };
-            CopyTexture.SetPixels(Pixels);
-            CopyTexture.Apply();
+            copyTexture.SetPixels(Pixels);
+            copyTexture.Apply();
 
-            return CopyTexture;
+            return copyTexture;
         }
 
         public void RenderingDataToTexture(int[] data, int charSize)

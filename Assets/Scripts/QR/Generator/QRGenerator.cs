@@ -63,19 +63,13 @@ namespace QR
 
         private Texture2D Generation()
         {
-            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
-            {
-                filterMode = FilterMode.Point,
-                anisoLevel = 0
-            };
+            Texture2D texture = TextureGeneration();
             
-
+            // Fill everything with 0. Do not need it but yea
             for (int i = 0; i < _size; i++)
             {
                 for (int j = 0; j < _size; j++)
                 {
-                    // Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
-            
                     texture.SetPixel(i, j, Color.white);
                 }
             }
@@ -105,6 +99,16 @@ namespace QR
             SetMask(maskPattern);
             texture.Apply();
 
+            return texture;
+        }
+
+        private Texture2D TextureGeneration()
+        {
+            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
+            {
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
             return texture;
         }
 
@@ -143,7 +147,7 @@ namespace QR
 
         private void CheckBestMask(out MaskPattern maskPattern)
         {
-            Texture2D CopiedTexture = _textureRenderer.GetCopyTexture();
+            
             
             maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
             
@@ -153,7 +157,8 @@ namespace QR
                 int maskedFilterBits = bch.Calculation();
                 FormatInfo formatInfo = new FormatInfo(_textureRenderer, maskedFilterBits);
                 formatInfo.SetMaskedFormatBits();
-                maskPattern.CheckPenalty(CopiedTexture, i);
+                Texture2D copiedTexture = _textureRenderer.GetCopyTexture();
+                maskPattern.CheckPenalty(copiedTexture, i);
             }
             
             mask = maskPattern.BestMask;

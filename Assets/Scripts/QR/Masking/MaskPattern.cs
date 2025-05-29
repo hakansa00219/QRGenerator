@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using QR.Encoding;
 using QR.Scriptable;
 using UnityEngine;
@@ -47,14 +48,12 @@ namespace QR.Masking
 
         private int SumOfEvaluations(Texture2D texture, byte mask)
         {
-            
-            
             int sum = 0;
             SetMask(texture, mask);
-            Color[] pixels = texture.GetPixels();
+            bool[] bits = texture.GetPixels().Select(x => x == Color.black).ToArray();
             foreach (var evaluation in _evaluations)
             {
-                sum += evaluation.Calculation(pixels, texture.width, mask);
+                sum += evaluation.Calculation(bits, texture.width, texture.height);
             }
             UnMask(texture, mask);
             Debug.Log($"Mask:{mask} - Sum of evaluations is {sum}");

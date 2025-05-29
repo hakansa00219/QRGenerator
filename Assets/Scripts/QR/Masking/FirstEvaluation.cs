@@ -4,56 +4,90 @@ namespace QR.Masking
 {
     public class FirstEvaluation : Evaluation
     {
-        public override int Calculation(in Color[] pixels, int texSize, byte mask)
+        private const int PenaltyCount = 5;
+        private const int PenaltyIncrement = 3;
+        public override int Calculation(in bool[] bits, int horizontalSize, int verticalSize)
         {
-            int horizontalTotal = CalculateTotals(pixels, texSize, true);
-            int verticalTotal = CalculateTotals(pixels, texSize, false);
+            int horizontalTotal = HorizontalPenalty(bits, horizontalSize, verticalSize);
+            int verticalTotal = VerticalPenalty(bits, horizontalSize, verticalSize);
             
-            return horizontalTotal + verticalTotal;
+            int sum = horizontalTotal + verticalTotal;
+            Debug.Log($"First Evaluation Penalty: {sum}");
+            return sum;
         }
 
-        /// <summary>
-        /// If horizontal/vertical line has more than 5 same color back to back it gives penalty to evaluation.
-        /// </summary>
-        /// <param name="pixels"></param>
-        /// <param name="texSize"></param>
-        /// <param name="isHorizontal"></param>
-        /// <returns></returns>
-        private static int CalculateTotals(in Color[] pixels, int texSize, bool isHorizontal)
+        // Calculation of horizontal/vertical line penalty. If it has more than 5 same color back to back it gives penalty to evaluation.
+        private static int HorizontalPenalty(in bool[] pixels, int horizontalSize, int verticalSize)
         {
-            const int penaltyCount = 5;
-            const int penaltyIncrement = 3;
-            
             int total = 0;
-            for (int y = 0; y < texSize; y++)
+            for (int y = 0; y < verticalSize; y++)
             {
-                Color lastBitColor = Color.clear;
+                bool lastBit = false;
                 int stackCount = 0;
-                for (int x = 0; x < texSize; x++)
+                for (int x = 0; x < horizontalSize; x++)
                 {
-                    int index = isHorizontal ? y * texSize + x : x * texSize + y;
-                    Color nextBitColor = pixels[index];
-                    
-                    if (lastBitColor == nextBitColor) stackCount++;
-                    else
+                    int index = y * horizontalSize + x;
+                    bool nextBit = pixels[index];
+
+                    if (lastBit == nextBit) stackCount++; // Same bit  ++
+                    else // Different bit reset.
                     {
-                        lastBitColor = nextBitColor;
+                        lastBit = nextBit;
                         stackCount = 1;
                         continue;
                     }
 
                     switch (stackCount)
                     {
-                        case penaltyCount:
-                            total += penaltyIncrement;
+                        case PenaltyCount:
+                            total += PenaltyIncrement;
                             break;
-                        case > penaltyCount:
+                        case > PenaltyCount:
                             total++;
                             break;
                     }
                 }
+                
+                // Debug.Log($"Line: {y} | Total: {total}");
             }
+            
+            return total;
+        }
+        
+        private static int VerticalPenalty(in bool[] pixels, int horizontalSize, int verticalSize)
+        {
+            int total = 0;
+            for (int x = 0; x < horizontalSize; x++)
+            {
+                bool lastBit = false;
+                int stackCount = 0;
+                for (int y = 0; y < verticalSize; y++)
+                {
+                    int index = y * horizontalSize + x ;
+                    bool nextBit = pixels[index];
 
+                    if (lastBit == nextBit) stackCount++; // Same bit  ++
+                    else // Different bit reset.
+                    {
+                        lastBit = nextBit;
+                        stackCount = 1;
+                        continue;
+                    }
+
+                    switch (stackCount)
+                    {
+                        case PenaltyCount:
+                            total += PenaltyIncrement;
+                            break;
+                        case > PenaltyCount:
+                            total++;
+                            break;
+                    }
+                }
+                
+                // Debug.Log($"Line: {y} | Total: {total}");
+            }
+            
             return total;
         }
     }

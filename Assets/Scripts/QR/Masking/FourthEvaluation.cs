@@ -4,9 +4,12 @@ namespace QR.Masking
 {
     public class FourthEvaluation : Evaluation
     {
-        public override int Calculation(in Color[] pixels, int texSize, byte mask)
+        public override int Calculation(in bool[] bits, int horizontalSize, int verticalSize)
         {
-            return 0;
+            
+            int penalty = 0;
+            Debug.Log($"Fourth Penalty: {penalty}");
+            return penalty;
         }
     }
 }
