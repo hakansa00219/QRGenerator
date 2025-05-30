@@ -63,10 +63,10 @@ namespace QR.Masking
                         //If any check is true = penalty
                         if (rightCheck || leftCheck)
                         {
-                            if(leftCheck)
-                                Debug.Log($"Horizontal Penalty!  {(x - ExtraPatternLength - PatternLength,y)}-{(x,y)}");
-                            if(rightCheck)
-                                Debug.Log($"Horizontal Penalty!  {(x - PatternLength, y)}-{(x + ExtraPatternLength,y)}");
+                            // if(leftCheck)
+                            //     Debug.Log($"Horizontal Penalty!  {(x - ExtraPatternLength - PatternLength,y)}-{(x,y)}");
+                            // if(rightCheck)
+                            //     Debug.Log($"Horizontal Penalty!  {(x - PatternLength, y)}-{(x + ExtraPatternLength,y)}");
                             penaltyCount++;
                         }
                     }
@@ -119,10 +119,10 @@ namespace QR.Masking
                         //If any check is true = penalty
                         if (upCheck || downCheck)
                         {
-                            if(downCheck)
-                                Debug.Log($"Vertical Penalty!  {(x, downStart)}-{(x,y)}");
-                            if(upCheck)
-                                Debug.Log($"Vertical Penalty!  {(x, y - PatternLength)}-{(x, y + ExtraPatternLength)}");
+                            // if(downCheck)
+                            //     Debug.Log($"Vertical Penalty!  {(x, downStart)}-{(x,y)}");
+                            // if(upCheck)
+                            //     Debug.Log($"Vertical Penalty!  {(x, y - PatternLength)}-{(x, y + ExtraPatternLength)}");
                             penaltyCount++;
                         }
                     }

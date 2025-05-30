@@ -6,10 +6,8 @@ using UnityEngine;
 
 namespace Tests.PlayMode.QR.Masking
 {
-    public class MaskEvaluationTests
+    public class ThirdEvaluationTests
     {
-        private const int ExpectedPenalty = 40;
-
         [Test]
         public void LeftPattern_ShouldReturnExpectedPenalty()
         {
@@ -22,13 +20,12 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
-            Assert.IsTrue(penalty == ExpectedPenalty);
+            Assert.IsTrue(penalty == 40);
 
             Object.Destroy(texture);
         }
@@ -44,8 +41,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.black, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -66,8 +62,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -88,8 +83,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -110,8 +104,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -132,13 +125,12 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
-            Assert.IsTrue(penalty == ExpectedPenalty);
+            Assert.IsTrue(penalty == 40);
             
             Object.Destroy(texture);
         }
@@ -154,8 +146,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -176,8 +167,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -198,8 +188,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -220,8 +209,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.black, Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -242,13 +230,12 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
-            Assert.IsTrue(penalty == ExpectedPenalty);
+            Assert.IsTrue(penalty == 40);
             
             Object.Destroy(texture);
         }
@@ -264,8 +251,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.black, Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -286,8 +272,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -308,8 +293,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -330,8 +314,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black , Color.white, Color.white, Color.white});
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -352,13 +335,12 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
-            Assert.IsTrue(penalty == ExpectedPenalty);
+            Assert.IsTrue(penalty == 40);
             
             Object.Destroy(texture);
         }
@@ -374,8 +356,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.black, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -396,8 +377,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -418,8 +398,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -440,8 +419,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.white, Color.white, Color.white, Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -462,8 +440,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -484,8 +461,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(new Color[] { Color.black, Color.white, Color.black, Color.black, Color.black, Color.white, Color.black });
             texture.Apply();
 
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
-            var pixels = texture.GetPixels();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
@@ -512,7 +488,7 @@ namespace Tests.PlayMode.QR.Masking
             texture.SetPixels(pixels);
             texture.Apply();
             
-            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
+            Evaluation thirdEvaluation = new ThirdEvaluation();
             
             int penalty = 0;
             penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
