@@ -1,5 +1,3 @@
-using System;
-using QR.Analysis;
 using UnityEngine;
 
 namespace QR.Encoding
@@ -7,6 +5,10 @@ namespace QR.Encoding
     public interface ITextureRenderer
     {
         public int TextureSize { get; }
+        public Texture2D Texture { get; }
+        public Color[] Pixels { get; }
+
+        public Texture2D GetCopyTexture();
         /// <summary>
         /// Rendering data array (Multiple characters with different sized) to texture. Position doesn't matter since module rendering it the right way.
         /// </summary>

@@ -30,4 +30,24 @@ public static class TextureUtils
     {
         return texture.GetPixel(x, texture.height - 1 - y);
     }
+    public static bool[,] ConvertTo2DArray(this Texture2D texture)
+    {
+        Color[] pixels = texture.GetPixels();
+        int width = texture.width;
+        int height = texture.height;
+
+        bool[,] result = new bool[width, height];
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                int index = y * width + x;
+                Color color = pixels[index];
+                result[x, y] = color == Color.black;
+            }
+        }
+
+        return result;
+    }
 }

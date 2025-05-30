@@ -1,16 +1,6 @@
 
 namespace QR.Enums
 {
-    public enum BytePattern : byte
-    {
-        Up = 0,
-        Down = 1,
-        Clockwise = 2,
-        CtrClockwise = 3,
-        Encoding = 4,
-        End = 5,
-    }
-
     public enum ErrorCorrectionLevel : byte
     {
         High = 0b10,
@@ -40,14 +30,5 @@ namespace QR.Enums
         Eight = 8,
         Nine = 9,
         Ten = 10,
-    }
-
-    public enum DataTypes : byte
-    {
-        EncodingMode = 0,
-        DataLength = 1,
-        Data = 2,
-        EndOfData = 3,
-        ErrorCorrectionData = 4,
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using QR.Masking;
 using QR.Scriptable;
 using Sirenix.OdinInspector;
@@ -25,7 +24,7 @@ public class QRSample : SerializedScriptableObject
         if (UnmaskedBitMatrix == null) UnmaskedBitMatrix = new bool[BitMatrix.GetLength(0), BitMatrix.GetLength(1)];
         
         VersionData versionOne = Resources.Load<VersionData>("Data/Version1");
-        MaskPatternTest maskTool = new MaskPatternTest(ref versionOne, maskPattern);
+        MaskPatternTest maskTool = new MaskPatternTest(versionOne, maskPattern);
         UnmaskedBitMatrix = maskTool.UnmaskedVersion(BitMatrix);
         
     }

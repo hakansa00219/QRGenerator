@@ -10,7 +10,7 @@ namespace QR.Masking
         private readonly MaskPatternData _maskPatternData;
         private readonly VersionData _versionData;
         
-        public MaskPatternTest(ref VersionData versionData, byte selectedPattern)
+        public MaskPatternTest(VersionData versionData, byte selectedPattern)
         {
             _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
             _versionData = versionData;

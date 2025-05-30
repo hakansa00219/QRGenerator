@@ -3,7 +3,6 @@ using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using QR.Enums;
 using QR.Structs;
 using Sirenix.Utilities;
 using UnityEditor;
@@ -23,12 +22,12 @@ namespace QR.Scriptable
         [TableMatrix(DrawElementMethod = "DrawBits", HorizontalTitle = "X", VerticalTitle = "Y")]
         public bool[,] BitMatrix;
 
-        [ReadOnly] 
-        public int dataSize;
+        [ShowInInspector, ReadOnly] 
+        private int _dataSize;
 
         private void OnValidate()
         {
-            dataSize = BitMatrix.Cast<bool>().Count(b => b);
+            _dataSize = BitMatrix.Cast<bool>().Count(b => b);
         }
 
         private void CreateBitMatrix()

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using QR.Algorithms;
 using QR.Analysis;
 using QR.Encoding;
@@ -8,6 +7,7 @@ using QR.Masking;
 using QR.Scriptable;
 using QR.Structs;
 using QR.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Version = QR.Enums.Version;
 
@@ -29,7 +29,10 @@ namespace QR
         private EncodingType _encodingType;
         private int _size;
         private byte _dataSize;
+        
+        [ShowInInspector, ReadOnly]
         private int _capacity;
+        [ShowInInspector, ReadOnly]
         private int _totalDataBitSize;
         
         // !! White = 0 Black = 1
@@ -47,6 +50,14 @@ namespace QR
 
         private void Start()
         {
+            Generate();
+        }
+
+        public void Generate(string qrData = "")
+        {
+            if(!string.IsNullOrEmpty(qrData)) 
+                data = qrData;
+            
             GameObject QR = new GameObject();
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
@@ -60,19 +71,13 @@ namespace QR
 
         private Texture2D Generation()
         {
-            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
-            {
-                filterMode = FilterMode.Point,
-                anisoLevel = 0
-            };
+            Texture2D texture = TextureGeneration();
             
-
+            // Fill everything with 0. Do not need it but yea
             for (int i = 0; i < _size; i++)
             {
                 for (int j = 0; j < _size; j++)
                 {
-                    // Color randomColor = Random.value > 0.5f ? Color.white : Color.black;
-            
                     texture.SetPixel(i, j, Color.white);
                 }
             }
@@ -97,18 +102,28 @@ namespace QR
             SetErrorCorrectionData(combinedData); 
             
             // Mask and Format Info
-            CheckBestMask(ref texture, out MaskPattern maskPattern);
+            CheckBestMask(out MaskPattern maskPattern);
             SetFormatInfo();
-            SetMask(ref texture, maskPattern);
+            SetMask(maskPattern);
             texture.Apply();
 
+            return texture;
+        }
+
+        private Texture2D TextureGeneration()
+        {
+            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
+            {
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
             return texture;
         }
 
         private void SetFinderPatterns()
         {
             int offset = _textureRenderer.TextureSize - 8;
-            SetOrientationShapes(0, 0); //TODO: dynamic version change
+            SetOrientationShapes(0, 0);
             SetOrientationShapes(0, offset);
             SetOrientationShapes(offset, offset);
         }
@@ -138,19 +153,11 @@ namespace QR
             qrData.SetData(out combinedData);
         }
 
-        private void CheckBestMask(ref Texture2D texture, out MaskPattern maskPattern)
+        private void CheckBestMask(out MaskPattern maskPattern)
         {
-
-            Texture2D tempTexture = new Texture2D(_textureRenderer.TextureSize, _textureRenderer.TextureSize,
-                TextureFormat.RGB565, false)
-            {
-                filterMode = FilterMode.Point,
-                anisoLevel = 0
-            };
-            tempTexture.SetPixels(texture.GetPixels());
-            tempTexture.Apply();
             
-            maskPattern = new MaskPattern(ref _versionOne, ref _maskPatternData);
+            
+            maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
             
             for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
             {
@@ -158,7 +165,8 @@ namespace QR
                 int maskedFilterBits = bch.Calculation();
                 FormatInfo formatInfo = new FormatInfo(_textureRenderer, maskedFilterBits);
                 formatInfo.SetMaskedFormatBits();
-                maskPattern.CheckPenalty(ref tempTexture, i);
+                Texture2D copiedTexture = _textureRenderer.GetCopyTexture();
+                maskPattern.CheckPenalty(copiedTexture, i);
             }
             
             mask = maskPattern.BestMask;
@@ -173,9 +181,9 @@ namespace QR
             formatInfo.SetMaskedFormatBits();
         }
 
-        private void SetMask(ref Texture2D texture, MaskPattern maskPattern)
+        private void SetMask(MaskPattern maskPattern)
         {
-            maskPattern.SetMask(ref texture, (byte)mask);
+            maskPattern.SetMask((byte)mask);
         }
 
         private void SetDataLength()
