@@ -1,5 +1,6 @@
 using System.Linq;
 using NUnit.Framework;
+using QR;
 using QR.Masking;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == ExpectedPenalty);
 
@@ -47,7 +48,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
 
@@ -69,7 +70,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
 
@@ -91,7 +92,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
 
@@ -113,7 +114,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
 
@@ -135,7 +136,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == ExpectedPenalty);
             
@@ -157,7 +158,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -179,7 +180,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -201,7 +202,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -223,7 +224,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -245,7 +246,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == ExpectedPenalty);
             
@@ -267,7 +268,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -289,7 +290,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -311,7 +312,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -333,7 +334,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -355,7 +356,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == ExpectedPenalty);
             
@@ -377,7 +378,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -399,7 +400,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -421,7 +422,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -443,7 +444,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -465,7 +466,7 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
             
@@ -487,9 +488,36 @@ namespace Tests.PlayMode.QR.Masking
             var pixels = texture.GetPixels();
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(pixels.Select(x => x == Color.black).ToArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
             
             Assert.IsTrue(penalty == 0);
+            
+            Object.Destroy(texture);
+        }
+
+        [Test]
+        public void Ver1DataMask2_ThirdEvaluation_ShouldReturn80()
+        {
+            //21x21, "Ver1" Data, Version 1, mask 2 
+            bool[] testData = new bool[] { true, true, true, true, true, true, true, false, false, false, false, false, false, true, false, false, true, false, true, true, false, true, false, false, false, false, false, true, false, false, false, true, false, false, false, true, true, true, false, true, false, false, true, false, true, true, true, false, true, false, true, true, true, true, false, false, false, false, true, true, true, false, false, true, false, true, true, true, false, true, false, true, true, false, true, false, true, true, true, false, false, true, false, false, true, false, true, true, true, false, true, false, true, false, false, true, false, false, true, true, false, true, false, true, false, true, false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false, true, false, false, true, true, true, true, true, true, true, false, false, true, false, false, true, false, true, true, false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, false, false, false, true, false, false, false, false, true, true, false, true, false, false, false, true, true, true, false, true, false, false, false, true, false, true, false, true, true, false, true, false, true, true, true, false, false, false, false, false, true, true, false, true, true, true, false, true, true, true, true, false, true, true, false, true, true, false, true, true, false, true, false, false, true, true, true, false, false, true, true, true, true, false, true, false, false, false, true, true, false, true, true, false, true, true, false, false, true, true, false, true, true, false, true, false, false, true, true, true, false, true, false, true, true, false, false, false, true, true, true, false, false, true, true, true, false, false, false, false, false, false, false, false, true, true, false, false, true, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, false, true, false, true, false, true, false, true, true, true, true, true, true, true, true, false, false, false, false, false, true, false, true, true, true, false, true, false, true, false, false, false, false, false, true, true, false, true, true, true, false, true, false, false, false, false, false, true, false, true, false, true, true, true, false, true, true, false, true, true, true, false, true, false, false, true, false, false, false, false, true, false, true, true, true, false, true, true, false, true, true, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true, false, true, true, false, false, false, false, false, true, false, true, true, false, false, false, false, true, false, false, false, false, false, true, true, true, true, true, true, true, true, false, true, false, false, false, false, false, true, true, true, true, true, true, true };
+
+            Texture2D texture = new Texture2D(21, 21, TextureFormat.RGB565, false)
+            {
+                filterMode = FilterMode.Point,
+                anisoLevel = 0
+            };
+
+            Color[] pixels = testData.Select(x => x ? Color.black : Color.white).ToArray();
+            
+            texture.SetPixels(pixels);
+            texture.Apply();
+            
+            ThirdEvaluation thirdEvaluation = new ThirdEvaluation();
+            
+            int penalty = 0;
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            
+            Assert.IsTrue(penalty == 120);
             
             Object.Destroy(texture);
         }

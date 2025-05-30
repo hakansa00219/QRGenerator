@@ -43,14 +43,15 @@ namespace QR.Masking
             if (currentScore >= LowestScore) return;
                 
             LowestScore = currentScore;
-            BestMask = 1; //for test
+            BestMask = mask;
         }
 
         private int SumOfEvaluations(Texture2D texture, byte mask)
         {
             int sum = 0;
             SetMask(texture, mask);
-            bool[] bits = texture.GetPixels().Select(x => x == Color.black).ToArray();
+            bool[,] bits = texture.ConvertTo2DArray();
+            // Debug.Log($"bool[] testData = new bool[] {{ {string.Join(", ", bits.Select(b => b.ToString().ToLower()))} }};");
             foreach (var evaluation in _evaluations)
             {
                 sum += evaluation.Calculation(bits, texture.width, texture.height);

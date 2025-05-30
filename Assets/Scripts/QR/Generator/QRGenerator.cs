@@ -50,6 +50,14 @@ namespace QR
 
         private void Start()
         {
+            Generate();
+        }
+
+        public void Generate(string qrData = "")
+        {
+            if(!string.IsNullOrEmpty(qrData)) 
+                data = qrData;
+            
             GameObject QR = new GameObject();
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();

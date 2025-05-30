@@ -6,22 +6,20 @@ namespace QR.Masking
     public class SecondEvaluation : Evaluation
     {
         // Every 2x2 same colored blocks = 3 penalty points.
-        public override int Calculation(in bool[] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
         {
             int penaltyCount = 0;
             for (int y = verticalSize - 1; y > 0; y--)
             {
                 for (int x = 0; x < horizontalSize; x++)
                 {
-                    int bitIndex = x + y * horizontalSize;
+                    if (x == 20) continue; // border pixel cannot be starter for penalty.
                     
-                    if (bitIndex % (horizontalSize) == 20) continue; // border pixel cannot be starter for penalty.
+                    bool bit = bits[x,y];
                     
-                    bool bit = bits[bitIndex];
-                    
-                    if (bits[bitIndex + 1] == bit && // right pixel
-                        bits[bitIndex - horizontalSize + 1] == bit && // down right pixel
-                        bits[bitIndex - horizontalSize] == bit) // down pixel
+                    if (bits[x + 1, y] == bit && // right pixel
+                        bits[x + 1, y - 1] == bit && // down right pixel
+                        bits[x, y - 1] == bit) // down pixel
                     {
                         penaltyCount++;
                     }

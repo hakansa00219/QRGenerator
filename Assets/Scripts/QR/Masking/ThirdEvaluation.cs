@@ -13,7 +13,7 @@ namespace QR.Masking
         private const int ExtraPatternLength = 4;
         private const int PenaltyMultiplier = 40;
         
-        public override int Calculation(in bool[] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
         {
             int penalty = 0;
             
@@ -24,7 +24,7 @@ namespace QR.Masking
             return penalty;
         }
 
-        private int HorizontalPenalty(in bool[] bits, int horizontalSize, int verticalSize)
+        private int HorizontalPenalty(in bool[,] bits, int horizontalSize, int verticalSize)
         {
             int penaltyCount = 0;
             
@@ -33,13 +33,12 @@ namespace QR.Masking
                 int currentPattern = 0;
                 for (int x = 0; x < horizontalSize; x++)
                 {
-                    int index =  y * horizontalSize + x;
                     //x=0,          0 or 1
                     //x=1,         00 or 10         =>      00    01      or      10    11
                     //x=2, 000 or 010 or 100 or 110 => 000 001 or 010 011 or 100 101 or 110 111
                     if(x > 0) currentPattern <<= 1;
                     // 1 = black = true, 0 = white = false
-                    currentPattern += bits[index] ? 1 : 0;
+                    currentPattern += bits[x, y] ? 1 : 0;
                     
                     if (x < PatternLength) continue;
                     //  1011010 (90) << 1   *= 2;
@@ -55,11 +54,11 @@ namespace QR.Masking
                     else // If pattern is same 
                     {
                         // Check Left and Right pixels. If 0000 exists add penalty.
-                        int rightStart = index + 1;
-                        int leftStart = index - ExtraPatternLength - PatternLength;
+                        int rightStart = x + 1;
+                        int leftStart = x - ExtraPatternLength - PatternLength;
                         
-                        bool rightCheck = x + ExtraPatternLength <= horizontalSize && IsAllZero(bits, rightStart, ExtraPatternLength);
-                        bool leftCheck = x - PatternLength >= ExtraPatternLength && IsAllZero(bits, leftStart, ExtraPatternLength);
+                        bool rightCheck = x + ExtraPatternLength <= horizontalSize && IsAllZero(in bits, rightStart, y);
+                        bool leftCheck = x - PatternLength >= ExtraPatternLength && IsAllZero(in bits, leftStart, y);
                         
                         //If any check is true = penalty
                         if (rightCheck || leftCheck)
@@ -74,20 +73,20 @@ namespace QR.Masking
                 }
             }
             
-            bool IsAllZero(in bool[] bits, int start, int count)
+            bool IsAllZero(in bool[,] bits, int x, int y)
             {
-                if (start + count >= bits.Length) return false;
+                if (x + ExtraPatternLength > horizontalSize) return false;
                 
-                for (int i = start; i < start + count; i++)
+                for (int i = 0; i < ExtraPatternLength; i++)
                 {
-                    if (bits[i]) return false;
+                    if (bits[x + i, y]) return false;
                 }
                 return true;
             }
             
             return penaltyCount * PenaltyMultiplier;
         }
-        private int VerticalPenalty(in bool[] bits, int horizontalSize, int verticalSize)
+        private int VerticalPenalty(in bool[,] bits, int horizontalSize, int verticalSize)
         {
             int penaltyCount = 0;
             
@@ -96,11 +95,9 @@ namespace QR.Masking
                 int currentPattern = 0;
                 for (int y = 0; y < verticalSize; y++)
                 {
-                    int index = y * horizontalSize + x;
-
                     if(y > 0) currentPattern <<= 1;
                         
-                    currentPattern += bits[index] ? 1 : 0;
+                    currentPattern += bits[x,y] ? 1 : 0;
                     
                     if (y < PatternLength) continue;
 
@@ -114,33 +111,34 @@ namespace QR.Masking
                     {
                         // Check Up and Down pixels. If 0000 exists add penalty.
                         
-                        int upstart = index + horizontalSize;
-                        int downStart = index - (ExtraPatternLength + PatternLength) * horizontalSize;
-                        bool upCheck = y + ExtraPatternLength <= verticalSize && IsAllZero(bits, upstart, ExtraPatternLength);
-                        bool downCheck = y - PatternLength >= ExtraPatternLength && IsAllZero(bits, downStart, ExtraPatternLength);
+                        int upstart = y + 1;
+                        int downStart = y - ExtraPatternLength - PatternLength;
+                        bool upCheck = y + ExtraPatternLength <= verticalSize && IsAllZero(in bits, x, upstart);
+                        bool downCheck = y - PatternLength >= ExtraPatternLength && IsAllZero(in bits, x, downStart);
                         
                         //If any check is true = penalty
                         if (upCheck || downCheck)
                         {
                             if(downCheck)
-                                Debug.Log($"Vertical Penalty!  {(x,y - ExtraPatternLength - PatternLength)}-{(x,y)}");
+                                Debug.Log($"Vertical Penalty!  {(x, downStart)}-{(x,y)}");
                             if(upCheck)
-                                Debug.Log($"Vertical Penalty!  {(x, y - PatternLength)}-{(x,y + ExtraPatternLength)}");
+                                Debug.Log($"Vertical Penalty!  {(x, y - PatternLength)}-{(x, y + ExtraPatternLength)}");
                             penaltyCount++;
                         }
                     }
                 }
             }
             
-            bool IsAllZero(in bool[] bits, int start, int count)
+            bool IsAllZero(in bool[,] bits, int x, int y)
             {
-                for (int i = start; i < start + count; i++)
+                if (y + ExtraPatternLength > verticalSize) return false;
+                
+                for (int i = 0; i < ExtraPatternLength; i++)
                 {
-                    if (bits[i]) return false;
+                    if (bits[x, y + i]) return false;
                 }
                 return true;
             }
-
             
             return penaltyCount * PenaltyMultiplier;
         }

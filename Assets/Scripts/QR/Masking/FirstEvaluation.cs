@@ -6,7 +6,7 @@ namespace QR.Masking
     {
         private const int PenaltyCount = 5;
         private const int PenaltyIncrement = 3;
-        public override int Calculation(in bool[] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
         {
             int horizontalTotal = HorizontalPenalty(bits, horizontalSize, verticalSize);
             int verticalTotal = VerticalPenalty(bits, horizontalSize, verticalSize);
@@ -17,7 +17,7 @@ namespace QR.Masking
         }
 
         // Calculation of horizontal/vertical line penalty. If it has more than 5 same color back to back it gives penalty to evaluation.
-        private static int HorizontalPenalty(in bool[] pixels, int horizontalSize, int verticalSize)
+        private static int HorizontalPenalty(in bool[,] pixels, int horizontalSize, int verticalSize)
         {
             int total = 0;
             for (int y = 0; y < verticalSize; y++)
@@ -26,8 +26,7 @@ namespace QR.Masking
                 int stackCount = 0;
                 for (int x = 0; x < horizontalSize; x++)
                 {
-                    int index = y * horizontalSize + x;
-                    bool nextBit = pixels[index];
+                    bool nextBit = pixels[x,y];
 
                     if (lastBit == nextBit) stackCount++; // Same bit  ++
                     else // Different bit reset.
@@ -54,7 +53,7 @@ namespace QR.Masking
             return total;
         }
         
-        private static int VerticalPenalty(in bool[] pixels, int horizontalSize, int verticalSize)
+        private static int VerticalPenalty(in bool[,] pixels, int horizontalSize, int verticalSize)
         {
             int total = 0;
             for (int x = 0; x < horizontalSize; x++)
@@ -63,8 +62,7 @@ namespace QR.Masking
                 int stackCount = 0;
                 for (int y = 0; y < verticalSize; y++)
                 {
-                    int index = y * horizontalSize + x ;
-                    bool nextBit = pixels[index];
+                    bool nextBit = pixels[x,y];
 
                     if (lastBit == nextBit) stackCount++; // Same bit  ++
                     else // Different bit reset.
