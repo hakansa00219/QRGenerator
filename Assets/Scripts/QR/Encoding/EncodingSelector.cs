@@ -81,20 +81,20 @@ namespace QR.Encoding
         
         private bool IsNumericCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return data.All(char.IsDigit) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Numeric, errorCorrectionLevel)].MaxMainData;
+            return data.All(char.IsDigit) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Numeric, errorCorrectionLevel)];
         }
         private bool IsAlphanumericCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
             var match = Regex.IsMatch(data, AlphaNumericPattern);
-            return match && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Alphanumeric, errorCorrectionLevel)].MaxMainData;
+            return match && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Alphanumeric, errorCorrectionLevel)];
         }
         private bool IsKanjiCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Kanji, errorCorrectionLevel)].MaxMainData;
+            return data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Kanji, errorCorrectionLevel)];
         }
         private bool IsByteCompatible(string data, ErrorCorrectionLevel errorCorrectionLevel)
         {
-            return !data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.CharacterSizeTable[new QRType(EncodingType.Byte, errorCorrectionLevel)].MaxMainData;
+            return !data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Byte, errorCorrectionLevel)];
         }
     }
 }

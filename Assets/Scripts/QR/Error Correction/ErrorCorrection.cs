@@ -23,8 +23,7 @@ namespace QR
             _textureRenderer = textureRenderer;
             _encodingType = encodingType;
             _dataLength = dataLength;
-            _ecDataSize = versionData.CharacterSizeTable[new QRType(encodingType, errorCorrectionType)]
-                .ErrorCorrectionData;
+            _ecDataSize = versionData.ErrorCorrectionDataSizeTable[errorCorrectionType];
         }
 
         public void SetErrorCorrectionData()

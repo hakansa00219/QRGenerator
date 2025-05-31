@@ -41,14 +41,15 @@ namespace QR
             combinedDataList.AddRange(convertedData);
             
             // DATA END
+            int qrMainDataSize = _versionData.MaxMainDataSizeTable[new QRType(_encodingType, _errorCorrectionLevel)];
+            int leftOverDataSize = qrMainDataSize - dataSize;
+            
             RenderEndData(out var endData);
             combinedDataList.Add(endData);
             
             //PADDING IF NEED
             // Get the maximum main data size depending on QR type.
-            int qrMainDataSize = _versionData.CharacterSizeTable[new QRType(_encodingType, _errorCorrectionLevel)]
-                .MaxMainData;
-            int leftOverDataSize = qrMainDataSize - dataSize;
+
             
             switch (leftOverDataSize)
             {
@@ -73,6 +74,7 @@ namespace QR
 
         private void RenderEndData(out byte endData)
         {
+            //TODO: Only if we have 4 empty slot 0000 is right. The empty slot can be 1-2-3-4 or none.
             endData = 0b0000;
             int endDataSize = 4;
             

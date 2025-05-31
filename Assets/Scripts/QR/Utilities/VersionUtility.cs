@@ -4,7 +4,7 @@ using Version = QR.Enums.Version;
 
 namespace QR.Utilities
 {
-    public class VersionUtility
+    public static class VersionUtility
     {
         public static int GetCharacterBitLength(Version version, EncodingType encodingType)
         {

@@ -235,7 +235,7 @@ namespace QR
             
             _encodingType = encoder.SelectedEncodingType;
             errorCorrectionLevel = encoder.SelectedErrorCorrectionLevel;
-            _capacity = _versionOne.CharacterSizeTable[new QRType(_encodingType, errorCorrectionLevel)].MaxMainData;
+            _capacity = _versionOne.MaxMainDataSizeTable[new QRType(_encodingType, errorCorrectionLevel)];
         }
 
         private void CheckVersionResolution()

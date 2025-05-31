@@ -5,5 +5,6 @@ namespace QR.Analysis
     public interface IBitProvider
     {
         Queue<BitNode> BitQueue { get; }
+        int RemainingBitCount { get; }
     }
 }

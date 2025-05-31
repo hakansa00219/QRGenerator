@@ -11,6 +11,8 @@ namespace QR.Analysis
         private (int, int) _recordedPoint;
         
         public Queue<BitNode> BitQueue => _bitQueue;
+        public int RemainingBitCount => _bitQueue.Count;
+
         // Analyzer for QR code to get all valid queued bits and positions.
         public DataAnalyzer(VersionData versionData, int resolution)
         {

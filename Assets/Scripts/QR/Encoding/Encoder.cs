@@ -15,7 +15,8 @@ namespace QR.Encoding
 
         public int TextureSize { get; }
         public Texture2D Texture { get; }
-        public Color[] Pixels => Texture.GetPixels();
+        public int RemainingBitCount => _bitProvider.RemainingBitCount;
+        private Color[] Pixels => Texture.GetPixels();
 
         public Texture2D GetCopyTexture()
         {
