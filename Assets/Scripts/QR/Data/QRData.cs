@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using QR.Encoding;
@@ -28,69 +29,105 @@ namespace QR
             _versionData = versionData;
             _encodingType = encodingType;
             _errorCorrectionLevel = errorCorrectionLevel;
+            
         }
 
         // !!! When data is over(Ver1) add 4 bit END block. Then add paddings to complete the data capacity.(so 3 more padding)
-        public void SetData(out byte[] combinedData)
+        public void SetData(out int[] combinedData)
         {
             combinedData = null;
-            List<byte> combinedDataList = new List<byte>();
+            List<int> combinedDataList = new List<int>();
             
             // THE DATA
-            RenderMainData(out var dataSize, out var convertedData);
+            RenderMainData(out var convertedData);
             combinedDataList.AddRange(convertedData);
             
-            // DATA END
-            int qrMainDataSize = _versionData.MaxMainDataSizeTable[new QRType(_encodingType, _errorCorrectionLevel)];
-            int leftOverDataSize = qrMainDataSize - dataSize;
             
-            RenderEndData(out var endData);
-            combinedDataList.Add(endData);
-            
-            //PADDING IF NEED
-            // Get the maximum main data size depending on QR type.
+            int errorCorrectionDataSize = _versionData.ErrorCorrectionDataSizeTable[_errorCorrectionLevel];
+            int ecBitCount = errorCorrectionDataSize * 8;
+            int leftOverBitCount = _textureRenderer.RemainingBitCount - ecBitCount;
 
-            
-            switch (leftOverDataSize)
+            if (leftOverBitCount <= 4)
             {
-                case 0:
-                    combinedData = combinedDataList.ToArray();
-                    return;
-                case < 0:
-                    Debug.LogError("Miss calculation");
-                    return;
+                // 0 1 2 3 4  Add end (0) data depending the empty slot
+                // DATA END
+                RenderEndData(out var endData, leftOverBitCount);
+                combinedDataList.Add(endData);
+                
             }
-            
-            for (int i = 0; i < leftOverDataSize; i++)
+            else
             {
-                byte selectedPadding = i % 2 == 0 ? FirstPadding : SecondPadding;
-                combinedDataList.Add(selectedPadding);
-                // Foreach leftoverData color the QR.
-                _textureRenderer.RenderingDataToTexture(selectedPadding, PaddingDataSize);
+                int paddingSize = leftOverBitCount / 8;
+                int paddingRemainSize = leftOverBitCount % 8;
+                
+                // DATA END
+                RenderEndData(out var endData, paddingRemainSize);
+                combinedDataList.Add(endData);
+                
+                // paddings
+                for (int i = 0; i < paddingSize; i++)
+                {
+                    byte selectedPadding = i % 2 == 0 ? FirstPadding : SecondPadding;
+                    combinedDataList.Add(selectedPadding);
+                    // Foreach leftoverData color the QR.
+                    _textureRenderer.RenderingDataToTexture(selectedPadding, PaddingDataSize);
+                }
             }
             
             combinedData = combinedDataList.ToArray();
         }
 
-        private void RenderEndData(out byte endData)
+        private void RenderEndData(out byte endData, int size)
         {
             //TODO: Only if we have 4 empty slot 0000 is right. The empty slot can be 1-2-3-4 or none.
             endData = 0b0000;
-            int endDataSize = 4;
-            
-            _textureRenderer.RenderingDataToTexture(endData, endDataSize);
+            _textureRenderer.RenderingDataToTexture(endData, size);
         }
 
-        private void RenderMainData(out int dataSize, out byte[] convertedData)
+        private void RenderMainData(out int[] convertedData)
         {
-            dataSize = _data.Length;
-            int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
             // convert string data to byte array. TODO: only works for byte (charBitSize == 8)!!
-            convertedData = _data.ToCharArray().Select(c => (byte)c).ToArray();
-            Debug.Log("Data: " + _data);
+            convertedData = null;
+            switch (_encodingType)
+            {
+                case EncodingType.Alphanumeric:
+                    const int alphanumericSize = 45;
+                    int pairedCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 2);
+                    int soloCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 1);
+                    int dataSize = _data.Length;
+                    int pairCount = dataSize / 2;
+                    int remainder = dataSize % 2;
+                    
+                    char[] charData = _data.ToCharArray();
+                    convertedData = new int[pairCount];
+                    int remainderData = 0;
+                    for (int i = 0; i < pairCount; i++)
+                    {
+                        convertedData[i] = Alphanumeric.Dictionary[charData[2 * i]] * alphanumericSize + Alphanumeric.Dictionary[charData[2 * i + 1]];
+                    }
+                    _textureRenderer.RenderingDataToTexture(convertedData, pairedCharBitSize);
+                    
+                    if (remainder > 0) remainderData = Alphanumeric.Dictionary[charData[^1]]; 
+                    _textureRenderer.RenderingDataToTexture(remainderData, soloCharBitSize);
+                    
+                    Debug.Log("Data: " + string.Join(", ", convertedData) + (remainder > 0 ? $", {remainderData}" : string.Empty));
+                    
+                    break;
+                case EncodingType.Byte:
+                    int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
+                    convertedData = _data.ToCharArray().Select(c => (int)c).ToArray();
+                    _textureRenderer.RenderingDataToTexture(convertedData, charBitSize);
+
+                    Debug.Log("Data: " + string.Join(", ", convertedData));
+                    break;
+                case EncodingType.Kanji:
+                    break;
+                case EncodingType.Numeric:
+                    break;
+            }
+
+            if (convertedData == null) throw new Exception();
             
-            //TODO: Whats going to happen if data is not byte. Need to check this.
-            _textureRenderer.RenderingDataToTexture(convertedData);
         }
     }
 }

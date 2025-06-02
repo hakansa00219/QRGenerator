@@ -12,12 +12,12 @@ namespace QR
     {
         private readonly ITextureRenderer _textureRenderer;
         private readonly int _ecDataSize;
-        private readonly byte[] _data;
+        private readonly int[] _data;
         private readonly EncodingType _encodingType;
         private readonly int _dataLength;
         
         
-        public ErrorCorrection(ITextureRenderer textureRenderer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, byte[] data, int dataLength)
+        public ErrorCorrection(ITextureRenderer textureRenderer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionType, int[] data, int dataLength)
         {
             _data = data;
             _textureRenderer = textureRenderer;
@@ -42,7 +42,7 @@ namespace QR
                 dataList.Add((byte)(_data[i] << 4 | _data[i + 1] >> 4));
             }
             
-            dataList.AddRange(_data.Skip(_dataLength + 1));
+            dataList.AddRange(_data.Skip(_dataLength + 1).Select(v => (byte)v));
             
             // 0100        Enc
             // 00000100    Length    

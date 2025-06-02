@@ -98,7 +98,7 @@ namespace QR
             // Rendering Actual Data
             SetEncodingMode();
             SetDataLength();
-            SetData(data, out byte[] combinedData);     
+            SetData(data, out int[] combinedData);     
             SetErrorCorrectionData(combinedData); 
             
             // Mask and Format Info
@@ -139,7 +139,7 @@ namespace QR
             Debug.Log("Data Size: " + _bitProvider.BitQueue.Count);
         }
 
-        private void SetErrorCorrectionData(byte[] combinedData)
+        private void SetErrorCorrectionData(int[] combinedData)
         {
             ErrorCorrection ec =
                 new ErrorCorrection(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel,
@@ -147,7 +147,7 @@ namespace QR
             ec.SetErrorCorrectionData();
         }
 
-        private void SetData(string actualData, out byte[] combinedData)
+        private void SetData(string actualData, out int[] combinedData)
         {
             QRData qrData = new QRData(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
             qrData.SetData(out combinedData);
