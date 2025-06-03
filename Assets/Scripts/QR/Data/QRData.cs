@@ -33,15 +33,10 @@ namespace QR
         }
 
         // !!! When data is over(Ver1) add 4 bit END block. Then add paddings to complete the data capacity.(so 3 more padding)
-        public void SetData(out int[] combinedData)
+        public void SetData(ref OrganizedData organizedData)
         {
-            combinedData = null;
-            List<int> combinedDataList = new List<int>();
-            
             // THE DATA
-            RenderMainData(out var convertedData);
-            combinedDataList.AddRange(convertedData);
-            
+            RenderMainData(ref organizedData);
             
             int errorCorrectionDataSize = _versionData.ErrorCorrectionDataSizeTable[_errorCorrectionLevel];
             int ecBitCount = errorCorrectionDataSize * 8;
@@ -49,11 +44,8 @@ namespace QR
 
             if (leftOverBitCount <= 4)
             {
-                // 0 1 2 3 4  Add end (0) data depending the empty slot
                 // DATA END
-                RenderEndData(out var endData, leftOverBitCount);
-                combinedDataList.Add(endData);
-                
+                RenderEndData(ref organizedData, leftOverBitCount);
             }
             else
             {
@@ -61,33 +53,31 @@ namespace QR
                 int paddingRemainSize = leftOverBitCount % 8;
                 
                 // DATA END
-                RenderEndData(out var endData, paddingRemainSize);
-                combinedDataList.Add(endData);
+                RenderEndData(ref organizedData, paddingRemainSize);
                 
-                // paddings
+                // Paddings
+                if (paddingSize <= 0) return;
+                
+                byte[] paddings = new byte[paddingSize];
                 for (int i = 0; i < paddingSize; i++)
                 {
                     byte selectedPadding = i % 2 == 0 ? FirstPadding : SecondPadding;
-                    combinedDataList.Add(selectedPadding);
-                    // Foreach leftoverData color the QR.
                     _textureRenderer.RenderingDataToTexture(selectedPadding, PaddingDataSize);
+                    paddings[i] = selectedPadding;
                 }
+                organizedData.Padding = (paddings, PaddingDataSize);
             }
-            
-            combinedData = combinedDataList.ToArray();
         }
 
-        private void RenderEndData(out byte endData, int size)
+        private void RenderEndData(ref OrganizedData organizedData, int size)
         {
-            //TODO: Only if we have 4 empty slot 0000 is right. The empty slot can be 1-2-3-4 or none.
-            endData = 0b0000;
+            byte endData = 0b0000;
             _textureRenderer.RenderingDataToTexture(endData, size);
+            organizedData.End = (endData, size);
         }
 
-        private void RenderMainData(out int[] convertedData)
+        private void RenderMainData(ref OrganizedData organizedData)
         {
-            // convert string data to byte array. TODO: only works for byte (charBitSize == 8)!!
-            convertedData = null;
             switch (_encodingType)
             {
                 case EncodingType.Alphanumeric:
@@ -97,37 +87,41 @@ namespace QR
                     int dataSize = _data.Length;
                     int pairCount = dataSize / 2;
                     int remainder = dataSize % 2;
+                    bool isRemainderExists = remainder > 0;
+                    
+                    int[] mainData = new int[pairCount];
+                    int[] subData = new int[remainder];
                     
                     char[] charData = _data.ToCharArray();
-                    convertedData = new int[pairCount];
-                    int remainderData = 0;
+                    
                     for (int i = 0; i < pairCount; i++)
                     {
-                        convertedData[i] = Alphanumeric.Dictionary[charData[2 * i]] * alphanumericSize + Alphanumeric.Dictionary[charData[2 * i + 1]];
+                        mainData[i] = Alphanumeric.Dictionary[charData[2 * i]] * alphanumericSize + Alphanumeric.Dictionary[charData[2 * i + 1]];
                     }
-                    _textureRenderer.RenderingDataToTexture(convertedData, pairedCharBitSize);
-                    
-                    if (remainder > 0) remainderData = Alphanumeric.Dictionary[charData[^1]]; 
-                    _textureRenderer.RenderingDataToTexture(remainderData, soloCharBitSize);
-                    
-                    Debug.Log("Data: " + string.Join(", ", convertedData) + (remainder > 0 ? $", {remainderData}" : string.Empty));
-                    
+                    _textureRenderer.RenderingDataToTexture(mainData, pairedCharBitSize);
+                    organizedData.Main = (mainData, pairedCharBitSize);
+
+                    if (isRemainderExists)
+                    {
+                        int remainderData = Alphanumeric.Dictionary[charData[^1]];
+                        subData[0] = remainderData;
+                        _textureRenderer.RenderingDataToTexture(subData, soloCharBitSize);
+                        organizedData.Remaining = (subData, soloCharBitSize);
+                    }
                     break;
                 case EncodingType.Byte:
                     int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
-                    convertedData = _data.ToCharArray().Select(c => (int)c).ToArray();
-                    _textureRenderer.RenderingDataToTexture(convertedData, charBitSize);
-
-                    Debug.Log("Data: " + string.Join(", ", convertedData));
+                    int[] combinedData = _data.ToCharArray().Select(c => (int)c).ToArray();
+                    _textureRenderer.RenderingDataToTexture(combinedData, charBitSize);
+                    organizedData.Main = (combinedData, charBitSize);
                     break;
                 case EncodingType.Kanji:
                     break;
                 case EncodingType.Numeric:
                     break;
             }
-
-            if (convertedData == null) throw new Exception();
             
+            Debug.Log("Data: " + string.Join(", ", organizedData.Main) + string.Join(", ", organizedData.Remaining));
         }
     }
 }

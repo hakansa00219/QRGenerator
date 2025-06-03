@@ -34,11 +34,12 @@ namespace QR.Encoding
                 //TODO: Automatically select higher level version if selected Auto to version if you developed higher versions
             }
         }
-        public void SetEncoding()
+        public void SetEncoding(ref OrganizedData organizedData)
         {
             // Write data to QR code depending on encoding type.
-            int dataSize = VersionUtility.GetEncodingModeBitCount();
-            _textureRenderer.RenderingDataToTexture((byte)SelectedEncodingType, dataSize);
+            int bitCount = VersionUtility.GetEncodingModeBitCount();
+            _textureRenderer.RenderingDataToTexture((byte)SelectedEncodingType, bitCount);
+            organizedData.Encoding = ((byte)SelectedEncodingType, bitCount);
         }
 
         private bool CheckCompatibility(ErrorCorrectionLevel errorCorrectionLevel, string data)

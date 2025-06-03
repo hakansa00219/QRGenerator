@@ -1,6 +1,7 @@
 ﻿using QR.Encoding;
 using QR.Enums;
 using QR.Scriptable;
+using QR.Structs;
 using QR.Utilities;
 
 namespace QR
@@ -21,10 +22,11 @@ namespace QR
         }
         
         // Write Data Length size(as a byte value) to QR
-        public void SetLength()
+        public void SetLength(ref OrganizedData organizedData)
         {
-            int dataSize = VersionUtility.GetCharacterBitLength(_versionData.dataVersion, _encodingType);
-            _textureRenderer.RenderingDataToTexture(_sizeData, dataSize);
+            int bitCount = VersionUtility.GetCharacterBitCount(_versionData.dataVersion, _encodingType);
+            _textureRenderer.RenderingDataToTexture(_sizeData, bitCount);
+            organizedData.Length = (_sizeData, bitCount);
         }
     }
 }

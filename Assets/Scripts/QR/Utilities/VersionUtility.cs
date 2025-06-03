@@ -6,7 +6,7 @@ namespace QR.Utilities
 {
     public static class VersionUtility
     {
-        public static int GetCharacterBitLength(Version version, EncodingType encodingType)
+        public static int GetCharacterBitCount(Version version, EncodingType encodingType)
         {
             int length = 0;
             switch ((int)version)
