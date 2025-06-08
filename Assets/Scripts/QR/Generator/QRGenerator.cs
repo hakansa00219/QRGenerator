@@ -53,7 +53,13 @@ namespace QR
 
         private void Start()
         {
-            Generate();
+            int size = data.Length;
+            string fullData = data;
+            for (int i = 0; i < size; i++)
+            {
+                Generate(fullData[i..]);
+            }
+            
         }
 
         public void Generate(string qrData = "")
@@ -62,10 +68,10 @@ namespace QR
                 data = qrData;
             
             GameObject QR = new GameObject();
+            QR.name = $"QR-{data}";
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
             rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
-            QR.name = "QR";
             
             Camera mainCamera = Camera.main;
 

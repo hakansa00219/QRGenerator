@@ -121,7 +121,7 @@ namespace QR
                     break;
             }
             
-            Debug.Log("Data: " + string.Join(", ", organizedData.Main) + string.Join(", ", organizedData.Remaining));
+            Debug.Log("Data: " + string.Join(", ", organizedData.Main.data) + (organizedData.Remaining.data != null ? string.Join(", ", organizedData.Remaining.data) : ""));
         }
     }
 }

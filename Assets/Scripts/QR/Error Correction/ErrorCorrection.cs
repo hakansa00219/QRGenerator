@@ -44,7 +44,7 @@ namespace QR
             {
                 case EncodingType.Alphanumeric:
                     int pairCount = main.data.Length;
-                    int remainderCount = remaining.data.Length;
+                    int remainderCount = remaining.data?.Length ?? 0;
                     bool isRemainderExists = remainderCount > 0;
                     
                     // Encoding Type
@@ -60,7 +60,8 @@ namespace QR
                     if (isRemainderExists)
                         bitString.Append(ToBinaryString(remaining.data[0], remaining.bitCount));
                     // End Data (0000)
-                    bitString.Append(ToBinaryString(end.data, end.bitCount));
+                    if (end.bitCount > 0)
+                        bitString.Append(ToBinaryString(end.data, end.bitCount));
                     // Paddings
                     if (padding.data is { Length: > 0 })
                     {
