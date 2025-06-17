@@ -38,6 +38,7 @@ namespace QR
             var main = organizedData.Main;
             var remaining = organizedData.Remaining;
             var end = organizedData.End;
+            var byteAlignment = organizedData.ByteAlignment;
             var padding = organizedData.Padding;
             
             switch ((EncodingType)encoding.data)
@@ -62,6 +63,9 @@ namespace QR
                     // End Data (0000)
                     if (end.bitCount > 0)
                         bitString.Append(ToBinaryString(end.data, end.bitCount));
+                    // Byte Alignment
+                    if (byteAlignment.bitCount > 0)
+                        bitString.Append(ToBinaryString(byteAlignment.data, byteAlignment.bitCount));
                     // Paddings
                     if (padding.data is { Length: > 0 })
                     {
@@ -84,6 +88,7 @@ namespace QR
                     }
                     // End
                     bitString.Append(ToBinaryString(end.data, end.bitCount));
+
                     // Padding
                     if (padding.data is { Length: > 0 })
                     {

@@ -7,6 +7,7 @@ namespace QR.Structs
         public (int[] data, int bitCount) Main;
         public (int[] data, int bitCount) Remaining;
         public (byte data, int bitCount) End;
+        public (byte data, int bitCount) ByteAlignment;
         public (byte[] data, int bitCount) Padding;
     }
 }

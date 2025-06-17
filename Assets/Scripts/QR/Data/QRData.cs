@@ -21,6 +21,7 @@ namespace QR
         private const byte FirstPadding = 0xEC;
         private const byte SecondPadding = 0x11;
         private const int PaddingDataSize = 8;
+        private const int EndDataSize = 4;
         
         public QRData(ITextureRenderer textureRenderer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
         {
@@ -49,11 +50,15 @@ namespace QR
             }
             else
             {
-                int paddingSize = leftOverBitCount / 8;
-                int paddingRemainSize = leftOverBitCount % 8;
+                // Data End
+                RenderEndData(ref organizedData, EndDataSize);
                 
-                // DATA END
-                RenderEndData(ref organizedData, paddingRemainSize);
+                int remainingSize = leftOverBitCount - EndDataSize;
+                int paddingSize = remainingSize / 8;
+                int byteAlignmentSize = remainingSize % 8;
+                
+                // Byte Alignment
+                RenderByteAlignment(ref organizedData, byteAlignmentSize);
                 
                 // Paddings
                 if (paddingSize <= 0) return;
@@ -67,6 +72,13 @@ namespace QR
                 }
                 organizedData.Padding = (paddings, PaddingDataSize);
             }
+        }
+
+        private void RenderByteAlignment(ref OrganizedData organizedData, int size)
+        {
+            byte alignmentData = 0b00000000;
+            _textureRenderer.RenderingDataToTexture(alignmentData, size);
+            organizedData.ByteAlignment = (alignmentData, size);
         }
 
         private void RenderEndData(ref OrganizedData organizedData, int size)

@@ -19,6 +19,7 @@ namespace QR
         [SerializeField, Range(0,7)] private int mask;
         [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
+        [SerializeField] private bool debugMode;
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
@@ -53,11 +54,18 @@ namespace QR
 
         private void Start()
         {
-            int size = data.Length;
-            string fullData = data;
-            for (int i = 0; i < size; i++)
+            if (debugMode)
             {
-                Generate(fullData[i..]);
+                int size = data.Length;
+                string fullData = data;
+                for (int i = 0; i < size; i++)
+                {
+                    Generate(fullData[i..]);
+                }
+            }
+            else
+            {
+                Generate(data);
             }
             
         }
