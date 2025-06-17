@@ -90,46 +90,89 @@ namespace QR
 
         private void RenderMainData(ref OrganizedData organizedData)
         {
+            int dataSize = _data.Length;
+            char[] charData = _data.ToCharArray();
+            
             switch (_encodingType)
             {
                 case EncodingType.Alphanumeric:
-                    const int alphanumericSize = 45;
-                    int pairedCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 2);
-                    int soloCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 1);
-                    int dataSize = _data.Length;
+                    int pairedAlphaCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 2);
+                    int soloAlphaCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 1);
                     int pairCount = dataSize / 2;
                     int remainder = dataSize % 2;
                     bool isRemainderExists = remainder > 0;
                     
                     int[] mainData = new int[pairCount];
-                    int[] subData = new int[remainder];
-                    
-                    char[] charData = _data.ToCharArray();
                     
                     for (int i = 0; i < pairCount; i++)
                     {
-                        mainData[i] = Alphanumeric.Dictionary[charData[2 * i]] * alphanumericSize + Alphanumeric.Dictionary[charData[2 * i + 1]];
+                        mainData[i] = Alphanumeric.Dictionary[charData[2 * i]] * Alphanumeric.Size + Alphanumeric.Dictionary[charData[2 * i + 1]];
                     }
-                    _textureRenderer.RenderingDataToTexture(mainData, pairedCharBitSize);
-                    organizedData.Main = (mainData, pairedCharBitSize);
+                    _textureRenderer.RenderingDataToTexture(mainData, pairedAlphaCharBitSize);
+                    organizedData.Main = (mainData, pairedAlphaCharBitSize);
 
                     if (isRemainderExists)
                     {
+                        int[] subData = new int[1];
+                        
                         int remainderData = Alphanumeric.Dictionary[charData[^1]];
                         subData[0] = remainderData;
-                        _textureRenderer.RenderingDataToTexture(subData, soloCharBitSize);
-                        organizedData.Remaining = (subData, soloCharBitSize);
+                        _textureRenderer.RenderingDataToTexture(subData, soloAlphaCharBitSize);
+                        organizedData.Remaining = (subData, soloAlphaCharBitSize);
                     }
                     break;
                 case EncodingType.Byte:
                     int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
-                    int[] combinedData = _data.ToCharArray().Select(c => (int)c).ToArray();
+                    int[] combinedData = charData.Select(c => (int)c).ToArray();
                     _textureRenderer.RenderingDataToTexture(combinedData, charBitSize);
                     organizedData.Main = (combinedData, charBitSize);
                     break;
                 case EncodingType.Kanji:
                     break;
                 case EncodingType.Numeric:
+                    int soloNumericCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 1);
+                    int duoNumericCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 2);
+                    int trioNumericCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 3);
+                    // Data can be = 293-283-12 or 948-235-1 or 485-381-238
+                    // 3 char groups
+                    int groupCount = dataSize / 3;
+                    int restCount = dataSize % 3;
+                    bool isRestExists = restCount > 0;
+                    
+                    int[] mainGroupData = new int[groupCount];
+
+                    //Main data
+                    for (int i = 0; i < groupCount; i++)
+                    {
+                        mainGroupData[i] = Numeric.Dictionary[charData[3 * i]]     * (int)Math.Pow(Numeric.Size, 2) +
+                                           Numeric.Dictionary[charData[3 * i + 1]] * Numeric.Size +
+                                           Numeric.Dictionary[charData[3 * i + 2]];
+                    }
+                    _textureRenderer.RenderingDataToTexture(mainGroupData, trioNumericCharBitSize);
+                    organizedData.Main = (mainGroupData, trioNumericCharBitSize);
+                    
+                    if (isRestExists)
+                    {
+                        int[] subGroupData = new int[1];
+
+                        switch (restCount)
+                        {
+                            case 1: 
+                                //Data : 9 - 1001
+                                subGroupData[0] = Numeric.Dictionary[charData[^1]];
+                                _textureRenderer.RenderingDataToTexture(subGroupData, soloNumericCharBitSize);
+                                organizedData.Remaining = (subGroupData, soloNumericCharBitSize);
+                                break;
+                            case 2:
+                                //Data : 99 - 1100011
+                                subGroupData[0] = Numeric.Dictionary[charData[^2]] * Numeric.Size +
+                                                  Numeric.Dictionary[charData[^1]];
+                                _textureRenderer.RenderingDataToTexture(subGroupData, duoNumericCharBitSize);
+                                organizedData.Remaining = (subGroupData, duoNumericCharBitSize);
+                                break;
+                        }
+                    }
+                    
                     break;
             }
             

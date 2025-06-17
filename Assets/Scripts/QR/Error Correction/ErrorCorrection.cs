@@ -50,7 +50,7 @@ namespace QR
                     
                     // Encoding Type
                     bitString.Append(ToBinaryString(encoding.data, encoding.bitCount));
-                    // Data Length TODO: Only works with version 1
+                    // Data Length 
                     bitString.Append(ToBinaryString(length.data, length.bitCount)); 
                     // Alphanumeric Pairs
                     for (var i = 0; i < pairCount; i++)
@@ -99,6 +99,36 @@ namespace QR
                     }
                     break;
                 case EncodingType.Numeric:
+                    int groupCount = main.data.Length;
+                    int restCount = remaining.data?.Length ?? 0;
+                    bool isRestExists = restCount > 0;
+                    
+                    // Encoding Type
+                    bitString.Append(ToBinaryString(encoding.data, encoding.bitCount));
+                    // Data Length 
+                    bitString.Append(ToBinaryString(length.data, length.bitCount)); 
+                    // Numeric Pairs
+                    for (var i = 0; i < groupCount; i++)
+                    {
+                        bitString.Append(ToBinaryString(main.data[i], main.bitCount));
+                    }
+                    // Single/Duo Numeric if exists
+                    if (isRestExists)
+                        bitString.Append(ToBinaryString(remaining.data[0], remaining.bitCount));
+                    // End Data (0000)
+                    if (end.bitCount > 0)
+                        bitString.Append(ToBinaryString(end.data, end.bitCount));
+                    // Byte Alignment
+                    if (byteAlignment.bitCount > 0)
+                        bitString.Append(ToBinaryString(byteAlignment.data, byteAlignment.bitCount));
+                    // Paddings
+                    if (padding.data is { Length: > 0 })
+                    {
+                        foreach (var value in padding.data)
+                        {
+                            bitString.Append(ToBinaryString(value, padding.bitCount));
+                        }
+                    }
                     break;
                 case EncodingType.Kanji:
                     break;

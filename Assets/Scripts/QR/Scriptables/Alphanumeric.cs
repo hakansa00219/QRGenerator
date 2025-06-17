@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace QR.Scriptable
 {
-    public class Alphanumeric
+    public static class Alphanumeric
     {
-        public static int AlphanumericSize = 45;
+        public static int Size = 45;
         public static readonly IDictionary<char, byte> Dictionary = new Dictionary<char, byte>()
         {
             { '0', 0 },
