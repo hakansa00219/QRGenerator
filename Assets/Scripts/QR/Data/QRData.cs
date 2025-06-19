@@ -123,11 +123,33 @@ namespace QR
                     break;
                 case EncodingType.Byte:
                     int charBitSize = QRUtility.GetCharacterBitSize(_encodingType);
-                    int[] combinedData = charData.Select(c => (int)c).ToArray();
-                    _textureRenderer.RenderingDataToTexture(combinedData, charBitSize);
-                    organizedData.Main = (combinedData, charBitSize);
+                    byte[] combinedBytes = System.Text.Encoding.UTF8.GetBytes(_data);
+                    _textureRenderer.RenderingDataToTexture(combinedBytes);
+                    organizedData.Main = (combinedBytes.Select(c => (int)c).ToArray(), charBitSize);
                     break;
                 case EncodingType.Kanji:
+                    int kanjiCharBitSize = QRUtility.GetCharacterBitSize(_encodingType); // 13
+                    int[] optimizedList = new int[dataSize];
+                    var kanjiEnc = System.Text.Encoding.GetEncoding(932);
+                    
+                    for (var i = 0; i < _data.Length; i++)
+                    {
+                        var c = _data[i];
+                        byte[] bytes = kanjiEnc.GetBytes(new[] { c });
+                        int key = (bytes[0] << 8) | bytes[1];
+
+                        if (!Kanji.Dictionary.TryGetValue(key, out int value))
+                        {
+                            Debug.LogError("Cannot find the kanji character in Kanji Lookup table.");
+                            optimizedList[i] = -1;
+                        }
+
+                        optimizedList[i] = value;
+                    }
+                    
+                    _textureRenderer.RenderingDataToTexture(optimizedList, kanjiCharBitSize);
+                    organizedData.Main = (optimizedList, kanjiCharBitSize);
+                    
                     break;
                 case EncodingType.Numeric:
                     int soloNumericCharBitSize = QRUtility.GetCharacterBitSize(_encodingType, 1);

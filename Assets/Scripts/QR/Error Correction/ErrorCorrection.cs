@@ -6,9 +6,6 @@ using QR.Encoding;
 using QR.Enums;
 using QR.Scriptable;
 using QR.Structs;
-using QR.Utilities;
-using Sirenix.Utilities.Editor;
-using Version = QR.Enums.Version;
 
 namespace QR
 {
@@ -131,6 +128,29 @@ namespace QR
                     }
                     break;
                 case EncodingType.Kanji:
+                    int kanjiSize = main.data.Length;
+                    // Encoding
+                    bitString.Append(ToBinaryString(encoding.data, encoding.bitCount));
+                    // Data Length
+                    bitString.Append(ToBinaryString(length.data, length.bitCount));
+                    // Main Data
+                    for (int i = 0; i < kanjiSize; i++)
+                    {
+                        bitString.Append(ToBinaryString(main.data[i], main.bitCount));
+                    }
+                    // End
+                    bitString.Append(ToBinaryString(end.data, end.bitCount));
+                    // Byte Alignment
+                    if (byteAlignment.bitCount > 0)
+                        bitString.Append(ToBinaryString(byteAlignment.data, byteAlignment.bitCount));
+                    // Padding
+                    if (padding.data is { Length: > 0 })
+                    {
+                        foreach (var value in padding.data)
+                        {
+                            bitString.Append(ToBinaryString(value, padding.bitCount));
+                        }
+                    }
                     break;
             }
             

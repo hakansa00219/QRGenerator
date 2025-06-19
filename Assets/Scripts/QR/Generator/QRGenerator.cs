@@ -101,7 +101,7 @@ namespace QR
 
             OrganizedData organizedData = new OrganizedData();
             
-            _dataSize = (byte)data.Length;
+            _dataSize = (byte)System.Text.Encoding.UTF8.GetByteCount(data);
             
             // Data Analyzing / Bit Provider Service
             AnalyzeData();
@@ -172,8 +172,6 @@ namespace QR
 
         private void CheckBestMask(out MaskPattern maskPattern)
         {
-            
-            
             maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
             
             for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
@@ -247,7 +245,7 @@ namespace QR
         private void SetEncodingMode(ref OrganizedData organizedData)
         {
             //TODO: make it viable for every versions of QR
-            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data, _dataSize);
+            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data);
             encoder.SetEncoding(ref organizedData);
             
             _encodingType = encoder.SelectedEncodingType;

@@ -13,7 +13,7 @@ namespace QR.Encoding
     {
         private readonly ITextureRenderer _textureRenderer;
         public EncodingType SelectedEncodingType { get; private set; }
-        public ErrorCorrectionLevel SelectedErrorCorrectionLevel { get; private set; } = ErrorCorrectionLevel.High;
+        public ErrorCorrectionLevel SelectedErrorCorrectionLevel { get; private set; }
         
         public EncodingSelector(ITextureRenderer textureRenderer, VersionData versionData, string data)
         {
@@ -23,16 +23,17 @@ namespace QR.Encoding
             IDataCompatibilityChecker compatibilityService = new DataCompatibilityService();
             var comp = compatibilityService.CheckCompatibility(data);
             var encodingType = EncodingAdaptor(comp);
-            
-            int maxCharSize = versionData.MaxMainDataSizeTable[new QRType(encodingType, )]
 
-            
-            if (!CheckCompatibility(SelectedErrorCorrectionLevel, data))
-            {
+            int ecComp = FindErrorCorrectionCompatibility(data.Length, versionData, encodingType);
+
+            //TODO: Automatically select higher level version if selected Auto to version if you developed higher versions
+            if (ecComp == -1)
                 Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
-                //TODO: Automatically select higher level version if selected Auto to version if you developed higher versions
-            }
+            
+            SelectedEncodingType = encodingType;
+            SelectedErrorCorrectionLevel = (ErrorCorrectionLevel)ecComp;
         }
+
         public void SetEncoding(ref OrganizedData organizedData)
         {
             // Write data to QR code depending on encoding type.
@@ -40,64 +41,22 @@ namespace QR.Encoding
             _textureRenderer.RenderingDataToTexture((byte)SelectedEncodingType, bitCount);
             organizedData.Encoding = ((byte)SelectedEncodingType, bitCount);
         }
-
-        public bool CheckVersionComp(ErrorCorrectionLevel errorCorrectionLevel, string data)
-        {
-            SelectedErrorCorrectionLevel = errorCorrectionLevel;
-            if (IsNumericCompatible(data, errorCorrectionLevel))
-            {
-                SelectedEncodingType = EncodingType.Numeric;
-                return true;
-            }
-            if (IsAlphanumericCompatible(data, errorCorrectionLevel))
-            {
-                SelectedEncodingType = EncodingType.Alphanumeric;
-                return true;
-            }
-            if (IsByteCompatible(data, errorCorrectionLevel))
-            {
-                SelectedEncodingType = EncodingType.Byte;
-                return true;
-            }
-            if (IsKanjiCompatible(data, errorCorrectionLevel))
-            {
-                SelectedEncodingType = EncodingType.Kanji;
-                return true;
-            }
-            if (errorCorrectionLevel != ErrorCorrectionLevel.Low)
-            {
-                return CheckCompatibility(errorCorrectionLevel switch
-                {
-                    ErrorCorrectionLevel.High => ErrorCorrectionLevel.Quality,
-                    ErrorCorrectionLevel.Quality => ErrorCorrectionLevel.Medium,
-                    ErrorCorrectionLevel.Medium  => ErrorCorrectionLevel.Low,
-                    _ => throw new ArgumentOutOfRangeException(nameof(errorCorrectionLevel), errorCorrectionLevel, null)
-                }, data);
-            }
-
-            SelectedEncodingType = EncodingType.Byte;
-            return false;
-        }
         
-        public bool IsNumericCompatible(string data)
+        private int FindErrorCorrectionCompatibility(int dataSize, VersionData versionData, EncodingType encodingType)
         {
-            return data.All(char.IsDigit) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Numeric, errorCorrectionLevel)];
-        }
-        public bool IsAlphanumericCompatible(string data)
-        {
-            var match = Regex.IsMatch(data, AlphaNumericPattern);
-            return match && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Alphanumeric, errorCorrectionLevel)];
-        }
-        public bool IsKanjiCompatible(string data)
-        {
-            return data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Kanji, errorCorrectionLevel)];
-        }
-        public bool IsByteCompatible(string data)
-        {
-            return !data.Any(x => x >= 0x4E00 && x <= 0x9FBF) && _charSize <= _versionData.MaxMainDataSizeTable[new QRType(EncodingType.Byte, errorCorrectionLevel)];
+            if (dataSize <= versionData.MaxMainDataSizeTable[new QRType(encodingType, ErrorCorrectionLevel.High)]) 
+                return (int)ErrorCorrectionLevel.High;
+            if (dataSize <= versionData.MaxMainDataSizeTable[new QRType(encodingType, ErrorCorrectionLevel.Quality)])
+                return (int)ErrorCorrectionLevel.Quality;
+            if (dataSize <= versionData.MaxMainDataSizeTable[new QRType(encodingType, ErrorCorrectionLevel.Medium)])
+                return (int)ErrorCorrectionLevel.Medium;
+            if (dataSize <= versionData.MaxMainDataSizeTable[new QRType(encodingType, ErrorCorrectionLevel.Low)])
+                return (int)ErrorCorrectionLevel.Low;
+
+            return -1;
         }
 
-        public EncodingType EncodingAdaptor(Compatibility compatibility)
+        private EncodingType EncodingAdaptor(Compatibility compatibility)
         {
             return compatibility switch
             {
