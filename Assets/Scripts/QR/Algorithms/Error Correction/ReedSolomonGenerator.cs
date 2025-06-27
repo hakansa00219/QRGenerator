@@ -75,6 +75,7 @@ namespace QR.Algorithms
             byte[] generator = CreateGeneratorPolynomial(codeWordsSize);
             byte[] message = new byte[codeWordsSize + data.Length];
 
+            Debug.Log("Data Words: " + string.Join(", ", data));
             Array.Copy(data, message, data.Length); // Copy data into the message
 
             for (int i = 0; i < data.Length; i++)

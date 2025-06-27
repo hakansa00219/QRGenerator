@@ -1,4 +1,5 @@
 using QR.Enums;
+using QR.Structs;
 
 namespace QR.Encoding
 {
@@ -6,6 +7,6 @@ namespace QR.Encoding
     {
         EncodingType SelectedEncodingType { get; }
         ErrorCorrectionLevel SelectedErrorCorrectionLevel { get; }
-        public void SetEncoding();
+        public void SetEncoding(ref OrganizedData organizedData);
     }
 }

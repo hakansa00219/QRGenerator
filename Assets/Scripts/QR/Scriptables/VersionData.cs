@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
+using QR.Enums;
 using UnityEngine;
 using QR.Structs;
 using Sirenix.Utilities;
@@ -17,7 +18,9 @@ namespace QR.Scriptable
         public Version dataVersion;
         
         [OdinSerialize] 
-        public Dictionary<QRType, CharacterSize> CharacterSizeTable = new Dictionary<QRType, CharacterSize>();
+        public SortedDictionary<QRType, int> MaxMainDataSizeTable = new SortedDictionary<QRType, int>();
+        [OdinSerialize] 
+        public Dictionary<ErrorCorrectionLevel, int> ErrorCorrectionDataSizeTable = new Dictionary<ErrorCorrectionLevel, int>();
 
         [TableMatrix(DrawElementMethod = "DrawBits", HorizontalTitle = "X", VerticalTitle = "Y")]
         public bool[,] BitMatrix;

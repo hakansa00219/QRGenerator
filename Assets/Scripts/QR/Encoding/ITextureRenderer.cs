@@ -6,7 +6,7 @@ namespace QR.Encoding
     {
         public int TextureSize { get; }
         public Texture2D Texture { get; }
-        public Color[] Pixels { get; }
+        public int RemainingBitCount { get; }
 
         public Texture2D GetCopyTexture();
         /// <summary>

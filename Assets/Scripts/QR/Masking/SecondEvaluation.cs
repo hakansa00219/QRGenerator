@@ -11,10 +11,8 @@ namespace QR.Masking
             int penaltyCount = 0;
             for (int y = verticalSize - 1; y > 0; y--)
             {
-                for (int x = 0; x < horizontalSize; x++)
+                for (int x = 0; x < horizontalSize - 1; x++)
                 {
-                    if (x == 20) continue; // border pixel cannot be starter for penalty.
-                    
                     bool bit = bits[x,y];
                     
                     if (bits[x + 1, y] == bit && // right pixel

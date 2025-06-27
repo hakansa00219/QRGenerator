@@ -3,7 +3,7 @@ using QR.Enums;
 
 namespace QR.Utilities
 {
-    public class QRUtility
+    public static class QRUtility
     {
         public static int GetCharacterBitSize(EncodingType encodingType, int pairSize = 1)
         {

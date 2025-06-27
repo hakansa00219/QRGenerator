@@ -19,6 +19,8 @@ namespace QR
         [SerializeField, Range(0,7)] private int mask;
         [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
+        [SerializeField] private bool debugMode;
+        [SerializeField] private bool useMask;
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
@@ -26,9 +28,12 @@ namespace QR
         private ITextureRenderer _textureRenderer;
         private MaskPatternData _maskPatternData;
         
+        [ShowInInspector, ReadOnly]
         private EncodingType _encodingType;
-        private int _size;
-        private byte _dataSize;
+        [ShowInInspector, ReadOnly]
+        private int _textureSize;
+        [ShowInInspector, ReadOnly]
+        private byte _byteSize;
         
         [ShowInInspector, ReadOnly]
         private int _capacity;
@@ -50,7 +55,20 @@ namespace QR
 
         private void Start()
         {
-            Generate();
+            if (debugMode)
+            {
+                int size = data.Length;
+                string fullData = data;
+                for (int i = 0; i < size; i++)
+                {
+                    Generate(fullData[i..]);
+                }
+            }
+            else
+            {
+                Generate(data);
+            }
+            
         }
 
         public void Generate(string qrData = "")
@@ -59,10 +77,10 @@ namespace QR
                 data = qrData;
             
             GameObject QR = new GameObject();
+            QR.name = $"QR-{data}";
 
             SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
-            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _size, _size), new Vector2(0.5f, 0.5f));
-            QR.name = "QR";
+            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
             
             Camera mainCamera = Camera.main;
 
@@ -74,15 +92,17 @@ namespace QR
             Texture2D texture = TextureGeneration();
             
             // Fill everything with 0. Do not need it but yea
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < _textureSize; i++)
             {
-                for (int j = 0; j < _size; j++)
+                for (int j = 0; j < _textureSize; j++)
                 {
                     texture.SetPixel(i, j, Color.white);
                 }
             }
 
-            _dataSize = (byte)data.Length;
+            OrganizedData organizedData = new OrganizedData();
+            
+            _byteSize = (byte)System.Text.Encoding.UTF8.GetByteCount(data);
             
             // Data Analyzing / Bit Provider Service
             AnalyzeData();
@@ -96,15 +116,16 @@ namespace QR
             SetDarkModule();
             
             // Rendering Actual Data
-            SetEncodingMode();
-            SetDataLength();
-            SetData(data, out byte[] combinedData);     
-            SetErrorCorrectionData(combinedData); 
+            SetEncodingMode(ref organizedData);
+            SetDataLength(ref organizedData);
+            SetData(data, ref organizedData);     
+            SetErrorCorrectionData(in organizedData); 
             
             // Mask and Format Info
             CheckBestMask(out MaskPattern maskPattern);
             SetFormatInfo();
-            SetMask(maskPattern);
+            if (useMask)
+                SetMask(maskPattern);
             texture.Apply();
 
             return texture;
@@ -112,7 +133,7 @@ namespace QR
 
         private Texture2D TextureGeneration()
         {
-            Texture2D texture = new Texture2D(_size, _size, TextureFormat.RGB565, false)
+            Texture2D texture = new Texture2D(_textureSize, _textureSize, TextureFormat.RGB565, false)
             {
                 filterMode = FilterMode.Point,
                 anisoLevel = 0
@@ -139,24 +160,20 @@ namespace QR
             Debug.Log("Data Size: " + _bitProvider.BitQueue.Count);
         }
 
-        private void SetErrorCorrectionData(byte[] combinedData)
+        private void SetErrorCorrectionData(in OrganizedData organizedData)
         {
-            ErrorCorrection ec =
-                new ErrorCorrection(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel,
-                    combinedData, _dataSize);
-            ec.SetErrorCorrectionData();
+            ErrorCorrection ec = new ErrorCorrection(_textureRenderer, _versionOne, errorCorrectionLevel);
+            ec.SetErrorCorrectionData(in organizedData);
         }
 
-        private void SetData(string actualData, out byte[] combinedData)
+        private void SetData(string actualData, ref OrganizedData organizedData)
         {
             QRData qrData = new QRData(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
-            qrData.SetData(out combinedData);
+            qrData.SetData(ref organizedData);
         }
 
         private void CheckBestMask(out MaskPattern maskPattern)
         {
-            
-            
             maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
             
             for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
@@ -186,10 +203,10 @@ namespace QR
             maskPattern.SetMask((byte)mask);
         }
 
-        private void SetDataLength()
+        private void SetDataLength(ref OrganizedData organizedData)
         {
-            Length lengthModule = new Length(_textureRenderer, _encodingType, _versionOne, _dataSize);
-            lengthModule.SetLength();
+            Length lengthModule = new Length(_textureRenderer, _encodingType, _versionOne, data.Length);
+            lengthModule.SetLength(ref organizedData);
         }
 
         private void SetOrientationShapes(int x, int y)
@@ -227,21 +244,21 @@ namespace QR
             _textureRenderer.RenderingBitToTexture(8, _textureRenderer.TextureSize - 1 - ((int)version * 4 + 3), true);
         }
 
-        private void SetEncodingMode()
+        private void SetEncodingMode(ref OrganizedData organizedData)
         {
             //TODO: make it viable for every versions of QR
-            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data, _dataSize);
-            encoder.SetEncoding();
+            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data);
+            encoder.SetEncoding(ref organizedData);
             
             _encodingType = encoder.SelectedEncodingType;
             errorCorrectionLevel = encoder.SelectedErrorCorrectionLevel;
-            _capacity = _versionOne.CharacterSizeTable[new QRType(_encodingType, errorCorrectionLevel)].MaxMainData;
+            _capacity = _versionOne.MaxMainDataSizeTable[new QRType(_encodingType, errorCorrectionLevel)];
         }
 
         private void CheckVersionResolution()
         {
             if (version != Version.Auto)
-                _size = _qrResolution.VersionResolutions[Version.One];
+                _textureSize = _qrResolution.VersionResolutions[Version.One];
             else //Start with one then check compatibility. If it can be done with Version One return that if not continue with higher ones.
                 throw new NotImplementedException();
         }
@@ -251,12 +268,12 @@ namespace QR
             Gizmos.color = Color.red;
             for (int i = -30; i < 30; i++)
             {
-                Gizmos.DrawLine(new Vector3(-1, 0.005f + i * (0.01f), 0) , Vector3.right * _size + new Vector3(0f,0.005f + i * (0.01f),0));
+                Gizmos.DrawLine(new Vector3(-1, 0.005f + i * (0.01f), 0) , Vector3.right * _textureSize + new Vector3(0f,0.005f + i * (0.01f),0));
             }
             
             for (int i = -30; i < 30; i++)
             {
-                Gizmos.DrawLine(new Vector3(0.005f + i * (0.01f),-1 , 0) , Vector3.up * _size + new Vector3(0.005f + i * (0.01f),0f,0));
+                Gizmos.DrawLine(new Vector3(0.005f + i * (0.01f),-1 , 0) , Vector3.up * _textureSize + new Vector3(0.005f + i * (0.01f),0f,0));
             }
             
         }
