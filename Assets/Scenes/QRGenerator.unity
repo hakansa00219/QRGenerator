@@ -372,8 +372,8 @@ MonoBehaviour:
   version: 1
   mask: 0
   errorCorrectionLevel: 2
-  data: 01234567898765432101234567898765432101234
-  debugMode: 1
+  data: "\u96FB\u6C17W"
+  debugMode: 0
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ namespace QR
         [SerializeField] private ErrorCorrectionLevel errorCorrectionLevel;
         [SerializeField] private string data;
         [SerializeField] private bool debugMode;
+        [SerializeField] private bool useMask;
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
@@ -32,7 +33,7 @@ namespace QR
         [ShowInInspector, ReadOnly]
         private int _textureSize;
         [ShowInInspector, ReadOnly]
-        private byte _dataSize;
+        private byte _byteSize;
         
         [ShowInInspector, ReadOnly]
         private int _capacity;
@@ -101,7 +102,7 @@ namespace QR
 
             OrganizedData organizedData = new OrganizedData();
             
-            _dataSize = (byte)System.Text.Encoding.UTF8.GetByteCount(data);
+            _byteSize = (byte)System.Text.Encoding.UTF8.GetByteCount(data);
             
             // Data Analyzing / Bit Provider Service
             AnalyzeData();
@@ -123,7 +124,8 @@ namespace QR
             // Mask and Format Info
             CheckBestMask(out MaskPattern maskPattern);
             SetFormatInfo();
-            SetMask(maskPattern);
+            if (useMask)
+                SetMask(maskPattern);
             texture.Apply();
 
             return texture;
@@ -203,7 +205,7 @@ namespace QR
 
         private void SetDataLength(ref OrganizedData organizedData)
         {
-            Length lengthModule = new Length(_textureRenderer, _encodingType, _versionOne, _dataSize);
+            Length lengthModule = new Length(_textureRenderer, _encodingType, _versionOne, data.Length);
             lengthModule.SetLength(ref organizedData);
         }
 

@@ -10,23 +10,23 @@ namespace QR
     {
         private readonly VersionData _versionData;
         private readonly ITextureRenderer _textureRenderer;
-        private readonly byte _sizeData;
+        private readonly int _characterSize;
         private readonly EncodingType _encodingType;
         
-        public Length(ITextureRenderer textureRenderer, EncodingType encodingType, VersionData versionData, byte sizeData)
+        public Length(ITextureRenderer textureRenderer, EncodingType encodingType, VersionData versionData, int characterSize)
         {
             _versionData = versionData;
             _encodingType = encodingType;
             _textureRenderer = textureRenderer;
-            _sizeData = sizeData;
+            _characterSize = characterSize;
         }
         
         // Write Data Length size(as a byte value) to QR
         public void SetLength(ref OrganizedData organizedData)
         {
             int bitCount = VersionUtility.GetCharacterBitCount(_versionData.dataVersion, _encodingType);
-            _textureRenderer.RenderingDataToTexture(_sizeData, bitCount);
-            organizedData.Length = (_sizeData, bitCount);
+            _textureRenderer.RenderingDataToTexture(_characterSize, bitCount);
+            organizedData.Length = (_characterSize, bitCount);
         }
     }
 }

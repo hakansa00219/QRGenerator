@@ -13,9 +13,9 @@ namespace QR.Encoding
                 return Compatibility.Numeric;
             if (IsAlphanumericCompatible(data))
                 return Compatibility.Alphanumeric;
-            // if (IsKanjiCompatible(data)) 
-            //     return Compatibility.Kanji;
-
+            if (IsKanjiCompatible(data))
+                return Compatibility.Kanji;
+            
             return Compatibility.Byte;
         }
         

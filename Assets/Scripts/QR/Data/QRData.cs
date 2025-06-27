@@ -136,13 +136,8 @@ namespace QR
                     {
                         var c = _data[i];
                         byte[] bytes = kanjiEnc.GetBytes(new[] { c });
-                        int key = (bytes[0] << 8) | bytes[1];
-
-                        if (!Kanji.Dictionary.TryGetValue(key, out int value))
-                        {
-                            Debug.LogError("Cannot find the kanji character in Kanji Lookup table.");
-                            optimizedList[i] = -1;
-                        }
+                        
+                        int value = (bytes[0] - 0x81) * 192 + (bytes[1] - 0x40);
 
                         optimizedList[i] = value;
                     }
