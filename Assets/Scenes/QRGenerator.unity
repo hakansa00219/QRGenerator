@@ -372,7 +372,9 @@ MonoBehaviour:
   version: 1
   mask: 0
   errorCorrectionLevel: 2
-  data: Not Finished
+  data: "\u672A\u5B8C\u6210"
+  debugMode: 0
+  useMask: 1
 --- !u!4 &886662086
 Transform:
   m_ObjectHideFlags: 0

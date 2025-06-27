@@ -9,7 +9,7 @@ namespace Tests.PlayMode.QR.Masking
     public class ThirdEvaluationTests
     {
         [Test]
-        public void LeftPattern_ShouldReturnExpectedPenalty()
+        public void LeftPattern_ShouldReturn40()
         {
             Texture2D texture = new Texture2D(11, 1, TextureFormat.RGB565, false)
             {
@@ -114,7 +114,7 @@ namespace Tests.PlayMode.QR.Masking
             Object.Destroy(texture);
         }
         [Test]
-        public void RightPattern_ShouldReturnExpectedPenalty()
+        public void RightPattern_ShouldReturn40()
         {
             Texture2D texture = new Texture2D(11, 1, TextureFormat.RGB565, false)
             {
@@ -219,7 +219,7 @@ namespace Tests.PlayMode.QR.Masking
             Object.Destroy(texture);
         }
         [Test]
-        public void UpPattern_ShouldReturnExpectedPenalty()
+        public void UpPattern_ShouldReturn40()
         {
             Texture2D texture = new Texture2D(1, 11, TextureFormat.RGB565, false)
             {
@@ -324,7 +324,7 @@ namespace Tests.PlayMode.QR.Masking
             Object.Destroy(texture);
         }
         [Test]
-        public void DownPattern_ShouldReturnExpectedPenalty()
+        public void DownPattern_ShouldReturn40()
         {
             Texture2D texture = new Texture2D(1, 11, TextureFormat.RGB565, false)
             {
