@@ -21,15 +21,19 @@ namespace QR.Encoding
         
         public bool IsNumericCompatible(string data)
         {
-            return data.All(char.IsDigit);
+            return data.Length == 0 || data.All(char.IsDigit);
         }
         public bool IsAlphanumericCompatible(string data)
         {
+            if (data.Length == 0) return true;
+            
             var match = Regex.IsMatch(data, AlphaNumericPattern);
             return match;
         }
         public bool IsKanjiCompatible(string data)
         {
+            if (data.Length == 0) return true;
+            
             System.Text.Encoding shiftJis = System.Text.Encoding.GetEncoding(932); // 932 = Shift-jis Japanese 
             return data.All(c =>
             {
