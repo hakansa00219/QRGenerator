@@ -27,7 +27,11 @@ namespace QR
         private IBitProvider _bitProvider;
         private ITextureRenderer _textureRenderer;
         private MaskPatternData _maskPatternData;
-        
+
+        [ShowInInspector, ReadOnly]
+        private SpriteRenderer _spriteRenderer;
+        [ShowInInspector, ReadOnly]
+        private GameObject _qrTexture;
         [ShowInInspector, ReadOnly]
         private EncodingType _encodingType;
         [ShowInInspector, ReadOnly]
@@ -52,13 +56,17 @@ namespace QR
                 
             CheckVersionResolution();
         }
-
-        private void Start()
+        
+        [Button("Generate QR Code")]
+        public void Generation(string qrData)
         {
+            if (string.IsNullOrEmpty(qrData))
+                qrData = string.Empty;
+            
             if (debugMode)
             {
-                int size = data.Length;
-                string fullData = data;
+                int size = qrData.Length;
+                string fullData = qrData;
                 for (int i = 0; i < size; i++)
                 {
                     Generate(fullData[i..]);
@@ -66,25 +74,32 @@ namespace QR
             }
             else
             {
-                Generate(data);
+                Generate(qrData);
             }
             
         }
 
-        public void Generate(string qrData = "")
+        
+        private void Generate(string qrData)
         {
             if(!string.IsNullOrEmpty(qrData)) 
                 data = qrData;
-            
-            GameObject QR = new GameObject();
-            QR.name = $"QR-{data}";
 
-            SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
-            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
+            if (_qrTexture == null)
+            {
+                _qrTexture = new GameObject();
+            }
+            
+            _qrTexture.name = $"QR-{data}";
+
+            if (_spriteRenderer == null)
+                _spriteRenderer = _qrTexture.AddComponent<SpriteRenderer>();
+            
+            _spriteRenderer.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
             
             Camera mainCamera = Camera.main;
 
-            if (mainCamera != null) mainCamera.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
+            if (mainCamera != null) mainCamera.orthographicSize = _spriteRenderer.sprite.bounds.size.x * 0.7f;
         }
 
         private Texture2D Generation()
