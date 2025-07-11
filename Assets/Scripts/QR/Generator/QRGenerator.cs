@@ -5,9 +5,12 @@ using QR.Encoding;
 using QR.Enums;
 using QR.Masking;
 using QR.Scriptable;
+using mLogger = QR.Logger.Logger;
+using ILogger = QR.Logger.ILogger;
 using QR.Structs;
 using QR.Utilities;
 using Sirenix.OdinInspector;
+using UI.Visualizer;
 using UnityEngine;
 using Version = QR.Enums.Version;
 
@@ -27,6 +30,10 @@ namespace QR
         private IBitProvider _bitProvider;
         private ITextureRenderer _textureRenderer;
         private MaskPatternData _maskPatternData;
+        
+        private ILogger _logger;
+        [SerializeField] private MonoBehaviour logVisualizer;
+        private ILogVisualizer _logVisualizer => logVisualizer as ILogVisualizer;
 
         [ShowInInspector, ReadOnly]
         private SpriteRenderer _spriteRenderer;
@@ -48,12 +55,12 @@ namespace QR
 
         private void Awake()
         {
+            _logger = new mLogger(_logVisualizer);
+            
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
             _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
             
-            _totalDataBitSize = VersionUtility.GetTotalBitCount(version);
-                
             CheckVersionResolution();
         }
         
@@ -172,24 +179,24 @@ namespace QR
         private void AnalyzeData()
         {
             _bitProvider = new DataAnalyzer(_versionOne, _qrResolution.VersionResolutions[version]);
-            Debug.Log("Data Size: " + _bitProvider.BitQueue.Count);
+            _logger.Log("Data Size: " + _bitProvider.BitQueue.Count, false);
         }
 
         private void SetErrorCorrectionData(in OrganizedData organizedData)
         {
-            ErrorCorrection ec = new ErrorCorrection(_textureRenderer, _versionOne, errorCorrectionLevel);
+            ErrorCorrection ec = new ErrorCorrection(_textureRenderer, _logger, _versionOne, errorCorrectionLevel);
             ec.SetErrorCorrectionData(in organizedData);
         }
 
         private void SetData(string actualData, ref OrganizedData organizedData)
         {
-            QRData qrData = new QRData(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
+            QRData qrData = new QRData(_textureRenderer, _logger, _versionOne, _encodingType, errorCorrectionLevel, actualData);
             qrData.SetData(ref organizedData);
         }
 
         private void CheckBestMask(out MaskPattern maskPattern)
         {
-            maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
+            maskPattern = new MaskPattern(_textureRenderer, _logger, _versionOne, _maskPatternData);
             
             for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
             {
@@ -202,7 +209,7 @@ namespace QR
             }
             
             mask = maskPattern.BestMask;
-            Debug.Log($"Applied lowest penalty mask: {mask} - Score: {maskPattern.LowestScore}");
+            _logger.Log($"Applied lowest penalty mask: {mask} - Score: {maskPattern.LowestScore}", false);
         }
 
         private void SetFormatInfo()
@@ -262,7 +269,7 @@ namespace QR
         private void SetEncodingMode(ref OrganizedData organizedData)
         {
             //TODO: make it viable for every versions of QR
-            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data);
+            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data, _logger);
             encoder.SetEncoding(ref organizedData);
             
             _encodingType = encoder.SelectedEncodingType;
@@ -272,10 +279,19 @@ namespace QR
 
         private void CheckVersionResolution()
         {
-            if (version != Version.Auto)
-                _textureSize = _qrResolution.VersionResolutions[Version.One];
-            else //Start with one then check compatibility. If it can be done with Version One return that if not continue with higher ones.
-                throw new NotImplementedException();
+            if (version == Version.Auto)
+            {
+                _logger.LogError($"{version} is not implemented yet. Please select a version manually.");
+            }
+
+            if (version != Version.One)
+            {
+                _logger.LogError("Only Version one is implemented. Continues with Version one.");
+            }
+
+            version = Version.One;
+            _textureSize = _qrResolution.VersionResolutions[version];
+            _totalDataBitSize = VersionUtility.GetTotalBitCount(version, _logger);
         }
 
         private void OnDrawGizmos()

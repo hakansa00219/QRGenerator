@@ -7,6 +7,7 @@ using QR.Scriptable;
 using QR.Structs;
 using QR.Utilities;
 using UnityEngine;
+using ILogger = QR.Logger.ILogger;
 
 namespace QR
 {
@@ -14,6 +15,7 @@ namespace QR
     {
         private readonly string _data;
         private readonly ITextureRenderer _textureRenderer;
+        private readonly ILogger _logger;
         private readonly VersionData _versionData;
         private readonly EncodingType _encodingType;
         private readonly ErrorCorrectionLevel _errorCorrectionLevel;
@@ -23,9 +25,10 @@ namespace QR
         private const int PaddingDataSize = 8;
         private const int EndDataSize = 4;
         
-        public QRData(ITextureRenderer textureRenderer, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
+        public QRData(ITextureRenderer textureRenderer, ILogger logger, VersionData versionData, EncodingType encodingType, ErrorCorrectionLevel errorCorrectionLevel,  string data)
         {
             _textureRenderer = textureRenderer;
+            _logger = logger;
             _data = data;
             _versionData = versionData;
             _encodingType = encodingType;
@@ -193,7 +196,7 @@ namespace QR
                     break;
             }
             
-            Debug.Log("Data: " + string.Join(", ", organizedData.Main.data) + (organizedData.Remaining.data != null ? string.Join(", ", organizedData.Remaining.data) : ""));
+            _logger.Log("Data: " + string.Join(", ", organizedData.Main.data) + (organizedData.Remaining.data != null ? string.Join(", ", organizedData.Remaining.data) : ""), false);
         }
     }
 }

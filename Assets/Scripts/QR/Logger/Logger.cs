@@ -1,40 +1,43 @@
+using UI.Visualizer;
 using UnityEngine;
 
-namespace QR.Enums.Logger
+namespace QR.Logger
 {
-    public class Logger
+    public class Logger : ILogger
     {
-        private readonly RectTransform _logPanel;
-        
-        public Logger(RectTransform logPanel)
+        private readonly ILogVisualizer _visualizer;
+        public Logger(ILogVisualizer visualizer)
         {
-            _logPanel = logPanel;
+            _visualizer = visualizer;
         }
         
-        public static void Log(string msg)
+        public void Log(string msg, bool visualize = false)
         {
             UnityEngine.Debug.Log(msg);
             
-            Visualize(msg, Color.white);
+            if (visualize)
+                Visualize(msg, Color.white);
         }
 
-        public static void LogError(string msg)
+        public void LogError(string msg, bool visualize = false)
         {
             UnityEngine.Debug.LogError(msg);
             
-            Visualize(msg, Color.red);
+            if (visualize)
+                Visualize(msg, Color.red);
         }
         
-        public static void LogWarning(string msg)
+        public void LogWarning(string msg, bool visualize = false)
         {
             UnityEngine.Debug.LogWarning(msg);
             
-            Visualize(msg, Color.yellow);
+            if (visualize)
+                Visualize(msg, Color.yellow);
         }
 
-        private static void Visualize(string msg, Color color)
+        private void Visualize(string msg, Color color)
         {
-            
+            _visualizer.Visualize(msg, color);
         }
     }
 }

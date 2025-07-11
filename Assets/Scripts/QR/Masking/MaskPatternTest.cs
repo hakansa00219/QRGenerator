@@ -1,5 +1,6 @@
 using System.IO;
 using QR.Scriptable;
+using ILogger = QR.Logger.ILogger;
 using UnityEngine;
 
 namespace QR.Masking
@@ -17,7 +18,8 @@ namespace QR.Masking
             
             if (_maskPatternData == null)
             {
-                Debug.LogError("Mask pattern data could not be loaded.");
+                ILogger logger = new Logger.Logger(null);
+                logger.LogError("Mask pattern data could not be loaded.");
                 throw new FileNotFoundException();
             }
             

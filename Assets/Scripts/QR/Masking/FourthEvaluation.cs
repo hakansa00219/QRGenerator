@@ -1,12 +1,11 @@
 using System;
-using UnityEngine;
-using System.Linq;
+using QR.Logger;
 
 namespace QR.Masking
 {
     public class FourthEvaluation : Evaluation
     {
-        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize, ILogger logger)
         {
             int totalBits = bits.Length;
             int darkBits = 0;
@@ -29,7 +28,7 @@ namespace QR.Masking
             int smallestDivision = Math.Min(previousDivision, nextDivision);
             
             int penalty = smallestDivision * 10;
-            Debug.Log($"Fourth Penalty: {penalty}");
+            logger.Log($"Fourth Penalty: {penalty}");
             return penalty;
         }
     }
