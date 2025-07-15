@@ -1,4 +1,3 @@
-using System;
 using QR.Algorithms;
 using QR.Analysis;
 using QR.Encoding;
@@ -10,6 +9,7 @@ using ILogger = QR.Logger.ILogger;
 using QR.Structs;
 using QR.Utilities;
 using Sirenix.OdinInspector;
+using UI.Interactables;
 using UI.Visualizer;
 using UnityEngine;
 using Version = QR.Enums.Version;
@@ -24,6 +24,7 @@ namespace QR
         [SerializeField] private string data;
         [SerializeField] private bool debugMode;
         [SerializeField] private bool useMask;
+        [SerializeField] private UIHandler uiHandler;
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
@@ -51,11 +52,25 @@ namespace QR
         [ShowInInspector, ReadOnly]
         private int _totalDataBitSize;
         
+        public Version Version => version;
+        public int Mask => mask;
+        public ErrorCorrectionLevel ErrorCorrectionLevel => errorCorrectionLevel;
+        public Texture2D LastTexture => _textureRenderer?.Texture;
+        
         // !! White = 0 Black = 1
 
         private void Awake()
         {
             _logger = new mLogger(_logVisualizer);
+            if (uiHandler == null)
+            {
+                _logger.LogError("UI handler is empty. Please assign it in the inspector.");
+            }
+            else
+            {
+                uiHandler.Init(this, _logger);
+            }
+            
             
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
@@ -146,8 +161,10 @@ namespace QR
             // Mask and Format Info
             CheckBestMask(out MaskPattern maskPattern);
             SetFormatInfo();
+            
             if (useMask)
                 SetMask(maskPattern);
+            
             texture.Apply();
 
             return texture;

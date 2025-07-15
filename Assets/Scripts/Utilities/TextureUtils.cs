@@ -50,4 +50,29 @@ public static class TextureUtils
 
         return result;
     }
+    
+    public static Texture2D ScaleTexture(this Texture2D source, int scale)
+    {
+        int width = source.width * scale;
+        int height = source.height * scale;
+        Texture2D result = new Texture2D(width, height, source.format, false);
+        result.filterMode = FilterMode.Point; // Prevents blurring
+
+        for (int y = 0; y < source.height; y++)
+        {
+            for (int x = 0; x < source.width; x++)
+            {
+                Color color = source.GetPixel(x, y);
+                for (int dy = 0; dy < scale; dy++)
+                {
+                    for (int dx = 0; dx < scale; dx++)
+                    {
+                        result.SetPixel(x * scale + dx, y * scale + dy, color);
+                    }
+                }
+            }
+        }
+        result.Apply();
+        return result;
+    }
 }
