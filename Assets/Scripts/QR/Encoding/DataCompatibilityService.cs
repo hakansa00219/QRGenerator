@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace QR.Encoding
 {
@@ -32,6 +33,10 @@ namespace QR.Encoding
         }
         public bool IsKanjiCompatible(string data)
         {
+            // Not compatible with WebGL due to Shift-JIS encoding issues.
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+                return false;
+            
             if (data.Length == 0) return true;
             
             System.Text.Encoding shiftJis = System.Text.Encoding.GetEncoding(932); // 932 = Shift-jis Japanese 
