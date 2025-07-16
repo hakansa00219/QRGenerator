@@ -1,5 +1,5 @@
-using System.Linq;
-using UnityEngine;
+
+using QR.Logger;
 
 namespace QR.Masking
 {
@@ -13,14 +13,14 @@ namespace QR.Masking
         private const int ExtraPatternLength = 4;
         private const int PenaltyMultiplier = 40;
         
-        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize, ILogger logger)
         {
             int penalty = 0;
             
             penalty += HorizontalPenalty(bits, horizontalSize, verticalSize);
             penalty += VerticalPenalty(bits, horizontalSize, verticalSize);
             
-            Debug.Log($"Third Evaluation Penalty: {penalty}");
+            logger.Log($"Third Evaluation Penalty: {penalty}");
             return penalty;
         }
 

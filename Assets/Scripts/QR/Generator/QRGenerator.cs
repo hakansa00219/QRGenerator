@@ -1,13 +1,16 @@
-using System;
 using QR.Algorithms;
 using QR.Analysis;
 using QR.Encoding;
 using QR.Enums;
 using QR.Masking;
 using QR.Scriptable;
+using mLogger = QR.Logger.Logger;
+using ILogger = QR.Logger.ILogger;
 using QR.Structs;
 using QR.Utilities;
 using Sirenix.OdinInspector;
+using UI.Interactables;
+using UI.Visualizer;
 using UnityEngine;
 using Version = QR.Enums.Version;
 
@@ -21,6 +24,7 @@ namespace QR
         [SerializeField] private string data;
         [SerializeField] private bool debugMode;
         [SerializeField] private bool useMask;
+        [SerializeField] private UIHandler uiHandler;
         
         private VersionData _versionOne;
         private QRResolution _qrResolution;
@@ -28,6 +32,14 @@ namespace QR
         private ITextureRenderer _textureRenderer;
         private MaskPatternData _maskPatternData;
         
+        private ILogger _logger;
+        [SerializeField] private MonoBehaviour logVisualizer;
+        private ILogVisualizer _logVisualizer => logVisualizer as ILogVisualizer;
+
+        [ShowInInspector, ReadOnly]
+        private SpriteRenderer _spriteRenderer;
+        [ShowInInspector, ReadOnly]
+        private GameObject _qrTexture;
         [ShowInInspector, ReadOnly]
         private EncodingType _encodingType;
         [ShowInInspector, ReadOnly]
@@ -40,25 +52,43 @@ namespace QR
         [ShowInInspector, ReadOnly]
         private int _totalDataBitSize;
         
+        public Version Version => version;
+        public int Mask => mask;
+        public ErrorCorrectionLevel ErrorCorrectionLevel => errorCorrectionLevel;
+        public Texture2D LastTexture => _textureRenderer?.Texture;
+        
         // !! White = 0 Black = 1
 
         private void Awake()
         {
+            _logger = new mLogger(_logVisualizer);
+            if (uiHandler == null)
+            {
+                _logger.LogError("UI handler is empty. Please assign it in the inspector.");
+            }
+            else
+            {
+                uiHandler.Init(this, _logger);
+            }
+            
+            
             _versionOne = Resources.Load<VersionData>("Data/Version1");
             _qrResolution = Resources.Load<QRResolution>("Data/QRResolutionData");
             _maskPatternData = Resources.Load<MaskPatternData>("Data/MaskPatternData");
             
-            _totalDataBitSize = VersionUtility.GetTotalBitCount(version);
-                
             CheckVersionResolution();
         }
-
-        private void Start()
+        
+        [Button("Generate QR Code")]
+        public void Generation(string qrData)
         {
+            if (string.IsNullOrEmpty(qrData))
+                qrData = string.Empty;
+            
             if (debugMode)
             {
-                int size = data.Length;
-                string fullData = data;
+                int size = qrData.Length;
+                string fullData = qrData;
                 for (int i = 0; i < size; i++)
                 {
                     Generate(fullData[i..]);
@@ -66,25 +96,32 @@ namespace QR
             }
             else
             {
-                Generate(data);
+                Generate(qrData);
             }
             
         }
 
-        public void Generate(string qrData = "")
+        
+        private void Generate(string qrData)
         {
             if(!string.IsNullOrEmpty(qrData)) 
                 data = qrData;
-            
-            GameObject QR = new GameObject();
-            QR.name = $"QR-{data}";
 
-            SpriteRenderer rawImage = QR.AddComponent<SpriteRenderer>();
-            rawImage.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
+            if (_qrTexture == null)
+            {
+                _qrTexture = new GameObject();
+            }
+            
+            _qrTexture.name = $"QR-{data}";
+
+            if (_spriteRenderer == null)
+                _spriteRenderer = _qrTexture.AddComponent<SpriteRenderer>();
+            
+            _spriteRenderer.sprite = Sprite.Create(Generation(), new Rect(0, 0, _textureSize, _textureSize), new Vector2(0.5f, 0.5f));
             
             Camera mainCamera = Camera.main;
 
-            if (mainCamera != null) mainCamera.orthographicSize = rawImage.sprite.bounds.size.x * 0.7f;
+            if (mainCamera != null) mainCamera.orthographicSize = _spriteRenderer.sprite.bounds.size.x * 0.7f;
         }
 
         private Texture2D Generation()
@@ -124,8 +161,10 @@ namespace QR
             // Mask and Format Info
             CheckBestMask(out MaskPattern maskPattern);
             SetFormatInfo();
+            
             if (useMask)
                 SetMask(maskPattern);
+            
             texture.Apply();
 
             return texture;
@@ -157,24 +196,24 @@ namespace QR
         private void AnalyzeData()
         {
             _bitProvider = new DataAnalyzer(_versionOne, _qrResolution.VersionResolutions[version]);
-            Debug.Log("Data Size: " + _bitProvider.BitQueue.Count);
+            _logger.Log("Data Size: " + _bitProvider.BitQueue.Count, false);
         }
 
         private void SetErrorCorrectionData(in OrganizedData organizedData)
         {
-            ErrorCorrection ec = new ErrorCorrection(_textureRenderer, _versionOne, errorCorrectionLevel);
+            ErrorCorrection ec = new ErrorCorrection(_textureRenderer, _logger, _versionOne, errorCorrectionLevel);
             ec.SetErrorCorrectionData(in organizedData);
         }
 
         private void SetData(string actualData, ref OrganizedData organizedData)
         {
-            QRData qrData = new QRData(_textureRenderer, _versionOne, _encodingType, errorCorrectionLevel, actualData);
+            QRData qrData = new QRData(_textureRenderer, _logger, _versionOne, _encodingType, errorCorrectionLevel, actualData);
             qrData.SetData(ref organizedData);
         }
 
         private void CheckBestMask(out MaskPattern maskPattern)
         {
-            maskPattern = new MaskPattern(_textureRenderer, _versionOne, _maskPatternData);
+            maskPattern = new MaskPattern(_textureRenderer, _logger, _versionOne, _maskPatternData);
             
             for (byte i = 0; i < _maskPatternData.MaskPatterns.Count; i++)
             {
@@ -187,7 +226,7 @@ namespace QR
             }
             
             mask = maskPattern.BestMask;
-            Debug.Log($"Applied lowest penalty mask: {mask} - Score: {maskPattern.LowestScore}");
+            _logger.Log($"Applied lowest penalty mask: {mask} - Score: {maskPattern.LowestScore}", false);
         }
 
         private void SetFormatInfo()
@@ -247,7 +286,7 @@ namespace QR
         private void SetEncodingMode(ref OrganizedData organizedData)
         {
             //TODO: make it viable for every versions of QR
-            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data);
+            IEncodingSelection encoder = new EncodingSelector(_textureRenderer, _versionOne, data, _logger);
             encoder.SetEncoding(ref organizedData);
             
             _encodingType = encoder.SelectedEncodingType;
@@ -257,10 +296,19 @@ namespace QR
 
         private void CheckVersionResolution()
         {
-            if (version != Version.Auto)
-                _textureSize = _qrResolution.VersionResolutions[Version.One];
-            else //Start with one then check compatibility. If it can be done with Version One return that if not continue with higher ones.
-                throw new NotImplementedException();
+            if (version == Version.Auto)
+            {
+                _logger.LogError($"{version} is not implemented yet. Please select a version manually.");
+            }
+
+            if (version != Version.One)
+            {
+                _logger.LogError("Only Version one is implemented. Continues with Version one.");
+            }
+
+            version = Version.One;
+            _textureSize = _qrResolution.VersionResolutions[version];
+            _totalDataBitSize = VersionUtility.GetTotalBitCount(version, _logger);
         }
 
         private void OnDrawGizmos()

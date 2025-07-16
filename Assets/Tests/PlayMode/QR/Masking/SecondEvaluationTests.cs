@@ -1,7 +1,6 @@
-using System.Linq;
 using NUnit.Framework;
 using QR.Masking;
-using UnityEngine;
+using QR.Logger;
 
 namespace Tests.PlayMode.QR.Masking
 {
@@ -17,9 +16,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 2);
+            penalty += secondEvaluation.Calculation(bits, 2, 2, logger);
             
             Assert.IsTrue(penalty == 3);
             
@@ -34,9 +34,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 2);
+            penalty += secondEvaluation.Calculation(bits, 2, 2, logger);
             
             Assert.IsTrue(penalty == 3);
             
@@ -51,9 +52,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 3);
+            penalty += secondEvaluation.Calculation(bits, 2, 3, logger);
             
             Assert.IsTrue(penalty == 6);
             
@@ -68,9 +70,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 3);
+            penalty += secondEvaluation.Calculation(bits, 2, 3, logger);
             
             Assert.IsTrue(penalty == 6);
             
@@ -86,9 +89,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 3, 2);
+            penalty += secondEvaluation.Calculation(bits, 3, 2, logger);
             
             Assert.IsTrue(penalty == 6);
             
@@ -104,9 +108,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 3, 2);
+            penalty += secondEvaluation.Calculation(bits, 3, 2, logger);
             
             Assert.IsTrue(penalty == 6);
             
@@ -122,9 +127,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 3, 3);
+            penalty += secondEvaluation.Calculation(bits, 3, 3, logger);
             
             Assert.IsTrue(penalty == 12);
             
@@ -140,9 +146,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 3, 3);
+            penalty += secondEvaluation.Calculation(bits, 3, 3, logger);
             
             Assert.IsTrue(penalty == 12);
             
@@ -159,9 +166,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 4, 4);
+            penalty += secondEvaluation.Calculation(bits, 4, 4, logger);
             
             Assert.IsTrue(penalty == 9);
             
@@ -178,9 +186,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 4, 4);
+            penalty += secondEvaluation.Calculation(bits, 4, 4, logger);
             
             Assert.IsTrue(penalty == 3);
             
@@ -195,9 +204,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 4);
+            penalty += secondEvaluation.Calculation(bits, 2, 4, logger);
             
             Assert.IsTrue(penalty == 6);
             
@@ -218,9 +228,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 8, 8);
+            penalty += secondEvaluation.Calculation(bits, 8, 8, logger);
             
             Assert.IsTrue(penalty == 147);
             
@@ -241,9 +252,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 8, 8);
+            penalty += secondEvaluation.Calculation(bits, 8, 8, logger);
             
             Assert.IsTrue(penalty == 147);
             
@@ -264,9 +276,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 8, 8);
+            penalty += secondEvaluation.Calculation(bits, 8, 8, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -281,9 +294,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 2);
+            penalty += secondEvaluation.Calculation(bits, 2, 2, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -298,9 +312,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation secondEvaluation = new SecondEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += secondEvaluation.Calculation(bits, 2, 12);
+            penalty += secondEvaluation.Calculation(bits, 2, 12, logger);
             
             Assert.IsTrue(penalty == 0);
             

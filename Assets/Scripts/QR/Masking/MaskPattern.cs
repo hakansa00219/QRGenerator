@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using QR.Encoding;
 using QR.Scriptable;
 using UnityEngine;
+using ILogger = QR.Logger.ILogger;
 
 namespace QR.Masking
 {
@@ -12,6 +12,7 @@ namespace QR.Masking
         private readonly MaskPatternData _maskPatternData;
         private readonly VersionData _versionData;
         private readonly ITextureRenderer _textureRenderer;
+        private readonly ILogger _logger;
 
         private readonly List<Evaluation> _evaluations = new List<Evaluation>()
         {
@@ -23,15 +24,16 @@ namespace QR.Masking
 
         public int LowestScore { get; private set; } = int.MaxValue;
         public byte BestMask { get; private set; } = 255;
-        public MaskPattern(ITextureRenderer textureRenderer, VersionData versionData, MaskPatternData maskPatternData)
+        public MaskPattern(ITextureRenderer textureRenderer, ILogger logger, VersionData versionData, MaskPatternData maskPatternData)
         {
             _textureRenderer = textureRenderer;
+            _logger = logger;
             _maskPatternData = maskPatternData;
             _versionData = versionData;
             
             if (_maskPatternData == null)
             {
-                Debug.LogError("Mask pattern data could not be loaded.");
+                logger.LogError("Mask pattern data could not be loaded.", false);
                 throw new FileNotFoundException();
             }
         }
@@ -54,10 +56,10 @@ namespace QR.Masking
             // Debug.Log($"bool[] testData = new bool[] {{ {string.Join(", ", bits.Select(b => b.ToString().ToLower()))} }};");
             foreach (var evaluation in _evaluations)
             {
-                sum += evaluation.Calculation(bits, texture.width, texture.height);
+                sum += evaluation.Calculation(bits, texture.width, texture.height, _logger);
             }
             UnMask(texture, mask);
-            Debug.Log($"Mask:{mask} - Sum of evaluations is {sum}");
+            _logger.Log($"Mask:{mask} - Sum of evaluations is {sum}", false);
             return sum;
         }
         

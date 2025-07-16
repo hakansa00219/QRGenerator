@@ -1,5 +1,6 @@
 using System;
 using QR.Enums;
+using QR.Logger;
 using Version = QR.Enums.Version;
 
 namespace QR.Utilities
@@ -50,13 +51,12 @@ namespace QR.Utilities
             return 4;
         }
 
-        public static int GetTotalBitCount(Version version)
+        public static int GetTotalBitCount(Version version, ILogger logger = null)
         {
-            return version switch
-            {
-                Version.One => 208,
-                _ => throw new ArgumentOutOfRangeException(nameof(version), version, null)
-            };
+            if (version == Version.One) return 208;
+
+            logger?.LogError($"Not implemented for {version} version. Changed version to 1.");
+            return 208;
         }
     }
 }
