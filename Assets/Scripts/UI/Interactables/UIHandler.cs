@@ -19,7 +19,7 @@ namespace UI.Interactables
         
 #if UNITY_WEBGL && !UNITY_EDITOR
         [DllImport("__Internal")]
-        private static extern void DownloadFile(byte[] data, int length, string fileName)
+        private static extern void DownloadFile(byte[] data, int length, string fileName);
 #endif
         
         public void Init(QRGenerator qrGenerator, QR.Logger.ILogger logger)
