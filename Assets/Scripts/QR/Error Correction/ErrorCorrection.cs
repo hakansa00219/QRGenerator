@@ -4,6 +4,7 @@ using System.Text;
 using QR.Algorithms;
 using QR.Encoding;
 using QR.Enums;
+using QR.Logger;
 using QR.Scriptable;
 using QR.Structs;
 
@@ -12,22 +13,21 @@ namespace QR
     public class ErrorCorrection
     {
         private readonly ITextureRenderer _textureRenderer;
+        private readonly ILogger _logger;
         private readonly int _ecDataSize;
         
-        public ErrorCorrection(ITextureRenderer textureRenderer, VersionData versionData, ErrorCorrectionLevel errorCorrectionType)
+        public ErrorCorrection(ITextureRenderer textureRenderer, ILogger logger, VersionData versionData, ErrorCorrectionLevel errorCorrectionType)
         {
             _textureRenderer = textureRenderer;
+            _logger = logger;
             _ecDataSize = versionData.ErrorCorrectionDataSizeTable[errorCorrectionType];
         }
 
         public void SetErrorCorrectionData(in OrganizedData organizedData)
         {
             ReedSolomonGenerator generator = new ReedSolomonGenerator();
-
-            // List<byte> dataList = new List<byte>();
             
             // Bit manipulation since each EC codeword 8 bits and some data in QR not 8 bits.
-            // TODO: this might only works for byte! Need to check
             StringBuilder bitString = new StringBuilder();
             
             var encoding = organizedData.Encoding;
@@ -162,7 +162,7 @@ namespace QR
                 convertedData.Add(value);
             }
             
-            byte[] ecBlocks = generator.GenerateErrorCorrectionBlocks(convertedData.ToArray() , _ecDataSize);
+            byte[] ecBlocks = generator.GenerateErrorCorrectionBlocks(convertedData.ToArray() , _ecDataSize, _logger);
             
             _textureRenderer.RenderingDataToTexture(ecBlocks);
         }

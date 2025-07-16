@@ -5,7 +5,7 @@ using QR.Utilities;
 using QR.Enums;
 using QR.Scriptable;
 using QR.Structs;
-using UnityEngine;
+using ILogger = QR.Logger.ILogger;
 
 namespace QR.Encoding
 {
@@ -15,7 +15,7 @@ namespace QR.Encoding
         public EncodingType SelectedEncodingType { get; private set; }
         public ErrorCorrectionLevel SelectedErrorCorrectionLevel { get; private set; }
         
-        public EncodingSelector(ITextureRenderer textureRenderer, VersionData versionData, string data)
+        public EncodingSelector(ITextureRenderer textureRenderer, VersionData versionData, string data, ILogger logger)
         {
             _textureRenderer = textureRenderer;
             
@@ -28,7 +28,7 @@ namespace QR.Encoding
 
             //TODO: Automatically select higher level version if selected Auto to version if you developed higher versions
             if (ecComp == -1)
-                Debug.LogError("Not compatible encoder format. Probably you need higher version QR code.");
+                logger.LogError("Not compatible encoder format. Probably you need higher version QR code. Only Version 1 exists.", true);
             
             SelectedEncodingType = encodingType;
             SelectedErrorCorrectionLevel = (ErrorCorrectionLevel)ecComp;

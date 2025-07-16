@@ -1,10 +1,12 @@
 using System;
-using UnityEngine;
+using ILogger = QR.Logger.ILogger;
 
 namespace QR.Algorithms
 {
     public class ReedSolomonGenerator
     {
+        private ILogger _logger;
+        
         private readonly int PRIMITIVE_POLY = 0x11D; // GF(256) primitive polynomial
         private readonly byte[] expTable = new byte[256]; // expo table
         private readonly byte[] logTable = new byte[256]; // logarithmic table
@@ -62,8 +64,10 @@ namespace QR.Algorithms
             return g;
         }
 
-        public byte[] GenerateErrorCorrectionBlocks(byte[] data, int errorCorrectionDataBlockSize)
+        public byte[] GenerateErrorCorrectionBlocks(byte[] data, int errorCorrectionDataBlockSize, ILogger logger)
         {
+            _logger = logger;
+            
             InitializeGaloisField();
             byte[] ecBlocks = ComputeErrorCorrection(data, errorCorrectionDataBlockSize);
 
@@ -75,7 +79,7 @@ namespace QR.Algorithms
             byte[] generator = CreateGeneratorPolynomial(codeWordsSize);
             byte[] message = new byte[codeWordsSize + data.Length];
 
-            Debug.Log("Data Words: " + string.Join(", ", data));
+            _logger.Log("Data Words: " + string.Join(", ", data), false);
             Array.Copy(data, message, data.Length); // Copy data into the message
 
             for (int i = 0; i < data.Length; i++)
@@ -95,7 +99,7 @@ namespace QR.Algorithms
             byte[] ecCodewords = new byte[codeWordsSize];
             // Debug.Log("150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8");
             Array.Copy(message, data.Length, ecCodewords, 0, codeWordsSize);
-            Debug.Log("Error Correction Words: " + string.Join(", ", ecCodewords)); //142, 180, 184, 32, 189, 250, 7, 144, 6, 122, 38, 178, 179, 128, 182, 185, 0
+            _logger.Log("Error Correction Words: " + string.Join(", ", ecCodewords), false); //142, 180, 184, 32, 189, 250, 7, 144, 6, 122, 38, 178, 179, 128, 182, 185, 0
             // return new byte[] {150, 106, 201, 175, 226, 23, 128, 154, 76, 96, 209, 69, 45, 171, 227, 182, 8};
             return ecCodewords;
         }

@@ -53,7 +53,6 @@ namespace QR.Encoding
             }
         }
         //If data is int charSize might be between 1 - 32. It can be byte short or int or even like 20 bit. (Some qr codes has weird size data)
-        //TODO: 8 bit olmayanlar için bir test yapılması lazım. Emin değilim özellikle SetPixel2D ile birleşince.
         public void RenderingDataToTexture(int data, int charSize)
         {
             for (int bitIndex = charSize - 1; bitIndex >= 0; bitIndex--)
