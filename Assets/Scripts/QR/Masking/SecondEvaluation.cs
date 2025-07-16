@@ -1,12 +1,12 @@
-using System.Text;
-using UnityEngine;
+
+using QR.Logger;
 
 namespace QR.Masking
 {
     public class SecondEvaluation : Evaluation
     {
         // Every 2x2 same colored blocks = 3 penalty points.
-        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize, ILogger logger)
         {
             int penaltyCount = 0;
             for (int y = verticalSize - 1; y > 0; y--)
@@ -25,7 +25,7 @@ namespace QR.Masking
             }
             
             int penalty = penaltyCount * 3;
-            Debug.Log($"Second Evaluation Penalty: {penalty}");
+            logger.Log($"Second Evaluation Penalty: {penalty}", false);
             return penalty;
         }
     }

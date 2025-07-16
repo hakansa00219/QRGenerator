@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using QR.Masking;
-using UnityEngine;
-
+using QR.Logger;
 namespace Tests.PlayMode.QR.Masking
 {
     public class FourthEvaluationTests
@@ -19,9 +18,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 20);
         }
@@ -39,9 +39,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 10);
         }
@@ -59,9 +60,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 0);
         }
@@ -78,9 +80,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 0);
         }
@@ -98,9 +101,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 10);
         }
@@ -118,9 +122,10 @@ namespace Tests.PlayMode.QR.Masking
             };
             
             Evaluation fourthEvaluation = new FourthEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1));
+            penalty += fourthEvaluation.Calculation(bits, bits.GetLength(0), bits.GetLength(1), logger);
             
             Assert.IsTrue(penalty == 20);
         }
