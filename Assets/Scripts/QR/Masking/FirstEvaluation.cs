@@ -1,4 +1,4 @@
-using UnityEngine;
+using QR.Logger;
 
 namespace QR.Masking
 {
@@ -6,13 +6,13 @@ namespace QR.Masking
     {
         private const int PenaltyCount = 5;
         private const int PenaltyIncrement = 3;
-        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize)
+        public override int Calculation(in bool[,] bits, int horizontalSize, int verticalSize, ILogger logger)
         {
             int horizontalTotal = HorizontalPenalty(bits, horizontalSize, verticalSize);
             int verticalTotal = VerticalPenalty(bits, horizontalSize, verticalSize);
             
             int sum = horizontalTotal + verticalTotal;
-            Debug.Log($"First Evaluation Penalty: {sum}");
+            logger.Log($"First Evaluation Penalty: {sum}");
             return sum;
         }
 

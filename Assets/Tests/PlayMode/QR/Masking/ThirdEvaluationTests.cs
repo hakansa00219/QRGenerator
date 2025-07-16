@@ -1,6 +1,7 @@
 using System.Linq;
 using NUnit.Framework;
-using QR;
+using Logger = QR.Logger.Logger;
+using ILogger = QR.Logger.ILogger;
 using QR.Masking;
 using UnityEngine;
 
@@ -21,9 +22,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 40);
 
@@ -42,9 +44,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
 
@@ -63,9 +66,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
 
@@ -84,9 +88,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
 
@@ -105,9 +110,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
 
@@ -126,9 +132,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 40);
             
@@ -147,9 +154,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -168,9 +176,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -189,9 +198,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -210,9 +220,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -231,9 +242,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 40);
             
@@ -252,9 +264,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -273,9 +286,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -294,9 +308,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -315,9 +330,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -336,9 +352,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 40);
             
@@ -357,9 +374,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -378,9 +396,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -399,9 +418,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -420,9 +440,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -441,9 +462,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -462,9 +484,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
 
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 0);
             
@@ -489,9 +512,10 @@ namespace Tests.PlayMode.QR.Masking
             texture.Apply();
             
             Evaluation thirdEvaluation = new ThirdEvaluation();
+            ILogger logger = new Logger(null);
             
             int penalty = 0;
-            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height);
+            penalty += thirdEvaluation.Calculation(texture.ConvertTo2DArray(), texture.width, texture.height, logger);
             
             Assert.IsTrue(penalty == 120);
             
