@@ -43,7 +43,7 @@ jobs:
         - uses: actions/cache@v3
           with:
             path: Library
-            key: Library-${{ vars.PROJECT_NAME }}-WebGL-lts
+            key: Library-${{ vars.PROJECT_NAME }}-WebGL
             restore-keys: |
                 Library-${{ vars.PROJECT_NAME }}-
                 Library-  
@@ -93,7 +93,7 @@ jobs:
         - uses: actions/cache@v3
           with:
             path: Library
-            key: Library-${{ vars.PROJECT_NAME }}-WebGL-lts
+            key: Library-${{ vars.PROJECT_NAME }}-WebGL
             restore-keys: |
               Library-${{ vars.PROJECT_NAME }}-
               Library-
